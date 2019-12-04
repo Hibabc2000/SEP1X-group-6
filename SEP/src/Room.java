@@ -2,7 +2,7 @@ public class Room
 {
   /**
    *@author Ali Bahrani, 294418
-   *@version 1.0.0
+   *@version 1.0.0.2
    *this class is responsible for managing room data
    */
   private int numberOfSeats;
@@ -29,38 +29,62 @@ public class Room
   public byte getProjector()
   {
     /**
-     * @return projector state, 0 for non, 1 for VGA, 2 for hdmi and 3 for both, 5 for null
-     *
+     * @return projector state
+     * return the projector state of the room, 0 for non, 1 for VGA, 2 for hdmi and 3 for both, 5 for null
      */
     return projector;
   }
 
   public int getNumberOfSeats()
   {
+    /**
+     * @return Number of seats in the class
+     * returns the number of the seats in the class, -1 is not defined
+     */
     return numberOfSeats;
   }
 
   public String getRoomNumber()
   {
+    /**
+     * @return the room number
+     * returns the room number
+     */
     return roomNumber;
   }
 
   public void setNumberOfSeats(int numberOfSeats)
   {
+    /**
+     * @param number of seats
+     * sets the number of seats in the room
+     */
     this.numberOfSeats = numberOfSeats;
   }
 
   public void setProjector(byte projector)
   {
+    /**
+     * @param state of projector
+     *  sets the state of projector for the room, 0 for non, 1 for VGA, 2 for hdmi and 3 for both
+     */
     this.projector = projector;
   }
 
   public void setRoomNumber(String roomNumber)
   {
+    /**
+     * @param number o the room
+     * sets the romm number
+     */
     this.roomNumber = roomNumber;
   }
   public boolean equals(Object object)
   {
+    /**
+     * @param Objct of room type
+     * checks if the rooms are the same
+     */
     if(!(object instanceof Room))
     {
       return false;
@@ -75,6 +99,7 @@ public class Room
       return false;
     }
   }
+  /*
   public void copyDontUse()
   {
     Room tmp = new Room();
@@ -82,4 +107,7 @@ public class Room
     tmp.setNumberOfSeats(numberOfSeats);
     tmp.setProjector(projector);
   }
+
+   */
 }
+
