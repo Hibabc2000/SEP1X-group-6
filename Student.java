@@ -8,7 +8,6 @@ public class Student extends Person
 
   public Student(String ID, String firstName, String lastName)
   {
-  //  jkhsdakjdshja
     /**
      * This method is a three-argument constructor for students.
      */
