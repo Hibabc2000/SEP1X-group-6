@@ -13,8 +13,8 @@ public class Room
     /**
      * no argument constructor
      */
-    projector = null;
-    numberOfSeats = null;
+    projector = 5;
+    numberOfSeats = -1;
     roomNumber = null;
   }
   public Room(String roomNumber,int numberOfSeats, byte projector)
@@ -29,7 +29,7 @@ public class Room
   public byte getProjector()
   {
     /**
-     * @return projector state, 0 for non, 1 for VGA, 2 for hdmi and 3 for both
+     * @return projector state, 0 for non, 1 for VGA, 2 for hdmi and 3 for both, 5 for null
      *
      */
     return projector;
