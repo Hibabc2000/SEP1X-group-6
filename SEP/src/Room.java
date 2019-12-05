@@ -2,7 +2,7 @@ public class Room
 {
   /**
    *@author Ali Bahrani, 294418
-   *@version 1.0.0.2
+   *@version 1.0.0.3
    *this class is responsible for managing room data
    */
   private int numberOfSeats;
@@ -99,15 +99,19 @@ public class Room
       return false;
     }
   }
-  /*
-  public void copyDontUse()
+
+  //Don't use this method
+  public void copy()
   {
+    /**
+     * @return a Room object identical to this one
+     * copies the Room object
+     */
     Room tmp = new Room();
     tmp.setRoomNumber(roomNumber);
     tmp.setNumberOfSeats(numberOfSeats);
     tmp.setProjector(projector);
   }
 
-   */
 }
 
