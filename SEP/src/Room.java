@@ -2,89 +2,87 @@ public class Room
 {
   /**
    *@author Ali Bahrani, 294418
-   *@version 1.0.0.3
+   *@version 1.0.0.4
    *this class is responsible for managing room data
    */
   private int numberOfSeats;
   private String roomNumber;
   private byte projector;
+  /**
+   * no argument constructor
+   */
   public Room()
   {
-    /**
-     * no argument constructor
-     */
     projector = 5;
     numberOfSeats = -1;
     roomNumber = null;
   }
+  /**
+   * a three argument constructor for all fields
+   * @param numberOfSeats
+   * @param roomNumber
+   * @param projector
+   */
   public Room(String roomNumber,int numberOfSeats, byte projector)
   {
-    /**
-     * a three argument constructor for all fields
-     */
     this.roomNumber=roomNumber;
     this.projector= projector;
     this.numberOfSeats=numberOfSeats;
   }
+  /**
+   * @return projector state
+   * return the projector state of the room, 0 for non, 1 for VGA, 2 for hdmi and 3 for both, 5 for null
+   */
   public byte getProjector()
   {
-    /**
-     * @return projector state
-     * return the projector state of the room, 0 for non, 1 for VGA, 2 for hdmi and 3 for both, 5 for null
-     */
     return projector;
   }
-
+  /**
+   * @return Number of seats in the class
+   * returns the number of the seats in the class, -1 is not defined
+   */
   public int getNumberOfSeats()
   {
-    /**
-     * @return Number of seats in the class
-     * returns the number of the seats in the class, -1 is not defined
-     */
     return numberOfSeats;
   }
-
+  /**
+   * @return the room number
+   * returns the room number
+   */
   public String getRoomNumber()
   {
-    /**
-     * @return the room number
-     * returns the room number
-     */
     return roomNumber;
   }
-
+  /**
+   * @param numberOfSeats
+   * sets the number of seats in the room
+   */
   public void setNumberOfSeats(int numberOfSeats)
   {
-    /**
-     * @param number of seats
-     * sets the number of seats in the room
-     */
     this.numberOfSeats = numberOfSeats;
   }
-
+  /**
+   * @param projector
+   *  sets the state of projector for the room, 0 for non, 1 for VGA, 2 for hdmi and 3 for both
+   */
   public void setProjector(byte projector)
   {
-    /**
-     * @param state of projector
-     *  sets the state of projector for the room, 0 for non, 1 for VGA, 2 for hdmi and 3 for both
-     */
     this.projector = projector;
   }
-
+  /**
+   * @param roomNumber o the room
+   * sets the room number
+   */
   public void setRoomNumber(String roomNumber)
   {
-    /**
-     * @param number o the room
-     * sets the romm number
-     */
     this.roomNumber = roomNumber;
   }
+  /**
+   * @param object of room type
+   * checks if the rooms are the same
+   */
   public boolean equals(Object object)
   {
-    /**
-     * @param Objct of room type
-     * checks if the rooms are the same
-     */
     if(!(object instanceof Room))
     {
       return false;
@@ -112,6 +110,5 @@ public class Room
     tmp.setNumberOfSeats(numberOfSeats);
     tmp.setProjector(projector);
   }
-
 }
 
