@@ -1,8 +1,8 @@
-import java.util.ArrayList;
 /**
  *@author Marin Bilba, 293141
  *@version 1.0.0.0
  */
+import java.util.ArrayList;
 public class Class
 {
   private String className;
