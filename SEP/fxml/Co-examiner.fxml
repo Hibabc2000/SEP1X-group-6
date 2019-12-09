@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="102.0" text="Exam planner" textAlignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="HOME" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Rooms" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Teachers" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Co-examiner" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Courses" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Schedule exam" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Settings" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Add/update teacher">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" />
+               </FlowPane.margin>
+            </Label>
+            <Label text="Edit/delete">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" left="75.0" right="150.0" />
+               </FlowPane.margin>
+            </Label>
+            <Label text="Name">
+               <FlowPane.margin>
+                  <Insets bottom="10.0" />
+               </FlowPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" left="20.0" right="40.0" />
+               </FlowPane.margin>
+            </TextField>
+            <MenuButton mnemonicParsing="false" text="Teachers">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" right="170.0" />
+               </FlowPane.margin>
+            </MenuButton>
+            <Label text="Internal">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" right="10.0" />
+               </FlowPane.margin>
+            </Label>
+            <MenuButton mnemonicParsing="false" text="Internal">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" right="360.0" />
+               </FlowPane.margin>
+            </MenuButton>
+            <Label text="ID">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" />
+               </FlowPane.margin>
+            </Label>
+            <TextField>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" left="42.0" right="290.0" />
+               </FlowPane.margin>
+            </TextField>
+            <Button mnemonicParsing="false" text="Update">
+               <FlowPane.margin>
+                  <Insets bottom="10.0" left="57.0" right="130.0" />
+               </FlowPane.margin>
+            </Button>
+            <Button mnemonicParsing="false" text="Edit">
+               <FlowPane.margin>
+                  <Insets bottom="10.0" left="3.0" />
+               </FlowPane.margin>
+            </Button>
+            <Button mnemonicParsing="false" text="Delete">
+               <FlowPane.margin>
+                  <Insets bottom="10.0" left="25.0" />
+               </FlowPane.margin>
+            </Button>
+         </children></FlowPane>
+   </center>
+   <top>
+      <HBox prefHeight="71.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assignment_2_RWD1/images/logo.png" />
+               </image>
+            </ImageView>
+            <MenuBar prefHeight="78.0" prefWidth="401.0" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
