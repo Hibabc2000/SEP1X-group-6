@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <left>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" prefHeight="17.0" prefWidth="102.0" text="Exam planner" textAlignment="CENTER" />
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" text="HOME" />
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="111.0" text="Rooms" />
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" text="Teachers" />
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Co-examiner" />
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Courses" />
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Schedule exam" />
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Settings" />
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="306.0" prefWidth="278.0">
+               <children>
+                  <Label prefHeight="43.0" prefWidth="278.0" text="Add/Update Course">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Line endX="177.6929168701172" endY="-0.926592230796814" startX="-100.0" />
+                  <HBox prefHeight="184.0" prefWidth="276.0">
+                     <children>
+                        <VBox prefHeight="194.0" prefWidth="142.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="70.0" text="Exam Type:" />
+                              <Label prefHeight="22.0" prefWidth="40.0" text="Course:" />
+                              <Label prefHeight="25.0" prefWidth="34.0" text="Room:" />
+                              <Label prefHeight="30.0" prefWidth="28.0" text="Date:" />
+                              <Label prefHeight="26.0" prefWidth="52.0" text="Start/End:" />
+                              <Label prefHeight="29.0" prefWidth="45.0" text="Teacher:" />
+                              <Label text="Co-Examiner:" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="322.0" prefWidth="138.0">
+                           <children>
+                              <ComboBox prefHeight="6.0" prefWidth="138.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets></ComboBox>
+                              <ComboBox prefWidth="150.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets></ComboBox>
+                              <ComboBox prefWidth="150.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets></ComboBox>
+                              <DatePicker />
+                              <HBox prefHeight="49.0" prefWidth="138.0" />
+                              <ComboBox prefWidth="150.0" />
+                              <ComboBox prefHeight="24.0" prefWidth="138.0" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets bottom="10.0" top="10.0" />
+                           </opaqueInsets>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="279.0" text="Button">
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets></Button>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="274.0" text="Edit/Delete" />
+                  <Line endX="176.8928680419922" startX="-100.0" />
+                  <ComboBox prefHeight="26.0" prefWidth="279.0" />
+                  <HBox prefHeight="34.0" prefWidth="279.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="142.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="138.0" text="Button" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+         </children></FlowPane>
+    </center>
+    <top>
+        <HBox prefHeight="80.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="78.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../assignment_2_RWD1/images/logo.png" />
+                    </image>
+                </ImageView>
+                <MenuBar prefHeight="78.0" prefWidth="429.0" />
+            </children>
+        </HBox>
+    </top>
+</BorderPane>
