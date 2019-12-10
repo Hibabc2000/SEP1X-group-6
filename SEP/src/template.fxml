@@ -16,12 +16,12 @@
          <children>
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="102.0" text="Exam planner" textAlignment="CENTER" />
             <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="HOME" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Rooms" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Teachers" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Co-examiner" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Courses" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Schedule exam" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Settings" />
+            <Button fx:id="roomButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Rooms" />
+            <Button fx:id="teacherButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Teachers" />
+            <Button fx:id="coExaminerButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Co-examiner" />
+            <Button fx:id="courseButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Courses" />
+            <Button fx:id="scheduleButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Schedule exam" />
+            <Button fx:id="settingsButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Settings" />
          </children>
       </VBox>
    </left>
