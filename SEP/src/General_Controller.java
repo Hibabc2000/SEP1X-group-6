@@ -1,7 +1,6 @@
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
@@ -23,15 +22,25 @@ public class General_Controller implements EventHandler<ActionEvent>
     @FXML private Button scheduleButton;
     @FXML private Button settingsButton;
 
-    @Override public void handle(ActionEvent actionEvent)
+  public General_Controller()
+  {
+  }
+
+  @Override public void handle(ActionEvent actionEvent)
     {
+      if (actionEvent.getSource() == homeButton)
+      {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successful load on Home!");
+        alert.showAndWait();
+      }
+      /*
       if (actionEvent.getSource().equals(homeButton))
       {
         try
         {
           FXMLLoader.load(getClass().getResource("..\\fxml\\Home.fxml"));
           Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successful load on Home!");
-          alert.show();
+          alert.showAndWait();
         }
         catch (IOException e)
         {
@@ -116,6 +125,6 @@ public class General_Controller implements EventHandler<ActionEvent>
           e.printStackTrace();
           System.exit(1);
         }
-      }
+      }*/
     }
 }

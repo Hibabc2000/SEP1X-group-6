@@ -15,13 +15,13 @@
       <VBox prefHeight="524.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="102.0" text="Exam planner" textAlignment="CENTER" />
-            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="HOME" />
-            <Button fx:id="roomButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Rooms" />
-            <Button fx:id="teacherButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Teachers" />
-            <Button fx:id="coExaminerButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Co-examiner" />
-            <Button fx:id="courseButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Courses" />
-            <Button fx:id="scheduleButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Schedule exam" />
-            <Button fx:id="settingsButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Settings" />
+            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" text="HOME" />
+            <Button fx:id="roomButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#handle" text="Rooms" />
+            <Button fx:id="teacherButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#handle" text="Teachers" />
+            <Button fx:id="coExaminerButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#handle" text="Co-examiner" />
+            <Button fx:id="courseButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#handle" text="Courses" />
+            <Button fx:id="scheduleButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#handle" text="Schedule exam" />
+            <Button fx:id="settingsButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#handle" text="Settings" />
          </children>
       </VBox>
    </left>
