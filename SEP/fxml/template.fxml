@@ -12,42 +12,42 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="General_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../../Desktop/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="General_Controller">
    <left>
-      <VBox prefHeight="478.0" prefWidth="198.0" BorderPane.alignment="CENTER">
+      <VBox id="mCon" prefHeight="478.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="10.0" prefWidth="198.0" text="Exam planner" textAlignment="CENTER">
+            <Label alignment="CENTER" prefHeight="10.0" prefWidth="198.0" text="Exam planner" textAlignment="CENTER" textFill="#f2f2f2">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
                <font>
                   <Font size="21.0" />
                </font></Label>
-            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="318.0" text="HOME">
+            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="318.0" styleClass="mItem" text="HOME">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="340.0" text="Rooms">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="340.0" styleClass="mItem" text="Rooms">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="263.0" text="Teachers">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="263.0" styleClass="mItem" text="Teachers">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="401.0" text="Co-examiner">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="401.0" styleClass="mItem" text="Co-examiner">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="321.0" text="Courses">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="321.0" styleClass="mItem" text="Courses">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="290.0" text="Schedule exam">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="290.0" styleClass="mItem" text="Schedule exam">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="394.0" text="Settings">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="394.0" styleClass="mItem" text="Settings">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
