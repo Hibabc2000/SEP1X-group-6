@@ -50,7 +50,7 @@
                     <VBox.margin>
                         <Insets top="20.0" />
                     </VBox.margin></Button>
-                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="290.0" styleClass="mItem" text="Schedule exam">
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="290.0" style="-fx-background-color: #6f5ea8;" styleClass="mItem" text="Schedule exam">
                     <VBox.margin>
                         <Insets top="20.0" />
                     </VBox.margin></Button>
