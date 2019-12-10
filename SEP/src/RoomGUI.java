@@ -8,7 +8,7 @@ public class RoomGUI extends Application
 { /**
  *@author Oliver Isaac, 293131
  *@version 1.0.0.0
- *this class is just a GUI for the Room part
+ *this class is just a GUI for the Room part, will be deleted probably
  */
   public void start(Stage window) throws IOException
   {
