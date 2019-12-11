@@ -5,8 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -19,6 +18,16 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   @FXML private Button courseButton;
   @FXML private Button scheduleButton;
   @FXML private Button settingsButton;
+  @FXML private Button editB;
+  @FXML private Button updateB;
+  @FXML private Button deleteB;
+  @FXML private ComboBox exmtyp;
+  @FXML private ComboBox crs;
+  @FXML private ComboBox roomC;
+  @FXML private ComboBox tchr;
+  @FXML private ComboBox cexmnr;
+  @FXML private DatePicker dateBox;
+  @FXML private TextArea alertBox;
   private Scene scene;
   private Stage stage;
 
