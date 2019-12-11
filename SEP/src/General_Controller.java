@@ -126,7 +126,7 @@ public class General_Controller implements EventHandler<ActionEvent>
 
     private void changeScene(String target, ActionEvent event) throws IOException
     {
-      Parent parent = FXMLLoader.load(getClass().getResource("Rooms.fxml"));
+      Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);
       stage.show();
