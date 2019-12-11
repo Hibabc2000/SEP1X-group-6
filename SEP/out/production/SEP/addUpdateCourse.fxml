@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <left>
+        <VBox id="mCon" prefHeight="478.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" prefHeight="10.0" prefWidth="198.0" text="Exam planner" textAlignment="CENTER" textFill="#f2f2f2">
+                    <VBox.margin>
+                        <Insets top="30.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="21.0" />
+                    </font></Label>
+                <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="318.0" styleClass="mItem" text="HOME">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="340.0" styleClass="mItem" text="Rooms">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="263.0" styleClass="mItem" text="Teachers">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="401.0" styleClass="mItem" text="Co-examiner">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="321.0" styleClass="mItem" text="Courses">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="290.0" style="-fx-background-color: #6f5ea8;" styleClass="mItem" text="Schedule exam">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="394.0" styleClass="mItem" text="Settings">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+            </children>
+        </VBox>
+    </left>
+    <top>
+        <HBox prefHeight="74.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="76.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../assignment_2_RWD1/images/logo.png" />
+                    </image>
+                </ImageView>
+                <MenuBar prefHeight="78.0" prefWidth="599.0" />
+            </children>
+        </HBox>
+    </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="104.60003662109375" minWidth="10.0" prefWidth="97.00001220703125" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.20002441406251" minWidth="10.0" prefWidth="87.79998779296875" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.4000244140625" minWidth="10.0" prefWidth="75.00001220703123" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.4000244140625" minWidth="10.0" prefWidth="43.80000000000001" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.5999755859375" minWidth="10.0" prefWidth="73.39999999999998" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.4000244140625" minWidth="10.0" prefWidth="82.19997558593752" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.8" minWidth="10.0" prefWidth="95.00002441406252" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.79999999999995" minWidth="10.0" prefWidth="51.80002441406259" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.39999999999998" minWidth="0.0" prefWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.199951171875" minWidth="0.0" prefWidth="0.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="26.59999885559082" minHeight="10.0" prefHeight="16.999992752075194" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="45.8000072479248" minHeight="10.0" prefHeight="26.40001525878906" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="51.39998474121094" minHeight="10.0" prefHeight="30.4000244140625" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="51.99997558593749" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="83.19999999999999" minHeight="10.0" prefHeight="52.00001068115233" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="61.59998931884766" minHeight="10.0" prefHeight="45.599999999999994" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.400000000000006" minHeight="10.0" prefHeight="46.400000000000006" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="37.59995117187498" minHeight="10.0" prefHeight="37.59995117187498" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="49.79998779296875" minHeight="10.0" prefHeight="42.60003662109375" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="45.60001220703123" minHeight="10.0" prefHeight="25.800048828125" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="48.80002441406248" minHeight="8.79998779296875" prefHeight="8.79998779296875" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="76.80001220703122" minHeight="10.0" prefHeight="76.80001220703122" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="23.600012207031227" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="22.0" prefWidth="193.0" styleClass="tText" text="Add/Update Course" GridPane.columnSpan="3" GridPane.rowSpan="2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Line endX="156.8928680419922" endY="-0.43447360396385193" startX="-100.0" stroke="SILVER" GridPane.rowIndex="2" />
+            <Label GridPane.rowIndex="3" />
+            <Label styleClass="fText" text="Exam Type:" GridPane.rowIndex="4" />
+            <Label styleClass="fText" text="Course:" GridPane.rowIndex="5" />
+            <Label styleClass="fText" text="Room:" GridPane.rowIndex="6" />
+            <Label styleClass="fText" text="Start/End:" GridPane.rowIndex="8" />
+            <Label styleClass="fText" text="Teacher:" GridPane.rowIndex="9" />
+            <Label prefHeight="18.0" prefWidth="86.0" styleClass="fText" text="Co-examiner:" GridPane.rowIndex="10" />
+            <ComboBox fx:id="exmtyp" prefHeight="26.0" prefWidth="182.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+            <ComboBox fx:id="crs" prefHeight="26.0" prefWidth="174.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <ComboBox fx:id="roomC" prefHeight="26.0" prefWidth="168.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+            <Label styleClass="fText" text="Date:" GridPane.rowIndex="7" />
+            <DatePicker fx:id="dateBox" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+            <ComboBox fx:id="tchr" prefHeight="26.0" prefWidth="173.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+            <ComboBox fx:id="cexmnr" prefHeight="22.0" prefWidth="162.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="274.0" styleClass="impB" text="Update" GridPane.columnSpan="3" GridPane.rowIndex="11" />
+            <Label prefHeight="18.0" prefWidth="66.0" styleClass="tText" text="Add/Edit" GridPane.columnIndex="1" GridPane.rowIndex="12">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Line endX="157.6929168701172" endY="-0.799595832824707" startX="-100.0" stroke="SILVER" GridPane.rowIndex="13" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" styleClass="actnB" text="Edit" GridPane.rowIndex="14" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" styleClass="actnB" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="14" />
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="4" GridPane.rowSpan="10" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="34.0" stroke="#8c8c8c" strokeType="INSIDE" width="245.0" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+            <Label prefHeight="26.0" prefWidth="98.0" text="Alert Box" GridPane.columnIndex="5" GridPane.rowIndex="2">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <ImageView fitHeight="24.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="11">
+               <image>
+                  <Image url="@../../../../Desktop/checktst.png" />
+               </image>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </GridPane>
+   </center>
+</BorderPane>
