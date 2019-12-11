@@ -119,13 +119,13 @@
             <Label styleClass="fText" text="Start/End:" GridPane.rowIndex="8" />
             <Label styleClass="fText" text="Teacher:" GridPane.rowIndex="9" />
             <Label prefHeight="18.0" prefWidth="86.0" styleClass="fText" text="Co-examiner:" GridPane.rowIndex="10" />
-            <ComboBox prefHeight="26.0" prefWidth="182.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
-            <ComboBox prefHeight="26.0" prefWidth="174.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <ComboBox prefHeight="26.0" prefWidth="168.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+            <ComboBox fx:id="exmtyp" prefHeight="26.0" prefWidth="182.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+            <ComboBox fx:id="crs" prefHeight="26.0" prefWidth="174.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <ComboBox fx:id="roomC" prefHeight="26.0" prefWidth="168.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
             <Label styleClass="fText" text="Date:" GridPane.rowIndex="7" />
-            <DatePicker styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
-            <ComboBox prefHeight="26.0" prefWidth="173.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <ComboBox prefHeight="22.0" prefWidth="162.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+            <DatePicker fx:id="dateBox" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+            <ComboBox fx:id="tchr" prefHeight="26.0" prefWidth="173.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+            <ComboBox fx:id="cexmnr" prefHeight="22.0" prefWidth="162.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="10" />
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="274.0" styleClass="impB" text="Update" GridPane.columnSpan="3" GridPane.rowIndex="11" />
             <Label prefHeight="18.0" prefWidth="66.0" styleClass="tText" text="Add/Edit" GridPane.columnIndex="1" GridPane.rowIndex="12">
                <font>
