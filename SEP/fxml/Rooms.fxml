@@ -145,7 +145,7 @@
                   <Image url="@../../../assignment_2_RWD1/images/logo.png" />
                </image>
             </ImageView>
-            <MenuBar prefHeight="76.0" prefWidth="600.0" />
+            <MenuBar prefHeight="88.0" prefWidth="600.0" />
          </children>
       </HBox>
    </top>
