@@ -1,0 +1,43 @@
+.mItem
+{
+    -fx-background-color: #4A368D;
+    -fx-border-color: #a89fc4;
+    -fx-border-radius: 0;
+    -fx-text-fill: #ffffff;
+}
+#mCon
+{
+    -fx-background-color: #4A368D;
+}
+.tText
+{
+    -fx-text-fill: #4A368D;
+    
+}
+.dDown
+{
+    -fx-border-radius: 0;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #696969;
+}
+.fText
+{
+    -fx-font-weight: bold;
+}
+.impB
+{
+    -fx-border-radius : 50;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #000000;
+}
+.actnB
+{
+    -fx-background-color: #ffffff;
+    -fx-border-color: #000000;
+}
+.field1
+{
+    -fx-background-color: #ffffff;
+    -fx-border-color: #000000;
+    -fx-border-radius: 0;
+}
