@@ -13,9 +13,7 @@ public class RoomGUI extends Application
   public void start(Stage window) throws IOException
   {
     window.setTitle("Room");
-    FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("Rooms.fxml"));
-    Scene scene = new Scene(loader.load());
+    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Rooms.fxml")));
     window.setScene(scene);
     window.show();
 

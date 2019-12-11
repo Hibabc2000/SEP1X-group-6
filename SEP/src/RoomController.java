@@ -36,8 +36,8 @@ public class RoomController implements EventHandler<ActionEvent>
   public void starting(MouseEvent event){
     Load();
   }
-  public void starting2(MouseEvent event){
-     init();
+  public void starting2(MouseEvent event){ init();
+
   }
   private void Load() {
     list = new ArrayList<String>();
@@ -50,6 +50,7 @@ public class RoomController implements EventHandler<ActionEvent>
     room.setItems(FXCollections.observableArrayList(list));
     room.show();
   }
+
   private void init() {
     list2 = new ArrayList<String>();
     String m = "HDMI";
@@ -61,7 +62,6 @@ public class RoomController implements EventHandler<ActionEvent>
     dota.setItems(FXCollections.observableArrayList(list2));
     dota.show();
   }
-
   @Override public void handle(ActionEvent actionEvent)
   {
     //starting();
