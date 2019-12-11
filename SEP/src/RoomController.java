@@ -189,10 +189,32 @@ public class RoomController implements EventHandler<ActionEvent>
   @FXML private Button update;
   @FXML private ChoiceBox room;
   @FXML private ChoiceBox dota;
+  private RoomList rlist;
 
-  public void Choice(ActionEvent e)
+  public void Update(ActionEvent e)
   {
-    if(e.getSource() == room){}
+    if(e.getSource() == update)
+    {Room temp = new Room();
+    temp.setRoomNumber(text1.getText());
+    int sit = Integer.parseInt(text2.getText()) ;
+    temp.setNumberOfSeats(sit);
+    String pro = (String)room.getValue();
+    if (pro.equals("HDMI")) {temp.setProjector((byte) 1);}
+      else if (pro.equals("VGA")) {temp.setProjector((byte) 2);}
+      if (pro.equals("HDMI and VGA")) {temp.setProjector((byte) 3);}
+      if (pro.equals("none")) {temp.setProjector((byte) 0);}
+      else temp.setProjector((byte) -1);
+
+    }
+    if(e.getSource()==delete)
+    { String temp = (String)room.getValue();
+      ArrayList<Room> trump =  new ArrayList<>(rlist.getAllRooms().size());
+      for (int i=0; i<trump.size();i++)
+      {
+        if (trump.get(i).getRoomNumber().equals(temp)) {rlist.getAllRooms().remove(i);}
+      }
+
+    }
 
   }
   public void starting(MouseEvent event){
@@ -201,6 +223,7 @@ public class RoomController implements EventHandler<ActionEvent>
   public void starting2(MouseEvent event){ init();
 
   }
+
   private void Load() {
     list = new ArrayList<String>();
     String a = "301a";
@@ -217,10 +240,12 @@ public class RoomController implements EventHandler<ActionEvent>
     list2 = new ArrayList<String>();
     String m = "HDMI";
     String z = "VGA";
-    String v = "Saccharin";
+    String v = "HDMI and VGA";
+    String k = "none";
     list2.add(m);
     list2.add(z);
     list2.add(v);
+    list2.add(k);
     dota.setItems(FXCollections.observableArrayList(list2));
     dota.show();
   }
