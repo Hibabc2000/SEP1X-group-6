@@ -102,7 +102,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         try
         {
-          changeScene("addUpdateCourse.fxml", actionEvent);
+          changeScene("addUpdateSchedule.fxml", actionEvent);
         }
         catch (IOException e)
         {
