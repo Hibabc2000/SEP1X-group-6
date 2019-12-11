@@ -191,7 +191,7 @@ public class RoomController implements EventHandler<ActionEvent>
   @FXML private ChoiceBox dota;
   private RoomList rlist;
 
-  public void Update(ActionEvent e)
+  public void update(ActionEvent e)
   {
     if(e.getSource() == update)
     {Room temp = new Room();
