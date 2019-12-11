@@ -1,9 +1,13 @@
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-
+import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
@@ -21,39 +25,35 @@ public class General_Controller implements EventHandler<ActionEvent>
     @FXML private Button courseButton;
     @FXML private Button scheduleButton;
     @FXML private Button settingsButton;
+    private Scene scene;
+    private Stage stage;
 
-  public General_Controller()
-  {
-  }
+    public General_Controller()
+    {
+    }
 
-  @Override public void handle(ActionEvent actionEvent)
+    @Override public void handle(ActionEvent actionEvent)
     {
       if (actionEvent.getSource() == homeButton)
       {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successful load on Home!");
-        alert.showAndWait();
-      }
-      /*
-      if (actionEvent.getSource().equals(homeButton))
-      {
         try
         {
-          FXMLLoader.load(getClass().getResource("..\\fxml\\Home.fxml"));
-          Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successful load on Home!");
-          alert.showAndWait();
+          changeScene("Home.fxml", actionEvent);
         }
         catch (IOException e)
         {
           e.printStackTrace();
           System.exit(1);
         }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successful load on Home!");
+        alert.showAndWait();
       }
+
       if (actionEvent.getSource().equals(roomButton))
       {
         try
         {
-          FXMLLoader.load(getClass().getResource("..\\fxml\\Rooms.fxml"));
-          System.out.println("Successful load");
+          changeScene("Rooms.fxml", actionEvent);
         }
         catch (IOException e)
         {
@@ -65,7 +65,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         try
         {
-          FXMLLoader.load(getClass().getResource("..\\fxml\\Teacher.fxml"));
+          FXMLLoader.load(getClass().getResource("Teacher.fxml"));
           System.out.println("Successful load");
         }
         catch (IOException e)
@@ -78,8 +78,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         try
         {
-          FXMLLoader.load(getClass().getResource("..\\fxml\\Co-examiner.fxml"));
-          System.out.println("Successful load");
+          changeScene("Co-examiner.fxml", actionEvent);
         }
         catch (IOException e)
         {
@@ -91,8 +90,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         try
         {
-          FXMLLoader.load(getClass().getResource("..\\fxml\\Course.fxml"));
-          System.out.println("Successful load");
+          changeScene("Course.fxml", actionEvent);
         }
         catch (IOException e)
         {
@@ -104,8 +102,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         try
         {
-          FXMLLoader.load(getClass().getResource("..\\fxml\\addUpdateCourse.fxml"));
-          System.out.println("Successful load");
+          changeScene("addUpdateCourse.fxml", actionEvent);
         }
         catch (IOException e)
         {
@@ -117,14 +114,21 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         try
         {
-          FXMLLoader.load(getClass().getResource("..\\fxml\\settings.fxml"));
-          System.out.println("Successful load");
+          changeScene("Settings.fxml", actionEvent);
         }
         catch (IOException e)
         {
           e.printStackTrace();
           System.exit(1);
         }
-      }*/
+      }
+    }
+
+    private void changeScene(String target, ActionEvent event) throws IOException
+    {
+      Parent parent = FXMLLoader.load(getClass().getResource("Rooms.fxml"));
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      stage.getScene().setRoot(parent);
+      stage.show();
     }
 }

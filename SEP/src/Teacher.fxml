@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../../Desktop/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
@@ -59,7 +58,7 @@
         </VBox>
     </left>
    <center>
-      <FlowPane prefHeight="526.0" prefWidth="605.0" BorderPane.alignment="CENTER">
+      <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Label styleClass="tText" text="Add/update teacher">
                <font>
@@ -80,16 +79,6 @@
                   <Insets bottom="10.0" left="65.0" right="250.0" />
                </FlowPane.margin>
             </Label>
-            <Line endX="100.0" startX="-100.0" stroke="SILVER">
-               <FlowPane.margin>
-                  <Insets bottom="10.0" />
-               </FlowPane.margin>
-            </Line>
-            <Line endX="100.0" scaleX="0.75" startX="-100.0" stroke="SILVER">
-               <FlowPane.margin>
-                  <Insets bottom="10.0" right="150.0" />
-               </FlowPane.margin>
-            </Line>
             <Label prefHeight="18.0" prefWidth="40.0" styleClass="fText" text="Name:">
                <FlowPane.margin>
                   <Insets bottom="10.0" />

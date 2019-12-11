@@ -10,7 +10,7 @@ public class Test extends Application
   public void start(Stage window) throws IOException
   {
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("template.fxml"));
+    loader.setLocation(getClass().getClassLoader().getResource("template.fxml"));
     System.out.println("FXML loaded");
     Scene scene = new Scene(loader.load());
     window.setScene(scene);
