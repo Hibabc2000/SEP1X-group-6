@@ -1,7 +1,6 @@
 
 import javafx.collections.FXCollections;
-    import javafx.collections.ObservableList;
-    import javafx.event.ActionEvent;
+import javafx.event.ActionEvent;
     import javafx.event.EventHandler;
     import javafx.fxml.FXML;
 
@@ -12,16 +11,11 @@ import javafx.collections.FXCollections;
 
     import java.util.ArrayList;
 
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -105,7 +99,7 @@ public class RoomController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Course.fxml", actionEvent);
+        changeScene("addUpdateCourse.fxml", actionEvent);
       }
       catch (IOException e)
       {

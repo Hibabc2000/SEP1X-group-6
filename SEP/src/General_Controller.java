@@ -90,7 +90,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         try
         {
-          changeScene("Course.fxml", actionEvent);
+          changeScene("addUpdateCourse.fxml", actionEvent);
         }
         catch (IOException e)
         {
@@ -131,4 +131,5 @@ public class General_Controller implements EventHandler<ActionEvent>
       stage.getScene().setRoot(parent);
       stage.show();
     }
+
 }
