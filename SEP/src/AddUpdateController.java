@@ -105,7 +105,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("addUpdateCourse.fxml", actionEvent);
+        changeScene("addUpdateSchedule.fxml", actionEvent);
       }
       catch (IOException e)
       {
