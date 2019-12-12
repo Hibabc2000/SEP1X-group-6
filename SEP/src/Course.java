@@ -99,6 +99,12 @@ public class Course
     return courseName + " | " + group
         + " | " +  + nrStudents +" | "+ semester;
   }
+  public boolean equals(Object obj){
+    if(!(obj instanceof Course))
+      return false;
+    Course other=(Course)obj;
+    return courseName.equals(other.courseName)&&group.equals(other.group)&&nrStudents==other.nrStudents&&semester==other.semester;
+  }
 }
 
 

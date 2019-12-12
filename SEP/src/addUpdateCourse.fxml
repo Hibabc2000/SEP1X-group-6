@@ -141,8 +141,8 @@
                         <Label prefHeight="26.0" prefWidth="346.0" styleClass="fText" text="Semester:" GridPane.rowIndex="5" />
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
                            <children>
-                              <Button fx:id="edit" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" styleClass="actnB" text="Edit" />
-                              <Button fx:id="delete" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" styleClass="actnB" text="Delete">
+                              <Button fx:id="edit" mnemonicParsing="false" onAction="#edit" prefHeight="26.0" prefWidth="78.0" styleClass="actnB" text="Edit" />
+                              <Button fx:id="delete" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="78.0" styleClass="actnB" text="Delete">
                                  <HBox.margin>
                                     <Insets left="22.0" />
                                  </HBox.margin>

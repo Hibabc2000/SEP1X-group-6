@@ -157,13 +157,14 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
   @FXML private Label semesterError;
   @FXML private Label updatedNotification;
 
-  private boolean updateCheck=false;
-  private  Course buffer;
-  private  CourseList courseList;
+  private boolean updateCheck = false;
+  private Course buffer;
+  private CourseList courseList;
   String courseName = null;
-  String groupName=null;
+  String groupName = null;
   int numberOfStudents = 0;
   int semesterNumber = 0;
+
   public void update(ActionEvent e) throws InterruptedException
   {
     if (e.getSource() == update)
@@ -244,44 +245,60 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
         buffer = new Course(courseName, groupName, numberOfStudents,
             semesterNumber);
         //      Adding the object to course list
-        //            courseList.addCourse(buffer);
-
-        //      updatedNotification.setText("Updated");
+        //        courseList.addCourse(buffer);
+        //updatedNotification.setText("Updated");
       }
-      //            updatedNotification.setText("");
+      //updatedNotification.setText("");
 
       System.out.println(semesterNumber);
 
       //      Add items to combobox
       //     Duplicate checker
-//      if (courses.getItems().size() == 0)
-//      {
-        courses.getItems().addAll(buffer);
-//      }
-//      else
-//      {
-//        for (int i = 0; i < courses.getItems().size(); i++)
-//        {
-//          Course course= (Course)courses.getItems().get(i);
-//          if (!course.equals(buffer))
-//          {
-//            courses.getItems().addAll(buffer);
-//          }
-//        }
-//      }
+      if (updateCheck)
+      {
+        Object obj = courses.getSelectionModel().getSelectedItem();
+        if (obj instanceof Course)
+        {
+          courses.getItems().removeAll(obj);
+        }
+        updateCheck=false;
+      }
+       if (!courses.getItems().contains(buffer))
+      {
+        courses.getItems().add(buffer);
+      }
+
     }
-//    else if (e.getSource() == edit){
-//      Object obj = courses.getSelectionModel().getSelectedItem();
-//      if (obj instanceof Course)
-//      {
-//        name.setText(((Course) obj).getCourseName());
-//        group.setText(((Course) obj).getGroup());
-//        nrStudents.setText(String.valueOf(((Course) obj).getNrStudents()));
-//        semester.setText(String.valueOf(((Course) obj).getSemester()));
-//      }
-//    }
   }
+
+  public void edit(ActionEvent e) throws InterruptedException
+  {
+    if (e.getSource() == edit)
+    {
+      Object obj = courses.getSelectionModel().getSelectedItem();
+      if (obj instanceof Course)
+      {
+        name.setText(((Course) obj).getCourseName());
+        group.setText(((Course) obj).getGroup());
+        nrStudents.setText(String.valueOf(((Course) obj).getNrStudents()));
+        semester.setText(String.valueOf(((Course) obj).getSemester()));
+        updateCheck = true;
+      }
+    }
   }
+
+  public void delete(ActionEvent e) throws InterruptedException
+  {
+    if (e.getSource() == delete)
+    {
+      Object obj = courses.getSelectionModel().getSelectedItem();
+      if (obj instanceof Course)
+      {
+        courses.getItems().removeAll(obj);
+      }
+    }
+  }
+}
 
 
 
