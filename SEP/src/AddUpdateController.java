@@ -138,7 +138,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   }
 
   // Controller settings
-  @FXML private ChoiceBox courses;
+  @FXML private ComboBox courses;
   @FXML private Button update;
   @FXML private TextField name;
   @FXML private TextField group;
@@ -149,15 +149,19 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   @FXML private Label groupError;
   @FXML private Label nrStudentsError;
   @FXML private Label semesterError;
+  @FXML private Label updatedNotification;
 
+  private boolean updateCheck=false;
+private  Course buffer;
+  String courseName = null;
+  String groupName=null;
+  int numberOfStudents = 0;
+  int semesterNumber = 0;
   public void update(ActionEvent e)
   {
     if (e.getSource() == update)
     {
-      String courseName = null;
-      String groupName=null;
-      int numberOfStudents = 0;
-      int semesterNumber = 0;
+
       //      Name Field Checks
       if (name.getText().length() == 0)
       {
@@ -185,7 +189,8 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         nrStudentsError.setText("Enter the number of Students");
       }
-      else{
+      else
+      {
         nrStudentsError.setText("");
         try
         {
@@ -193,6 +198,10 @@ public class AddUpdateController implements EventHandler<ActionEvent>
           //Catches all NumberFormatExceptions but not other errors
         }
         catch (NumberFormatException ex)
+        {
+          nrStudentsError.setText("Invalid number of students");
+        }
+        if (numberOfStudents < 0 || numberOfStudents == 0)
         {
           nrStudentsError.setText("Invalid number of students");
         }
@@ -212,14 +221,44 @@ public class AddUpdateController implements EventHandler<ActionEvent>
         }
         catch (NumberFormatException ex)
         {
-          semesterError.setText("Invalid number of students");
+          semesterError.setText("Invalid semester number");
+        }
+        if (semesterNumber < 0 || semesterNumber == 0)
+        {
+          semesterError.setText("Invalid semester number");
         }
       }
+    }
+    if (courseName != null && groupName != null
+        && nrStudentsError.getText().length() == 0
+        && semesterError.getText().length() == 0)
+    {
+      buffer = new Course(courseName, groupName, numberOfStudents,
+          semesterNumber);
+      System.out.println(semesterNumber);
+
+      //      Add items to combobox
+//     Duplicate checker
+      if (courses.getItems().size() == 0)
       {
-        Course buffer = new Course(courseName, groupName, numberOfStudents,
-            semesterNumber);
-        System.out.println(semesterNumber);
+        courses.getItems().addAll(buffer.getCourseName() + "-" + buffer.getGroup());
+      }
+      else
+      {
+        for (int i = 0; i < courses.getItems().size(); i++)
+        {
+          if (!(courses.getItems().get(i).equals(buffer.getCourseName() + "-" + buffer.getGroup())))
+          {
+            courses.getItems().addAll(buffer.getCourseName() + "-" + buffer.getGroup());
+          }
+          else
+          {
+            return;
+          }
+        }
       }
     }
   }
 }
+
+
