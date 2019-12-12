@@ -32,21 +32,36 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   @FXML private ComboBox cexmnr;
   @FXML private DatePicker dateBox;
   @FXML private TextArea alertBox;
+  @FXML private ComboBox exmBox;
   private Scene scene;
   private Stage stage;
 
   public AddUpdateController()
   {
-    exmtyp = new ComboBox();
+
     exmtyp.getItems().add("Oral");
     exmtyp.getItems().add("Written");
 
-    roomC = new ComboBox();
     ArrayList<Room> tmp = RoomList.getAllRooms();
     for(int x0 = 0; x0 < tmp.size(); x0++)
     {
       roomC.getItems().add(tmp.get(x0).getRoomNumber());
     }
+
+
+    for(int x0 = 0; x0 < CourseList.getAllCourses().size(); x0++)
+    {
+      crs.getItems().add(CourseList.getAllCourses().get(x0).getCourseName());
+    }
+
+    dateBox = new DatePicker();
+
+    tchr.setItems(FXCollections.observableArrayList(Teacher_Controller.getList()));
+
+    cexmnr.setItems(FXCollections.observableArrayList(CoExaminerList.getAllCoExaminers()));
+    /*
+    exmBox.setItems(FXCollections.observableArrayList());
+    */
 
 
 

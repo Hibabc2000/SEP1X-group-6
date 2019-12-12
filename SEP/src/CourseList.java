@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class CourseList
 {
-  private ArrayList<Course> courses;
+  private static ArrayList<Course> courses;
 
   public CourseList()
   {
@@ -17,5 +17,10 @@ public class CourseList
   public void addCourse(Course course)
   {
     courses.add(course);
+  }
+  public static ArrayList<Course> getAllCourses()
+  {
+    ArrayList<Course> tmp = new ArrayList<>(courses);
+    return tmp;
   }
 }
