@@ -102,7 +102,7 @@ public class RoomList
     return tmp;
   }
   //this is a dark territory, enter with caution
-  private void addRoom(Room room)
+  public void addRoom(Room room)
   {
     rooms.add(room);
   }
