@@ -217,11 +217,12 @@ public class RoomController implements EventHandler<ActionEvent>
       else if (Integer.parseInt(text2.getText()) < 0)
       {numberError.setText("Invalid input. Try again");}
       else if (dota.getValue()==null)
-      {dotaError.setText("error");}
-      int choice = JOptionPane
+      {dotaError.setText("error");} else
+
+      {int choice = JOptionPane
           .showConfirmDialog(null, "Are you sure you want to update the room?");
       if(choice==JOptionPane.YES_OPTION) {rlist.addRoom(temp);}
-      else if(choice==JOptionPane.NO_OPTION){}
+      else if(choice==JOptionPane.NO_OPTION){}}
 
     }
     // DELETE BUTTON

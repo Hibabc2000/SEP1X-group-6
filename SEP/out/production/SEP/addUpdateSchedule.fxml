@@ -145,7 +145,7 @@
                   <Image url="@../../../../Desktop/checktst.png" />
                </image>
             </ImageView>
-            <ComboBox prefHeight="26.0" prefWidth="274.0" styleClass="dDown" GridPane.columnSpan="3" GridPane.rowIndex="13" />
+            <ComboBox fx:id="exmBox" prefHeight="26.0" prefWidth="274.0" styleClass="dDown" GridPane.columnSpan="3" GridPane.rowIndex="13" />
          </children>
          <padding>
             <Insets left="10.0" />
