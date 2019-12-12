@@ -6,19 +6,15 @@
 public abstract class Person
 {
   private String ID;
-  private String firstName;
-
+  private String name;
   /**
    * This method is a three-argument constructor for all persons.
    */
-  public Person(String ID, String firstName, String lastName)
+  public Person(String ID, String name)
   {
     this.ID = ID;
-    this.firstName = firstName;
-    this.lastName = lastName;
+    this.name = name;
   }
-
-  private String lastName;
 
   /**
    * @return The ID of this person.
@@ -39,35 +35,19 @@ public abstract class Person
     this.ID = ID;
   }
   /**
-   * @return The first name of this person.
-   * Returns the first name of a person.
-   */
-  public String getFirstName()
-  {
-    return firstName;
-  }
-  /**
-   * @param firstName The first name of the new person.
-   * Sets the first name of a person
-   */
-  public void setFirstName(String firstName)
-  {
-    this.firstName = firstName;
-  }
-  /**
-   * @return The last name of this person.
-   * Returns the last name of a person.
+   * @return The name of this person.
+   * Returns the name of a person.
    */
   public String getLastName()
   {
-    return lastName;
+    return name;
   }
   /**
-   * @param lastName The last name of the new person.
-   * Sets the last name of a person
+   * @param name The name of the new person.
+   * Sets the name of a person
    */
-  public void setLastName(String lastName)
+  public void setLastName(String name)
   {
-    this.lastName = lastName;
+    this.name = name;
   }
 }
