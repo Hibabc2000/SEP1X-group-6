@@ -1,3 +1,4 @@
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -41,6 +42,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   public Teacher_Controller()
   {
     list = TeacherList.getAllTeachers();
+    teachersBox.setItems(FXCollections.observableArrayList(list));
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -148,8 +150,27 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       Teacher t = new Teacher(id, name);
       TeacherList.addTeacher(t);
       list = TeacherList.getAllTeachers();
+      teachersBox.setItems(FXCollections.observableArrayList(list));
     }
-    //if(actionEvent.getSource() == )
+    if(actionEvent.getSource() == editButton)
+    {
+      Object obj = teachersBox.getSelectionModel().getSelectedItem();
+      if (obj instanceof Teacher)
+      {
+        nameField.setText(((Teacher) obj).getName());
+        idField.setText(((Teacher) obj).getID());
+      }
+    }
+    if(actionEvent.getSource() == deleteButton)
+    {
+      Object obj = teachersBox.getSelectionModel().getSelectedItem();
+      if (obj instanceof Teacher)
+      {
+        TeacherList.deleteTeacher((Teacher) obj);
+        list = TeacherList.getAllTeachers();
+        teachersBox.setItems(FXCollections.observableArrayList(list));
+      }
+    }
   }
 
   private void changeScene(String target, ActionEvent event) throws IOException
