@@ -165,6 +165,11 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
   int numberOfStudents = 0;
   int semesterNumber = 0;
 
+  public void initialize()
+  {
+    courseList = new CourseList();
+  }
+
   public void update(ActionEvent e) throws InterruptedException
   {
     if (e.getSource() == update)
@@ -245,7 +250,9 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
         buffer = new Course(courseName, groupName, numberOfStudents,
             semesterNumber);
         //      Adding the object to course list
-        //        courseList.addCourse(buffer);
+        courseList.addCourse(buffer);
+
+
         //updatedNotification.setText("Updated");
       }
       //updatedNotification.setText("");
@@ -261,9 +268,9 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
         {
           courses.getItems().removeAll(obj);
         }
-        updateCheck=false;
+        updateCheck = false;
       }
-       if (!courses.getItems().contains(buffer))
+      if (!courses.getItems().contains(buffer))
       {
         courses.getItems().add(buffer);
       }
