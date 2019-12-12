@@ -38,7 +38,7 @@ public abstract class Person
    * @return The name of this person.
    * Returns the name of a person.
    */
-  public String getLastName()
+  public String getName()
   {
     return name;
   }
@@ -46,7 +46,7 @@ public abstract class Person
    * @param name The name of the new person.
    * Sets the name of a person
    */
-  public void setLastName(String name)
+  public void setName(String name)
   {
     this.name = name;
   }

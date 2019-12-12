@@ -1,3 +1,4 @@
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -7,8 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * @author Kristóf Lénárd, 293110
@@ -25,12 +29,20 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   @FXML private Button courseButton;
   @FXML private Button scheduleButton;
   @FXML private Button settingsButton;
+  @FXML private Button updateButton;
+  @FXML private Button editButton;
+  @FXML private Button deleteButton;
+  @FXML private TextField nameField;
+  @FXML private TextField idField;
+  @FXML private ComboBox teachersBox;
   private Scene scene;
   private Stage stage;
+  private ArrayList list;
 
   public Teacher_Controller()
   {
-
+    list = TeacherList.getAllTeachers();
+    teachersBox.setItems(FXCollections.observableArrayList(list));
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -121,6 +133,42 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       {
         e.printStackTrace();
         System.exit(1);
+      }
+    }
+  }
+
+  /**
+   * @param actionEvent The ActionEvent passed on by the GUI
+   * This method handles the unique elements of the Teacher GUI
+   */
+  private void uniqueHandle(ActionEvent actionEvent)
+  {
+    if(actionEvent.getSource() == updateButton)
+    {
+      String name = nameField.getText();
+      String id = idField.getText();
+      Teacher t = new Teacher(id, name);
+      TeacherList.addTeacher(t);
+      list = TeacherList.getAllTeachers();
+      teachersBox.setItems(FXCollections.observableArrayList(list));
+    }
+    if(actionEvent.getSource() == editButton)
+    {
+      Object obj = teachersBox.getSelectionModel().getSelectedItem();
+      if (obj instanceof Teacher)
+      {
+        nameField.setText(((Teacher) obj).getName());
+        idField.setText(((Teacher) obj).getID());
+      }
+    }
+    if(actionEvent.getSource() == deleteButton)
+    {
+      Object obj = teachersBox.getSelectionModel().getSelectedItem();
+      if (obj instanceof Teacher)
+      {
+        TeacherList.deleteTeacher((Teacher) obj);
+        list = TeacherList.getAllTeachers();
+        teachersBox.setItems(FXCollections.observableArrayList(list));
       }
     }
   }

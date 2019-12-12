@@ -49,22 +49,22 @@ public class TeacherList
     return true;
   }
 
-  /**
-   * @return a copy of teacherList
-   * return a copy of the teacherList object
-   */
-  public TeacherList copy()
-  {
-    TeacherList tmp = new TeacherList();
-    for (Teacher teacher : teachers)
-    {
-      tmp.addTeacher(teacher);
-    }
-    return tmp;
-  }
-
-  private void addTeacher(Teacher t)
+  public static void addTeacher(Teacher t)
   {
     teachers.add(t);
+  }
+
+  public static void deleteTeacher(Teacher t)
+  {
+    int index = 0;
+    for (Teacher teacher : teachers)
+    {
+      if(t.equals(teacher))
+      {
+        teachers.remove(teacher);
+        break;
+      }
+      index++;
+    }
   }
 }

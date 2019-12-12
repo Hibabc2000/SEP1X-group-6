@@ -176,7 +176,7 @@
                         </VBox>
                         <Line endX="100.0" startX="-100.0" strokeWidth="1.5" GridPane.columnIndex="3" />
                         <ComboBox fx:id="courses" prefHeight="26.0" prefWidth="179.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <Label text="Updated" textAlignment="RIGHT" textFill="#039a35" GridPane.rowIndex="6">
+                        <Label textAlignment="RIGHT" textFill="#039a35" GridPane.rowIndex="6">
                            <GridPane.margin>
                               <Insets left="40.0" />
                            </GridPane.margin>
