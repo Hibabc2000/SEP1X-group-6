@@ -7,8 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * @author Kristóf Lénárd, 293110
@@ -25,12 +28,19 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   @FXML private Button courseButton;
   @FXML private Button scheduleButton;
   @FXML private Button settingsButton;
+  @FXML private Button updateButton;
+  @FXML private Button editButton;
+  @FXML private Button deleteButton;
+  @FXML private TextField nameField;
+  @FXML private TextField idField;
+  @FXML private ComboBox teachersBox;
   private Scene scene;
   private Stage stage;
+  private ArrayList list;
 
   public Teacher_Controller()
   {
-
+    list = TeacherList.getAllTeachers();
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -123,6 +133,23 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
         System.exit(1);
       }
     }
+  }
+
+  /**
+   * @param actionEvent The ActionEvent passed on by the GUI
+   * This method handles the unique elements of the Teacher GUI
+   */
+  private void uniqueHandle(ActionEvent actionEvent)
+  {
+    if(actionEvent.getSource() == updateButton)
+    {
+      String name = nameField.getText();
+      String id = idField.getText();
+      Teacher t = new Teacher(id, name);
+      TeacherList.addTeacher(t);
+      list = TeacherList.getAllTeachers();
+    }
+    //if(actionEvent.getSource() == )
   }
 
   private void changeScene(String target, ActionEvent event) throws IOException

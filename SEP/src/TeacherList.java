@@ -53,7 +53,7 @@ public class TeacherList
    * @return a copy of teacherList
    * return a copy of the teacherList object
    */
-  public TeacherList copy()
+  public static TeacherList copy()
   {
     TeacherList tmp = new TeacherList();
     for (Teacher teacher : teachers)
@@ -63,7 +63,7 @@ public class TeacherList
     return tmp;
   }
 
-  private void addTeacher(Teacher t)
+  public static void addTeacher(Teacher t)
   {
     teachers.add(t);
   }
