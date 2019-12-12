@@ -8,15 +8,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 /**
  * @author Kristóf Lénárd, 293110
+ * @author Marin Bilba, 293141
  * @version v1.0
- * A class for controlling the common GUI elements.
+ * A class for controlling the course GUI menu.
  */
 
-public class General_Controller implements EventHandler<ActionEvent>
+public class AddUpdateCourseController implements EventHandler<ActionEvent>
 {
     @FXML private Button homeButton;
     @FXML private Button roomButton;
@@ -28,7 +30,7 @@ public class General_Controller implements EventHandler<ActionEvent>
     private Scene scene;
     private Stage stage;
 
-    public General_Controller()
+    public AddUpdateCourseController()
     {
     }
 
@@ -126,10 +128,9 @@ public class General_Controller implements EventHandler<ActionEvent>
 
     private void changeScene(String target, ActionEvent event) throws IOException
     {
-      Parent parent = FXMLLoader.load(getClass().getResource(target));
+      Parent parent = FXMLLoader.load(getClass().getResource("Rooms.fxml"));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);
       stage.show();
     }
-
 }
