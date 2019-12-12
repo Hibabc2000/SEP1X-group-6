@@ -7,7 +7,8 @@ public class RoomList
    * @version 1.0.0.2
    * this class contains the rooms
    */
-  private ArrayList<Room> rooms;
+
+  private static ArrayList<Room> rooms;
   public RoomList()
   {
     /**
@@ -19,7 +20,7 @@ public class RoomList
    * @return an array list containing all of the rooms
    * returns all of the rooms in an array list
    */
-  public ArrayList getAllRooms()
+  public static ArrayList getAllRooms()
   {
     ArrayList<Room> tmp = new ArrayList<Room>();
     for (int x0 = 0; x0 < rooms.size(); x0++)

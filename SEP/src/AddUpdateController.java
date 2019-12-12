@@ -1,4 +1,5 @@
-import javafx.animation.AnimationTimer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class AddUpdateController implements EventHandler<ActionEvent>
 {
@@ -35,6 +37,19 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
   public AddUpdateController()
   {
+    exmtyp = new ComboBox();
+    exmtyp.getItems().add("Oral");
+    exmtyp.getItems().add("Written");
+
+    roomC = new ComboBox();
+    ArrayList<Room> tmp = RoomList.getAllRooms();
+    for(int x0 = 0; x0 < tmp.size(); x0++)
+    {
+      roomC.getItems().add(tmp.get(x0).getRoomNumber());
+    }
+
+
+
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -154,7 +169,6 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
   private boolean updateCheck=false;
 private  Course buffer;
-  private  CourseList courseList;
   String courseName = null;
   String groupName=null;
   int numberOfStudents = 0;
@@ -231,23 +245,12 @@ private  Course buffer;
         }
       }
     }
-    if (nameError.getText().length() == 0 && semesterError.getText().length()==0
+    if (courseName != null && groupName != null
         && nrStudentsError.getText().length() == 0
         && semesterError.getText().length() == 0)
     {
-//      Creating the course object
       buffer = new Course(courseName, groupName, numberOfStudents,
           semesterNumber);
-//      Adding the object to course list
-      courseList.addCourse(buffer);
-
-      for (int i = 0; i < 5; i++)
-      {
-
-        updatedNotification.setText("Updated");
-      }
-      updatedNotification.setText("");
-
       System.out.println(semesterNumber);
 
       //      Add items to combobox
