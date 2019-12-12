@@ -6,12 +6,12 @@ public class Student extends Person
    * This is a class for all persons, used only in inheritance.
    */
 
-  public Student(String ID, String firstName, String lastName)
+  public Student(String ID, String name)
   {
     /**
      * This method is a three-argument constructor for students.
      */
-    super(ID, firstName, lastName);
+    super(ID, name);
   }
 
   @Override public void setID(String ID)
