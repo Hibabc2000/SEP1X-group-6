@@ -13,4 +13,9 @@ public class Teacher extends Person
      */
     super(ID, name);
   }
+
+  @Override public String toString()
+  {
+    return "Name: " + this.getName() + ", ID: " + this.getID();
+  }
 }

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class TeacherList
+@Deprecated public class TeacherList
 {
   /**
    * @author Kristóf Lénárd, 293110
