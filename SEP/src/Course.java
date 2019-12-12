@@ -93,5 +93,14 @@ public class Course
   {
     this.semester = semester;
   }
+
+  @Override public String toString()
+  {
+    return courseName + " | " + group
+        + " | " +  + nrStudents +" | "+ semester;
+  }
 }
+
+
+
 

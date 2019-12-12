@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddUpdateController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddUpdateCourseController">
    <left>
       <VBox id="mCon" prefHeight="478.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -141,8 +141,8 @@
                         <Label prefHeight="26.0" prefWidth="346.0" styleClass="fText" text="Semester:" GridPane.rowIndex="5" />
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" styleClass="actnB" text="Edit" />
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" styleClass="actnB" text="Delete">
+                              <Button fx:id="edit" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" styleClass="actnB" text="Edit" />
+                              <Button fx:id="delete" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" styleClass="actnB" text="Delete">
                                  <HBox.margin>
                                     <Insets left="22.0" />
                                  </HBox.margin>
@@ -176,7 +176,7 @@
                         </VBox>
                         <Line endX="100.0" startX="-100.0" strokeWidth="1.5" GridPane.columnIndex="3" />
                         <ComboBox fx:id="courses" prefHeight="26.0" prefWidth="179.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <Label textAlignment="RIGHT" textFill="#039a35" GridPane.rowIndex="6">
+                        <Label fx:id="updatedNotification" textAlignment="RIGHT" textFill="#039a35" GridPane.rowIndex="6">
                            <GridPane.margin>
                               <Insets left="40.0" />
                            </GridPane.margin>
