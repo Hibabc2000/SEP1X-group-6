@@ -65,8 +65,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         try
         {
-          FXMLLoader.load(getClass().getResource("Teacher.fxml"));
-          System.out.println("Successful load");
+          changeScene("Teacher.fxml", actionEvent);
         }
         catch (IOException e)
         {

@@ -41,8 +41,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
 
   public Teacher_Controller()
   {
-    list = TeacherList.getAllTeachers();
-    teachersBox.setItems(FXCollections.observableArrayList(list));
+    list = new ArrayList();
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -135,14 +134,6 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
         System.exit(1);
       }
     }
-  }
-
-  /**
-   * @param actionEvent The ActionEvent passed on by the GUI
-   * This method handles the unique elements of the Teacher GUI
-   */
-  private void uniqueHandle(ActionEvent actionEvent)
-  {
     if(actionEvent.getSource() == updateButton)
     {
       String name = nameField.getText();
