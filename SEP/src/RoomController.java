@@ -17,6 +17,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 import java.io.IOException;
 
 /**
@@ -198,6 +200,10 @@ public class RoomController implements EventHandler<ActionEvent>
       if (pro.equals("HDMI and VGA")) {temp.setProjector((byte) 3);}
       if (pro.equals("none")) {temp.setProjector((byte) 0);}
       else temp.setProjector((byte) -1);
+      int choice = JOptionPane
+          .showConfirmDialog(null, "Are you sure you want to update the room?");
+      if(choice==JOptionPane.YES_OPTION) {rlist.addRoom(temp);}
+      else if(choice==JOptionPane.NO_OPTION){}
 
     }
     if(e.getSource()==delete)
