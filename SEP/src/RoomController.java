@@ -4,10 +4,8 @@ import javafx.event.ActionEvent;
     import javafx.event.EventHandler;
     import javafx.fxml.FXML;
 
-    import javafx.scene.control.Button;
-    import javafx.scene.control.ChoiceBox;
-    import javafx.scene.control.TextField;
-    import javafx.scene.input.MouseEvent;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
     import java.util.ArrayList;
 
@@ -15,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -137,7 +134,7 @@ public class RoomController implements EventHandler<ActionEvent>
 
   private void changeScene(String target, ActionEvent event) throws IOException
   {
-    Parent parent = FXMLLoader.load(getClass().getResource("Rooms.fxml"));
+    Parent parent = FXMLLoader.load(getClass().getResource(target));
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.getScene().setRoot(parent);
     stage.show();
@@ -186,9 +183,14 @@ public class RoomController implements EventHandler<ActionEvent>
   @FXML private ChoiceBox room;
   @FXML private ChoiceBox dota;
   private RoomList rlist;
+  @FXML private Label dotaError;
+  @FXML private Label seatError;
+  @FXML private Label numberError;
 
   public void update(ActionEvent e)
-  {
+  { // UPDATE BUTTON
+    text1 = null;
+    text2= null;
     if(e.getSource() == update)
     {Room temp = new Room();
     temp.setRoomNumber(text1.getText());
@@ -200,12 +202,29 @@ public class RoomController implements EventHandler<ActionEvent>
       if (pro.equals("HDMI and VGA")) {temp.setProjector((byte) 3);}
       if (pro.equals("none")) {temp.setProjector((byte) 0);}
       else temp.setProjector((byte) -1);
+      if (text1.getText() == null)
+      {
+        numberError.setText("Enter the room number");
+      }
+      else if (text2.getText()== null)
+      {
+        seatError.setText(("Enter the number of seats"));
+      }
+      else if (Integer.parseInt(text1.getText()) < 0 )
+      {
+        numberError.setText("Invalid input. Try again !");
+      }
+      else if (Integer.parseInt(text2.getText()) < 0)
+      {numberError.setText("Invalid input. Try again");}
+      else if (dota.getValue()==null)
+      {dotaError.setText("error");}
       int choice = JOptionPane
           .showConfirmDialog(null, "Are you sure you want to update the room?");
       if(choice==JOptionPane.YES_OPTION) {rlist.addRoom(temp);}
       else if(choice==JOptionPane.NO_OPTION){}
 
     }
+    // DELETE BUTTON
     if(e.getSource()==delete)
     { String temp = (String)room.getValue();
       ArrayList<Room> trump =  new ArrayList<>(rlist.getAllRooms().size());
@@ -215,6 +234,7 @@ public class RoomController implements EventHandler<ActionEvent>
       }
 
     }
+    // EDIT BUTTON
     if (e.getSource()==edit)
     {String choice = (String)room.getValue();
       ArrayList<Room> all =  new ArrayList<>(rlist.getAllRooms().size());
@@ -245,6 +265,7 @@ public class RoomController implements EventHandler<ActionEvent>
     list.add(b);
     list.add(c);
     room.setItems(FXCollections.observableArrayList(list));
+    room.setValue(a);
     room.show();
   }
 
@@ -259,7 +280,9 @@ public class RoomController implements EventHandler<ActionEvent>
     list2.add(v);
     list2.add(k);
     dota.setItems(FXCollections.observableArrayList(list2));
+   dota.setValue(k);
     dota.show();
+
   }
 
 }
