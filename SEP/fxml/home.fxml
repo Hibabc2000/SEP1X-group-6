@@ -69,8 +69,8 @@
                       <TableColumn prefWidth="51.0" text="Week" />
                       <TableColumn prefWidth="76.0" text="Date" />
                         <TableColumn prefWidth="75.0" text="Course" />
-                        <TableColumn prefWidth="53.0" text="NumStud." />
-                        <TableColumn prefWidth="50.0" text="Type" />
+                        <TableColumn prefWidth="61.0" text="NumStud" />
+                        <TableColumn prefWidth="42.0" text="Type" />
                         <TableColumn prefWidth="100.0" text="Time" />
                         <TableColumn prefWidth="53.0" text="Room" />
                         <TableColumn text="Teacher" />
