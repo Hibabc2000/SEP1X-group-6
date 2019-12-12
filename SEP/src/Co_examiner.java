@@ -32,4 +32,11 @@ public class Co_examiner extends Person
   {
     this.external = external;
   }
+
+  @Override public String toString()
+  {
+    String ret = "Name: " + this.getName() + ", ID: " + this.getID() + ", Internal: ";
+    ret += external;
+    return ret;
+  }
 }

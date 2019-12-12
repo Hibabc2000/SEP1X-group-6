@@ -6,21 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * @author Kristóf Lénárd, 293110
- * @version v1.0
- * A class for controlling the common GUI elements.
- */
-
-public class Teacher_Controller implements EventHandler<ActionEvent>
+public class Co_examiner_Controller implements EventHandler<ActionEvent>
 {
   @FXML private Button homeButton;
   @FXML private Button roomButton;
@@ -34,19 +25,15 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   @FXML private Button deleteButton;
   @FXML private TextField nameField;
   @FXML private TextField idField;
-  @FXML private ComboBox teachersBox;
+  @FXML private CheckBox internalBox;
+  @FXML private ComboBox<Co_examiner> coExaminersBox;
+  private ArrayList<Co_examiner> list;
   private Scene scene;
   private Stage stage;
-  private static ArrayList list;
 
-  public Teacher_Controller()
+  public Co_examiner_Controller()
   {
-    list = new ArrayList();
-  }
-
-  public static ArrayList getList()
-  {
-    return list;
+    list = new ArrayList<Co_examiner>();
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -62,7 +49,8 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
         e.printStackTrace();
         System.exit(1);
       }
-      Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successful load on Home!");
+      Alert alert = new Alert(Alert.AlertType.INFORMATION,
+          "Successful load on Home!");
       alert.showAndWait();
     }
 
@@ -82,8 +70,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        FXMLLoader.load(getClass().getResource("Teacher.fxml"));
-        System.out.println("Successful load");
+        changeScene("Co_examiner.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -143,27 +130,40 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
       String name = nameField.getText();
       String id = idField.getText();
-      Teacher t = new Teacher(id, name);
+      boolean external = false;
+      if(internalBox.isSelected())
+      {
+        external = true;
+      }
+      Co_examiner t = new Co_examiner(id, name, external);
       list.add(t);
-      //System.out.println(t.getName() + "  " + t.getID());
-      teachersBox.setItems(FXCollections.observableArrayList(list));
+      System.out.println(t.getName() + "  " + t.getID());
+      coExaminersBox.setItems(FXCollections.observableArrayList(list));
     }
     if(actionEvent.getSource() == editButton)
     {
-      Object obj = teachersBox.getSelectionModel().getSelectedItem();
-      if (obj instanceof Teacher)
+      Object obj = coExaminersBox.getSelectionModel().getSelectedItem();
+      if (obj instanceof Co_examiner)
       {
-        nameField.setText(((Teacher) obj).getName());
-        idField.setText(((Teacher) obj).getID());
+        nameField.setText(((Co_examiner) obj).getName());
+        idField.setText(((Co_examiner) obj).getID());
+        if(((Co_examiner) obj).isExternal())
+        {
+          internalBox.setSelected(true);
+        }
+        else
+        {
+          internalBox.setSelected(false);
+        }
       }
     }
     if(actionEvent.getSource() == deleteButton)
     {
-      Object obj = teachersBox.getSelectionModel().getSelectedItem();
-      if (obj instanceof Teacher)
+      Object obj = coExaminersBox.getSelectionModel().getSelectedItem();
+      if (obj instanceof Co_examiner)
       {
         list.remove(obj);
-        teachersBox.setItems(FXCollections.observableArrayList(list));
+        coExaminersBox.setItems(FXCollections.observableArrayList(list));
       }
     }
   }
@@ -175,5 +175,5 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     stage.getScene().setRoot(parent);
     stage.show();
   }
-
 }
+

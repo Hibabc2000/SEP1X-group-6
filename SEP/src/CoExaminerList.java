@@ -17,7 +17,6 @@ public class CoExaminerList
   }
   public static ArrayList<Co_examiner> getAllCoExaminers()
   {
-    ArrayList<Co_examiner> tmp = new ArrayList<>(coExaminers);
-    return tmp;
+    return new ArrayList<>(coExaminers);
   }
 }
