@@ -10,10 +10,10 @@ public class Co_examiner extends Person
   /**
    * This method is a four-argument constructor for co-examiners.
    */
-  public Co_examiner(String ID, String firstName, String lastName,
+  public Co_examiner(String ID, String name,
       boolean external)
   {
-    super(ID, firstName, lastName);
+    super(ID, name);
     this.external = external;
   }
   /**
@@ -31,5 +31,12 @@ public class Co_examiner extends Person
   public void setExternal(boolean external)
   {
     this.external = external;
+  }
+
+  @Override public String toString()
+  {
+    String ret = "Name: " + this.getName() + ", ID: " + this.getID() + ", Internal: ";
+    ret += external;
+    return ret;
   }
 }

@@ -6,11 +6,16 @@ public class Teacher extends Person
    * This is a class for teachers.
    */
 
-  public Teacher(String ID, String firstName, String lastName)
+  public Teacher(String ID, String name)
   {
     /**
      * This method is a three-argument constructor for teachers.
      */
-    super(ID, firstName, lastName);
+    super(ID, name);
+  }
+
+  @Override public String toString()
+  {
+    return "Name: " + this.getName() + ", ID: " + this.getID();
   }
 }
