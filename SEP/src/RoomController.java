@@ -1,13 +1,12 @@
-
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-    import javafx.event.EventHandler;
-    import javafx.fxml.FXML;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
-    import java.util.ArrayList;
+import java.util.ArrayList;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -38,6 +37,7 @@ public class RoomController implements EventHandler<ActionEvent>
 
   public RoomController()
   {
+    rooms = new ArrayList();
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -53,7 +53,8 @@ public class RoomController implements EventHandler<ActionEvent>
         e.printStackTrace();
         System.exit(1);
       }
-      Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successful load on Home!");
+      Alert alert = new Alert(Alert.AlertType.INFORMATION,
+          "Successful load on Home!");
       alert.showAndWait();
     }
 
@@ -140,39 +141,11 @@ public class RoomController implements EventHandler<ActionEvent>
     stage.show();
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- *@author Oliver Isaac, 293131
- *@version 1.0.0.0
- *this class is just a conTROLLer class for my Room UI.
- */
+  /**
+   * @author Oliver Isaac, 293131
+   * @version 1.0.0.0
+   * this class is just a conTROLLer class for my Room UI.
+   */
   private ArrayList<String> list;
   private ArrayList<String> list2;
   @FXML private TextField text1;
@@ -182,82 +155,132 @@ public class RoomController implements EventHandler<ActionEvent>
   @FXML private Button update;
   @FXML private ChoiceBox room;
   @FXML private ChoiceBox dota;
-  private RoomList rlist;
+  private ArrayList rooms;
   @FXML private Label dotaError;
   @FXML private Label seatError;
   @FXML private Label numberError;
 
   public void update(ActionEvent e)
   { // UPDATE BUTTON
-    text1 = null;
-    text2= null;
-    if(e.getSource() == update)
-    {Room temp = new Room();
-    temp.setRoomNumber(text1.getText());
-    int sit = Integer.parseInt(text2.getText()) ;
-    temp.setNumberOfSeats(sit);
-    String pro = (String)dota.getValue();
-    if (pro.equals("HDMI")) {temp.setProjector((byte) 1);}
-      else if (pro.equals("VGA")) {temp.setProjector((byte) 2);}
-      if (pro.equals("HDMI and VGA")) {temp.setProjector((byte) 3);}
-      if (pro.equals("none")) {temp.setProjector((byte) 0);}
-      else temp.setProjector((byte) -1);
+    if (e.getSource() == update)
+    {
+      Room temp = new Room();
+      temp.setRoomNumber(text1.getText());
+      int sit = Integer.parseInt(text2.getText());
+      temp.setNumberOfSeats(sit);
+      String pro = (String) dota.getValue();
+      if (pro.equals("HDMI"))
+      {
+        temp.setProjector((byte) 1);
+      }
+      else if (pro.equals("VGA"))
+      {
+        temp.setProjector((byte) 2);
+      }
+      if (pro.equals("HDMI and VGA"))
+      {
+        temp.setProjector((byte) 3);
+      }
+      if (pro.equals("none"))
+      {
+        temp.setProjector((byte) 0);
+      }
+      else
+        temp.setProjector((byte) -1);
       if (text1.getText() == null)
       {
         numberError.setText("Enter the room number");
       }
-      else if (text2.getText()== null)
+      else if (text2.getText() == null)
       {
         seatError.setText(("Enter the number of seats"));
       }
-      else if (Integer.parseInt(text1.getText()) < 0 )
-      {
-        numberError.setText("Invalid input. Try again !");
-      }
       else if (Integer.parseInt(text2.getText()) < 0)
-      {numberError.setText("Invalid input. Try again");}
-      else if (dota.getValue()==null)
-      {dotaError.setText("error");} else
-
-      {int choice = JOptionPane
-          .showConfirmDialog(null, "Are you sure you want to update the room?");
-      if(choice==JOptionPane.YES_OPTION) {rlist.addRoom(temp);}
-      else if(choice==JOptionPane.NO_OPTION){}}
-
+      {
+        numberError.setText("Invalid input. Try again");
+      }
+      else if (dota.getValue() == null)
+      {
+        dotaError.setText("error");
+      }
+      else
+      {
+        int choice = JOptionPane.showConfirmDialog(null,
+            "Are you sure you want to update the room?");
+        if (choice == JOptionPane.YES_OPTION)
+        {
+          rooms.add(temp);
+        }
+        else if (choice == JOptionPane.NO_OPTION)
+        {
+        }
+      }
+      System.out.println(temp);
     }
     // DELETE BUTTON
-    if(e.getSource()==delete)
-    { String temp = (String)room.getValue();
-      ArrayList<Room> trump =  new ArrayList<>(rlist.getAllRooms().size());
-      for (int i=0; i<trump.size();i++)
+    if (e.getSource() == delete)
+    {
+      String temp = (String) room.getValue();
+      ArrayList<Room> trump = new ArrayList<>(rooms.size());
+      for (int i = 0; i < trump.size(); i++)
       {
-        if (trump.get(i).getRoomNumber().equals(temp)) {rlist.getAllRooms().remove(i);}
+        if (trump.get(i).getRoomNumber().equals(temp))
+        {
+          rooms.remove(this);
+        }
       }
 
     }
     // EDIT BUTTON
-    if (e.getSource()==edit)
-    {String choice = (String)room.getValue();
-      ArrayList<Room> all =  new ArrayList<>(rlist.getAllRooms().size());
-      for (int i=0; i<all.size();i++)
+    if (e.getSource() == edit)
+    {
+      String choice = (String) room.getValue();
+      ArrayList<Room> all = new ArrayList<>(rooms.size());
+      for (int i = 0; i < all.size(); i++)
       {
-        if (all.get(i).getRoomNumber().equals(choice)) {text1.setText(all.get(i).getRoomNumber());
-      text2.setText(Integer.toString(all.get(i).getNumberOfSeats())); if(all.get(i).getProjector()==0){dota.setValue("none");}
-        else if (all.get(i).getProjector()==1){dota.setValue("HDMI");} else if (all.get(i).getProjector()==2){dota.setValue("VGA");}
-        else if (all.get(i).getProjector()==3){dota.setValue("HDMI and VGA");} else if (all.get(i).getProjector()==-1){
+        if (all.get(i).getRoomNumber().equals(choice))
+        {
+          text1.setText(all.get(i).getRoomNumber());
+          text2.setText(Integer.toString(all.get(i).getNumberOfSeats()));
+          if (all.get(i).getProjector() == 0)
+          {
+            dota.setValue("none");
+          }
+          else if (all.get(i).getProjector() == 1)
+          {
+            dota.setValue("HDMI");
+          }
+          else if (all.get(i).getProjector() == 2)
+          {
+            dota.setValue("VGA");
+          }
+          else if (all.get(i).getProjector() == 3)
+          {
+            dota.setValue("HDMI and VGA");
+          }
+          else if (all.get(i).getProjector() == -1)
+          {
             System.out.println("error");
-          }}
+          }
+        }
 
+      }
     }
-  }}
-  public void starting(MouseEvent event){
+  }
+
+  public void starting(MouseEvent event)
+  {
     Load();
   }
-  public void starting2(MouseEvent event){ init();
+
+  public void starting2(MouseEvent event)
+  {
+    init();
 
   }
 
-  private void Load() {
+  private void Load()
+  {
     list = new ArrayList<String>();
     String a = "301a";
     String b = "302a";
@@ -270,7 +293,8 @@ public class RoomController implements EventHandler<ActionEvent>
     room.show();
   }
 
-  private void init() {
+  private void init()
+  {
     list2 = new ArrayList<String>();
     String m = "HDMI";
     String z = "VGA";
@@ -281,7 +305,7 @@ public class RoomController implements EventHandler<ActionEvent>
     list2.add(v);
     list2.add(k);
     dota.setItems(FXCollections.observableArrayList(list2));
-   dota.getSelectionModel().select(0);
+    dota.getSelectionModel().select(0);
     dota.show();
 
   }
