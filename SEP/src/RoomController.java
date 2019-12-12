@@ -194,7 +194,7 @@ public class RoomController implements EventHandler<ActionEvent>
     temp.setRoomNumber(text1.getText());
     int sit = Integer.parseInt(text2.getText()) ;
     temp.setNumberOfSeats(sit);
-    String pro = (String)room.getValue();
+    String pro = (String)dota.getValue();
     if (pro.equals("HDMI")) {temp.setProjector((byte) 1);}
       else if (pro.equals("VGA")) {temp.setProjector((byte) 2);}
       if (pro.equals("HDMI and VGA")) {temp.setProjector((byte) 3);}
@@ -215,8 +215,20 @@ public class RoomController implements EventHandler<ActionEvent>
       }
 
     }
+    if (e.getSource()==edit)
+    {String choice = (String)room.getValue();
+      ArrayList<Room> all =  new ArrayList<>(rlist.getAllRooms().size());
+      for (int i=0; i<all.size();i++)
+      {
+        if (all.get(i).getRoomNumber().equals(choice)) {text1.setText(all.get(i).getRoomNumber());
+      text2.setText(Integer.toString(all.get(i).getNumberOfSeats())); if(all.get(i).getProjector()==0){dota.setValue("none");}
+        else if (all.get(i).getProjector()==1){dota.setValue("HDMI");} else if (all.get(i).getProjector()==2){dota.setValue("VGA");}
+        else if (all.get(i).getProjector()==3){dota.setValue("HDMI and VGA");} else if (all.get(i).getProjector()==-1){
+            System.out.println("error");
+          }}
 
-  }
+    }
+  }}
   public void starting(MouseEvent event){
     Load();
   }
