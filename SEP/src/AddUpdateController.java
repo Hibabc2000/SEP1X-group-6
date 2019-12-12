@@ -59,9 +59,9 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     tchr.setItems(FXCollections.observableArrayList(Teacher_Controller.getList()));
 
     cexmnr.setItems(FXCollections.observableArrayList(CoExaminerList.getAllCoExaminers()));
-    /*
-    exmBox.setItems(FXCollections.observableArrayList());
-    */
+
+    exmBox.setItems(FXCollections.observableArrayList(ExamList.getAllExams()));
+
 
 
 
@@ -69,6 +69,22 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
   @Override public void handle(ActionEvent actionEvent)
   {
+    if (actionEvent.getSource() == updateB)
+    {
+
+    }
+    if(actionEvent.getSource() == editB)
+    {
+
+    }
+    if(actionEvent.getSource() == deleteB)
+    {
+
+    }
+
+
+
+
     if (actionEvent.getSource() == homeButton)
     {
       try
