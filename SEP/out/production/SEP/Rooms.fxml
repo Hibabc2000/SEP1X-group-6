@@ -30,11 +30,11 @@
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="340.0" style="-fx-background-color: #6f5ea8;" styleClass="mItem" text="Rooms">
+            <Button fx:id="roomButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="340.0" style="-fx-background-color: #6f5ea8;" styleClass="mItem" text="Rooms">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="263.0" styleClass="mItem" text="Teachers">
+            <Button fx:id="teacherButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="263.0" styleClass="mItem" text="Teachers">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
@@ -46,11 +46,11 @@
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="290.0" styleClass="mItem" text="Schedule exam">
+            <Button fx:id="scheduleButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="290.0" styleClass="mItem" text="Schedule exam">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="394.0" styleClass="mItem" text="Settings">
+            <Button fx:id="settingsButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="394.0" styleClass="mItem" text="Settings">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
@@ -102,12 +102,12 @@
                   <Insets top="30.0" />
                </FlowPane.margin>
             </Label>
-            <Label fx:id="numberError" prefHeight="30.0" prefWidth="154.0" text="NumberError">
+            <Label fx:id="numberError" prefHeight="30.0" prefWidth="154.0">
                <FlowPane.margin>
                   <Insets top="-120.0" />
                </FlowPane.margin>
             </Label>
-            <Label fx:id="seatError" prefHeight="30.0" prefWidth="154.0" text="SeatError">
+            <Label fx:id="seatError" prefHeight="30.0" prefWidth="154.0">
                <FlowPane.margin>
                   <Insets left="-154.0" top="110.0" />
                </FlowPane.margin>
@@ -142,7 +142,7 @@
                   <Insets left="50.0" top="75.0" />
                </FlowPane.margin>
             </Button>
-            <Label fx:id="dotaError" prefHeight="30.0" prefWidth="154.0" text="DotaError">
+            <Label fx:id="dotaError" prefHeight="30.0" prefWidth="154.0">
                <FlowPane.margin>
                   <Insets left="-167.0" top="-35.0" />
                </FlowPane.margin>

@@ -266,7 +266,7 @@ public class RoomController implements EventHandler<ActionEvent>
     list.add(b);
     list.add(c);
     room.setItems(FXCollections.observableArrayList(list));
-    room.setValue(a);
+    room.getSelectionModel().select(0);
     room.show();
   }
 
@@ -281,7 +281,7 @@ public class RoomController implements EventHandler<ActionEvent>
     list2.add(v);
     list2.add(k);
     dota.setItems(FXCollections.observableArrayList(list2));
-   dota.setValue(k);
+   dota.getSelectionModel().select(0);
     dota.show();
 
   }
