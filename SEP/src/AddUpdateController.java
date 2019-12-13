@@ -38,9 +38,9 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
   public AddUpdateController()
   {
-
-    exmtyp.getItems().add("Oral");
-    exmtyp.getItems().add("Written");
+    exmtyp = new ComboBox();
+    ObservableList<String> list = FXCollections.observableArrayList("1","2","3","4");
+    exmtyp.setItems(list);
 
     ArrayList<Room> tmp = RoomList.getAllRooms();
     for(int x0 = 0; x0 < tmp.size(); x0++)
