@@ -2,8 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
-
-import javax.swing.table.TableColumn;
+import javafx.scene.control.TableColumn;
 
 public class HomeController implements EventHandler<ActionEvent>
 {
