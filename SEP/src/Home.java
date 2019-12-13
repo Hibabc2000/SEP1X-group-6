@@ -5,7 +5,7 @@ public class Home
 
   public byte getDay(Exam exam)
   {
-    return exam.getDate().getDay();
+    return (byte) exam.getDate().getDay();
   }
 
   public byte getStartHour(Exam exam)
@@ -20,7 +20,7 @@ public class Home
 
   public byte getWeek(Exam exam)
   {
-    return exam.getDate().getWeek();
+    return (byte) exam.getDate().getWeek();
   }
 
   public String getCourseName(Exam exam)
