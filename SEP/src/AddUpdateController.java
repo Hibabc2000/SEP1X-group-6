@@ -35,6 +35,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   @FXML private ComboBox exmBox;
   private Scene scene;
   private Stage stage;
+  private TeacherList teacherList;
 
   public AddUpdateController()
   {
@@ -179,6 +180,14 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     stage.show();
   }
 
+  public void transferMessage(Object message)
+  {
+    assert message != null;
+    System.out.println("Message received.");
+    System.out.println(message);
+    teacherList = (TeacherList) message;
+    tchr.setItems(FXCollections.observableArrayList(teacherList));
+  }
 }
 
 
