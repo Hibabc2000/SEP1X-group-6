@@ -1,4 +1,3 @@
-import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,10 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
-import javax.swing.table.TableColumn;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class AddUpdateCourseController implements EventHandler<ActionEvent>
 {
