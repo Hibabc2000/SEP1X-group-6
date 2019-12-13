@@ -41,7 +41,7 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Home.fxml", actionEvent);
+        changeScene("home.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -94,7 +94,7 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Course.fxml", actionEvent);
+        changeScene("addUpdateCourseController.fxml", actionEvent);
       }
       catch (IOException e)
       {
