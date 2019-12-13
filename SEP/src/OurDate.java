@@ -5,6 +5,17 @@ public class OurDate
   private byte startHour;
   private byte endHour;
   private int year;
+
+  public int getWeek()
+  {
+    return week;
+  }
+
+  public void setWeek(int week)
+  {
+    this.week = week;
+  }
+
   private int week;
   private OurDate startT;
   public OurDate(int day, int month, int year, byte startHour, byte endHour,OurDate startDate)
