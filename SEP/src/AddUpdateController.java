@@ -35,10 +35,11 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   @FXML private ComboBox exmBox;
   private Scene scene;
   private Stage stage;
+  private TeacherList teacherList;
 
   public AddUpdateController()
   {
-
+    /*
     exmtyp.getItems().add("Oral");
     exmtyp.getItems().add("Written");
 
@@ -56,15 +57,11 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
     dateBox = new DatePicker();
 
-    tchr.setItems(FXCollections.observableArrayList(Teacher_Controller.getList()));
+    tchr.setItems(FXCollections.observableArrayList(Teacher_Controller.get()));
 
     cexmnr.setItems(FXCollections.observableArrayList(CoExaminerList.getAllCoExaminers()));
 
-    exmBox.setItems(FXCollections.observableArrayList(ExamList.getAllExams()));
-
-
-
-
+    exmBox.setItems(FXCollections.observableArrayList(ExamList.getAllExams()));*/
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -117,8 +114,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       try
       {
-        FXMLLoader.load(getClass().getResource("Teacher.fxml"));
-        System.out.println("Successful load");
+        changeScene("Teacher.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -184,6 +180,14 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     stage.show();
   }
 
+  public void transferMessage(Object message)
+  {
+    assert message != null;
+    System.out.println("Message received.");
+    System.out.println(message);
+    teacherList = (TeacherList) message;
+    tchr.setItems(FXCollections.observableArrayList(teacherList));
+  }
 }
 
 

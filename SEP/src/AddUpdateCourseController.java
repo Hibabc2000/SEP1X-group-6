@@ -1,4 +1,3 @@
-import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,10 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
-import javax.swing.table.TableColumn;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class AddUpdateCourseController implements EventHandler<ActionEvent>
 {
@@ -52,9 +48,6 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
         e.printStackTrace();
         System.exit(1);
       }
-      Alert alert = new Alert(Alert.AlertType.INFORMATION,
-          "Successful load on Home!");
-      alert.showAndWait();
     }
 
     if (actionEvent.getSource().equals(roomButton))
@@ -73,8 +66,7 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
     {
       try
       {
-        FXMLLoader.load(getClass().getResource("Teacher.fxml"));
-        System.out.println("Successful load");
+        changeScene("Teacher.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -98,7 +90,7 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Course.fxml", actionEvent);
+        changeScene("addUpdateCourse.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -131,6 +123,7 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
       }
     }
   }
+
 
   private void changeScene(String target, ActionEvent event) throws IOException
   {

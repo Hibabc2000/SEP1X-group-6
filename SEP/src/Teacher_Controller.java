@@ -37,21 +37,16 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   @FXML private ComboBox teachersBox;
   private Scene scene;
   private Stage stage;
-  private static ArrayList list;
+  private static TeacherList list;
 
   public Teacher_Controller()
   {
-    list = new ArrayList();
-  }
-
-  public static ArrayList getList()
-  {
-    return list;
+    list = new TeacherList();
   }
 
   @Override public void handle(ActionEvent actionEvent)
   {
-    if (actionEvent.getSource() == homeButton)
+    /*if (actionEvent.getSource() == homeButton)
     {
       try
       {
@@ -62,8 +57,6 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
         e.printStackTrace();
         System.exit(1);
       }
-      Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successful load on Home!");
-      alert.showAndWait();
     }
 
     if (actionEvent.getSource().equals(roomButton))
@@ -82,8 +75,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        FXMLLoader.load(getClass().getResource("Teacher.fxml"));
-        System.out.println("Successful load");
+        changeScene("Teacher.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -114,12 +106,12 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
         e.printStackTrace();
         System.exit(1);
       }
-    }
+    }*/
     if (actionEvent.getSource().equals(scheduleButton))
     {
       try
       {
-        changeScene("addUpdateSchedule.fxml", actionEvent);
+        changeScene("addUpdateSchedule.fxml", actionEvent, list);
       }
       catch (IOException e)
       {
@@ -127,7 +119,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
         System.exit(1);
       }
     }
-    if (actionEvent.getSource().equals(settingsButton))
+    /*if (actionEvent.getSource().equals(settingsButton))
     {
       try
       {
@@ -138,15 +130,15 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
         e.printStackTrace();
         System.exit(1);
       }
-    }
+    }*/
+
     if(actionEvent.getSource() == updateButton)
     {
       String name = nameField.getText();
       String id = idField.getText();
       Teacher t = new Teacher(id, name);
-      list.add(t);
-      //System.out.println(t.getName() + "  " + t.getID());
-      teachersBox.setItems(FXCollections.observableArrayList(list));
+      TeacherList.addTeacher(t);
+      teachersBox.setItems(FXCollections.observableArrayList(TeacherList.getAllTeachers()));
     }
     if(actionEvent.getSource() == editButton)
     {
@@ -162,16 +154,19 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       Object obj = teachersBox.getSelectionModel().getSelectedItem();
       if (obj instanceof Teacher)
       {
-        list.remove(obj);
-        teachersBox.setItems(FXCollections.observableArrayList(list));
+        TeacherList.deleteTeacher((Teacher) obj);
+        teachersBox.setItems(FXCollections.observableArrayList(TeacherList.getAllTeachers()));
       }
     }
   }
 
-  private void changeScene(String target, ActionEvent event) throws IOException
+  private void changeScene(String target, ActionEvent event, TeacherList list) throws IOException
   {
-    Parent parent = FXMLLoader.load(getClass().getResource(target));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
+    Parent parent = loader.load();
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    AddUpdateController control = loader.getController();
+    control.transferMessage(list);
     stage.getScene().setRoot(parent);
     stage.show();
   }
