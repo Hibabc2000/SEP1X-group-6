@@ -239,25 +239,75 @@ public class RoomController implements EventHandler<ActionEvent>
       System.out.println(ready3);
 
 
+      if (ready1==true && ready2==true && ready3==true) {boolean  ready4=false;
+        if (rooms.size() > 0) {
+          for(int p =0; p<rooms.size();p++)
+          {
+            if ( text1.getText().equals(((Room) rooms.get(p)).getRoomNumber()))
+            { ready4 = true;
+              dotaError.setText("");
+              seatError.setText("");
+              numberError.setText("");
+              int choice1 = JOptionPane.showConfirmDialog(null,
+                  "Are you sure you want to change the information about this room?");
+              if (choice1 == JOptionPane.YES_OPTION)
+              {
+                rooms.set(p, temp);
+                System.out.println(temp);
+                dota.setValue(null);
+                text1.setText("");
+                text2.setText("");
 
-      if (ready1==true && ready2==true && ready3==true){ dotaError.setText("");
-        seatError.setText("");
-        numberError.setText("");
-        int choice = JOptionPane.showConfirmDialog(null,
-            "Are you sure you want to update the room?");
-        if (choice == JOptionPane.YES_OPTION)
-        {
-          rooms.add(temp); System.out.println(temp); dota.setValue(null);
-          text1.setText(""); text2.setText("");
+              }
+              else if (choice1 == JOptionPane.NO_OPTION)
+              {
+              }}
+          } if(ready4==false) {dotaError.setText("");
+            seatError.setText("");
+            numberError.setText("");
+            int choice2 = JOptionPane.showConfirmDialog(null,
+                "Are you sure you want to update the room?");
+            if (choice2 == JOptionPane.YES_OPTION)
+            {
+              rooms.add(temp);
+              System.out.println(temp);
+              dota.setValue(null);
+              text1.setText("");
+              text2.setText("");
+
+            }
+            else if (choice2 == JOptionPane.NO_OPTION)
+            {
+            }}
+
+
 
         }
-        else if (choice == JOptionPane.NO_OPTION)
+        else
         {
+          dotaError.setText("");
+          seatError.setText("");
+          numberError.setText("");
+          int choice = JOptionPane.showConfirmDialog(null,
+              "Are you sure you want to update the room?");
+          if (choice == JOptionPane.YES_OPTION)
+          {
+            rooms.add(temp);
+            System.out.println(temp);
+            dota.setValue(null);
+            text1.setText("");
+            text2.setText("");
+
+          }
+          else if (choice == JOptionPane.NO_OPTION)
+          {
+          }
         }
 
       }
-
     }
+
+
 
 
 
@@ -334,6 +384,7 @@ public class RoomController implements EventHandler<ActionEvent>
       }
     }
   }
+
 
   public void starting(MouseEvent event)
   {
