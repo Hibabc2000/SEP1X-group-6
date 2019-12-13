@@ -143,7 +143,6 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       String id = idField.getText();
       Teacher t = new Teacher(id, name);
       list.add(t);
-      //System.out.println(t.getName() + "  " + t.getID());
       teachersBox.setItems(FXCollections.observableArrayList(list));
     }
     if(actionEvent.getSource() == editButton)

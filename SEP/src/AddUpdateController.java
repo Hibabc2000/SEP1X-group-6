@@ -38,33 +38,28 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
   public AddUpdateController()
   {
-    exmtyp = new ComboBox();
-    ObservableList<String> list = FXCollections.observableArrayList("1","2","3","4");
-    exmtyp.setItems(list);
+    exmtyp.getItems().add("Oral");
+    exmtyp.getItems().add("Written");
 
-//    ArrayList<Room> tmp = RoomList.getAllRooms();
-//    for(int x0 = 0; x0 < tmp.size(); x0++)
-//    {
-//      roomC.getItems().add(tmp.get(x0).getRoomNumber());
-//    }
+    ArrayList<Room> tmp = RoomList.getAllRooms();
+    for(int x0 = 0; x0 < tmp.size(); x0++)
+    {
+      roomC.getItems().add(tmp.get(x0).getRoomNumber());
+    }
 
-//
-//    for(int x0 = 0; x0 < CourseList.getAllCourses().size(); x0++)
-//    {
-//      crs.getItems().add(CourseList.getAllCourses().get(x0).getCourseName());
-//    }
+
+    for(int x0 = 0; x0 < CourseList.getAllCourses().size(); x0++)
+    {
+      crs.getItems().add(CourseList.getAllCourses().get(x0).getCourseName());
+    }
 
     dateBox = new DatePicker();
-//
-//    tchr.setItems(FXCollections.observableArrayList(Teacher_Controller.getList()));
-//
-//    cexmnr.setItems(FXCollections.observableArrayList(CoExaminerList.getAllCoExaminers()));
-//
-//    exmBox.setItems(FXCollections.observableArrayList(ExamList.getAllExams()));
-//
-//
-//
 
+    tchr.setItems(FXCollections.observableArrayList(Teacher_Controller.getList()));
+
+    cexmnr.setItems(FXCollections.observableArrayList(CoExaminerList.getAllCoExaminers()));
+
+    exmBox.setItems(FXCollections.observableArrayList(ExamList.getAllExams()));
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -96,6 +91,9 @@ public class AddUpdateController implements EventHandler<ActionEvent>
         e.printStackTrace();
         System.exit(1);
       }
+      Alert alert = new Alert(Alert.AlertType.INFORMATION,
+          "Successful load on Home!");
+      alert.showAndWait();
     }
 
     if (actionEvent.getSource().equals(roomButton))
@@ -138,7 +136,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("addUpdateCourse.fxml", actionEvent);
+        changeScene("Course.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -171,7 +169,6 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       }
     }
   }
-
 
   private void changeScene(String target, ActionEvent event) throws IOException
   {
