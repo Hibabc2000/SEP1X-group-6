@@ -41,16 +41,13 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("home.fxml", actionEvent);
+        changeScene("Home.fxml", actionEvent);
       }
       catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
       }
-      Alert alert = new Alert(Alert.AlertType.INFORMATION,
-          "Successful load on Home!");
-      alert.showAndWait();
     }
 
     if (actionEvent.getSource().equals(roomButton))
@@ -93,7 +90,7 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("addUpdateCourseController.fxml", actionEvent);
+        changeScene("addUpdateCourse.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -126,6 +123,7 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
       }
     }
   }
+
 
   private void changeScene(String target, ActionEvent event) throws IOException
   {

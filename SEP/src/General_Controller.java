@@ -32,96 +32,95 @@ public class General_Controller implements EventHandler<ActionEvent>
     {
     }
 
-    @Override public void handle(ActionEvent actionEvent)
+  @Override public void handle(ActionEvent actionEvent)
+  {
+    if (actionEvent.getSource() == homeButton)
     {
-      if (actionEvent.getSource() == homeButton)
+      try
       {
-        try
-        {
-          changeScene("home.fxml", actionEvent);
-        }
-        catch (IOException e)
-        {
-          e.printStackTrace();
-          System.exit(1);
-        }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successful load on Home!");
-        alert.showAndWait();
+        changeScene("Home.fxml", actionEvent);
       }
-
-      if (actionEvent.getSource().equals(roomButton))
+      catch (IOException e)
       {
-        try
-        {
-          changeScene("Rooms.fxml", actionEvent);
-        }
-        catch (IOException e)
-        {
-          e.printStackTrace();
-          System.exit(1);
-        }
-      }
-      if (actionEvent.getSource().equals(teacherButton))
-      {
-        try
-        {
-          changeScene("Teacher.fxml", actionEvent);
-        }
-        catch (IOException e)
-        {
-          e.printStackTrace();
-          System.exit(1);
-        }
-      }
-      if (actionEvent.getSource().equals(coExaminerButton))
-      {
-        try
-        {
-          changeScene("Co-examiner.fxml", actionEvent);
-        }
-        catch (IOException e)
-        {
-          e.printStackTrace();
-          System.exit(1);
-        }
-      }
-      if (actionEvent.getSource().equals(courseButton))
-      {
-        try
-        {
-          changeScene("addUpdateCourse.fxml", actionEvent);
-        }
-        catch (IOException e)
-        {
-          e.printStackTrace();
-          System.exit(1);
-        }
-      }
-      if (actionEvent.getSource().equals(scheduleButton))
-      {
-        try
-        {
-          changeScene("addUpdateSchedule.fxml", actionEvent);
-        }
-        catch (IOException e)
-        {
-          e.printStackTrace();
-          System.exit(1);
-        }
-      }
-      if (actionEvent.getSource().equals(settingsButton))
-      {
-        try
-        {
-          changeScene("Settings.fxml", actionEvent);
-        }
-        catch (IOException e)
-        {
-          e.printStackTrace();
-          System.exit(1);
-        }
+        e.printStackTrace();
+        System.exit(1);
       }
     }
+
+    if (actionEvent.getSource().equals(roomButton))
+    {
+      try
+      {
+        changeScene("Rooms.fxml", actionEvent);
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+        System.exit(1);
+      }
+    }
+    if (actionEvent.getSource().equals(teacherButton))
+    {
+      try
+      {
+        changeScene("Teacher.fxml", actionEvent);
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+        System.exit(1);
+      }
+    }
+    if (actionEvent.getSource().equals(coExaminerButton))
+    {
+      try
+      {
+        changeScene("Co-examiner.fxml", actionEvent);
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+        System.exit(1);
+      }
+    }
+    if (actionEvent.getSource().equals(courseButton))
+    {
+      try
+      {
+        changeScene("addUpdateCourse.fxml", actionEvent);
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+        System.exit(1);
+      }
+    }
+    if (actionEvent.getSource().equals(scheduleButton))
+    {
+      try
+      {
+        changeScene("addUpdateSchedule.fxml", actionEvent);
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+        System.exit(1);
+      }
+    }
+    if (actionEvent.getSource().equals(settingsButton))
+    {
+      try
+      {
+        changeScene("Settings.fxml", actionEvent);
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+        System.exit(1);
+      }
+    }
+  }
+
 
     private void changeScene(String target, ActionEvent event) throws IOException
     {

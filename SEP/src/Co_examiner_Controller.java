@@ -49,9 +49,6 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
         e.printStackTrace();
         System.exit(1);
       }
-      Alert alert = new Alert(Alert.AlertType.INFORMATION,
-          "Successful load on Home!");
-      alert.showAndWait();
     }
 
     if (actionEvent.getSource().equals(roomButton))
@@ -70,7 +67,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Co_examiner.fxml", actionEvent);
+        changeScene("Teacher.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -126,6 +123,8 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
         System.exit(1);
       }
     }
+
+
     if(actionEvent.getSource() == updateButton)
     {
       String name = nameField.getText();

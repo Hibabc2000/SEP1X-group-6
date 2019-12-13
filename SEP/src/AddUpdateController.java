@@ -96,9 +96,6 @@ public class AddUpdateController implements EventHandler<ActionEvent>
         e.printStackTrace();
         System.exit(1);
       }
-      Alert alert = new Alert(Alert.AlertType.INFORMATION,
-          "Successful load on Home!");
-      alert.showAndWait();
     }
 
     if (actionEvent.getSource().equals(roomButton))
@@ -117,8 +114,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       try
       {
-        FXMLLoader.load(getClass().getResource("Teacher.fxml"));
-        System.out.println("Successful load");
+        changeScene("Teacher.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -142,7 +138,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Course.fxml", actionEvent);
+        changeScene("addUpdateCourse.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -175,6 +171,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       }
     }
   }
+
 
   private void changeScene(String target, ActionEvent event) throws IOException
   {
