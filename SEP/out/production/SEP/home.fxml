@@ -64,16 +64,16 @@
          <children>
             <Pane prefHeight="527.0" prefWidth="602.0">
                <children>
-                  <TableView layoutX="32.0" layoutY="94.0" prefHeight="340.0" prefWidth="539.0">
+                  <TableView fx:id="tableView" layoutX="32.0" layoutY="94.0" prefHeight="340.0" prefWidth="539.0">
                     <columns>
-                      <TableColumn prefWidth="51.0" text="Week" />
-                      <TableColumn prefWidth="76.0" text="Date" />
-                        <TableColumn prefWidth="75.0" text="Course" />
-                        <TableColumn prefWidth="61.0" text="NumStud" />
-                        <TableColumn prefWidth="42.0" text="Type" />
-                        <TableColumn prefWidth="100.0" text="Time" />
-                        <TableColumn prefWidth="53.0" text="Room" />
-                        <TableColumn text="Teacher" />
+                      <TableColumn fx:id="Week" prefWidth="51.0" text="Week" />
+                      <TableColumn fx:id="Date" prefWidth="76.0" text="Date" />
+                        <TableColumn fx:id="Course" prefWidth="75.0" text="Course" />
+                        <TableColumn fx:id="NumStud" prefWidth="61.0" text="NumStud" />
+                        <TableColumn fx:id="Type" prefWidth="42.0" text="Type" />
+                        <TableColumn fx:id="Time" prefWidth="100.0" text="Time" />
+                        <TableColumn fx:id="Room" prefWidth="53.0" text="Room" />
+                        <TableColumn fx:id="Teacher" text="Teacher" />
                     </columns>
                   </TableView>
                   <Button layoutX="417.0" layoutY="31.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: #239E9C;" text="Export Schedule" textFill="WHITE">

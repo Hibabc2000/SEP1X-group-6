@@ -274,7 +274,11 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
       {
         courses.getItems().add(buffer);
       }
-
+//      Set up empty text fields
+name.setText("");
+      group.setText("");
+      nrStudents.setText("");
+      semester.setText("");
     }
   }
 

@@ -38,7 +38,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         try
         {
-          changeScene("Home.fxml", actionEvent);
+          changeScene("home.fxml", actionEvent);
         }
         catch (IOException e)
         {

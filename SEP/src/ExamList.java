@@ -13,6 +13,10 @@ public class ExamList
   }
   public static ArrayList<Exam> getAllExams()
   {
-    return new ArrayList<>(exams);
+    if (exams != null)
+    {
+      return new ArrayList<>(exams);
+    }
+    return new ArrayList<>();
   }
 }
