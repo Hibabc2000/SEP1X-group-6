@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddUpdateCourseController">
    <left>
       <VBox id="mCon" prefHeight="478.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -32,19 +32,19 @@
                <font>
                   <Font size="21.0" />
                </font></Label>
-            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="318.0" styleClass="mItem" text="HOME">
+            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="318.0" styleClass="mItem" text="HOME">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="340.0" styleClass="mItem" text="Rooms">
+            <Button fx:id="roomButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="340.0" styleClass="mItem" text="Rooms">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="263.0" styleClass="mItem" text="Teachers">
+            <Button fx:id="teacherButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="263.0" styleClass="mItem" text="Teachers">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="401.0" styleClass="mItem" text="Co-examiner">
+            <Button fx:id="coExaminerButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="401.0" styleClass="mItem" text="Co-examiner">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
@@ -52,11 +52,11 @@
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="290.0" styleClass="mItem" text="Schedule exam">
+            <Button fx:id="scheduleButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="290.0" styleClass="mItem" text="Schedule exam">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="394.0" styleClass="mItem" text="Settings">
+            <Button fx:id="settingsButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="394.0" styleClass="mItem" text="Settings">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>
