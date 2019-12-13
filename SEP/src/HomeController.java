@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
@@ -133,10 +132,5 @@ public class HomeController implements EventHandler<ActionEvent>
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.getScene().setRoot(parent);
     stage.show();
-  }
-
-  private void tableUpdate()
-  {
-    tableView.setItems(FXCollections.observableList(exams));
   }
 }

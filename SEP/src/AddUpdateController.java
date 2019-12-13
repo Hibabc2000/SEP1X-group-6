@@ -38,6 +38,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
   public AddUpdateController()
   {
+    /*
     exmtyp.getItems().add("Oral");
     exmtyp.getItems().add("Written");
 
@@ -55,11 +56,11 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
     dateBox = new DatePicker();
 
-    tchr.setItems(FXCollections.observableArrayList(Teacher_Controller.getList()));
+    tchr.setItems(FXCollections.observableArrayList(Teacher_Controller.get()));
 
     cexmnr.setItems(FXCollections.observableArrayList(CoExaminerList.getAllCoExaminers()));
 
-    exmBox.setItems(FXCollections.observableArrayList(ExamList.getAllExams()));
+    exmBox.setItems(FXCollections.observableArrayList(ExamList.getAllExams()));*/
   }
 
   @Override public void handle(ActionEvent actionEvent)

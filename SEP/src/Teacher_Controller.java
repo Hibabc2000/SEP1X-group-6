@@ -37,16 +37,11 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   @FXML private ComboBox teachersBox;
   private Scene scene;
   private Stage stage;
-  private static ArrayList list;
+  private static TeacherList list;
 
   public Teacher_Controller()
   {
-    list = new ArrayList();
-  }
-
-  public static ArrayList getList()
-  {
-    return list;
+    list = new TeacherList();
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -142,8 +137,8 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       String name = nameField.getText();
       String id = idField.getText();
       Teacher t = new Teacher(id, name);
-      list.add(t);
-      teachersBox.setItems(FXCollections.observableArrayList(list));
+      TeacherList.addTeacher(t);
+      teachersBox.setItems(FXCollections.observableArrayList(TeacherList.getAllTeachers()));
     }
     if(actionEvent.getSource() == editButton)
     {
@@ -159,8 +154,8 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       Object obj = teachersBox.getSelectionModel().getSelectedItem();
       if (obj instanceof Teacher)
       {
-        list.remove(obj);
-        teachersBox.setItems(FXCollections.observableArrayList(list));
+        TeacherList.deleteTeacher((Teacher) obj);
+        teachersBox.setItems(FXCollections.observableArrayList(TeacherList.getAllTeachers()));
       }
     }
   }
