@@ -56,7 +56,7 @@ public class RoomController implements EventHandler<ActionEvent>
       Alert alert = new Alert(Alert.AlertType.INFORMATION,
           "Successful load on Home!");
       alert.showAndWait();
-    }
+  }
 
     if (actionEvent.getSource().equals(roomButton))
     {
