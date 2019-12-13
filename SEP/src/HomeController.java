@@ -1,12 +1,11 @@
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 
 import javax.swing.table.TableColumn;
 
-public class HomeController implements Initializable
+public class HomeController implements EventHandler<ActionEvent>
 {
     @FXML private TableView tableView;
     @FXML private TableColumn Week;
