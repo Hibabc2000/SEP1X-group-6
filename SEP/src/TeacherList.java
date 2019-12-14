@@ -7,7 +7,7 @@ public class TeacherList
    * @version 1.0
    * this class contains the teachers
    */
-  private static ArrayList<Teacher> teachers;
+  private ArrayList<Teacher> teachers;
 
   public TeacherList()
   {
@@ -18,7 +18,7 @@ public class TeacherList
    * @return an array list containing all of the teachers
    * returns all of the teachers in an array list
    */
-  public static ArrayList getAllTeachers()
+  public ArrayList getAllTeachers()
   {
     return new ArrayList<Teacher>(teachers);
   }
@@ -49,12 +49,12 @@ public class TeacherList
     return true;
   }
 
-  public static void addTeacher(Teacher t)
+  public void addTeacher(Teacher t)
   {
     teachers.add(t);
   }
 
-  public static void deleteTeacher(Teacher t)
+  public void deleteTeacher(Teacher t)
   {
     int index = 0;
     for (Teacher teacher : teachers)

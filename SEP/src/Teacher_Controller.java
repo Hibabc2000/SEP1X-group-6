@@ -37,7 +37,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   @FXML private ComboBox teachersBox;
   private Scene scene;
   private Stage stage;
-  private static TeacherList list;
+  private TeacherList list;
 
   public Teacher_Controller()
   {
@@ -113,7 +113,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       {
         changeScene("addUpdateSchedule.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -137,8 +137,8 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       String name = nameField.getText();
       String id = idField.getText();
       Teacher t = new Teacher(id, name);
-      TeacherList.addTeacher(t);
-      teachersBox.setItems(FXCollections.observableArrayList(TeacherList.getAllTeachers()));
+      list.addTeacher(t);
+      teachersBox.setItems(FXCollections.observableArrayList(list.getAllTeachers()));
     }
     if(actionEvent.getSource() == editButton)
     {
@@ -154,19 +154,20 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       Object obj = teachersBox.getSelectionModel().getSelectedItem();
       if (obj instanceof Teacher)
       {
-        TeacherList.deleteTeacher((Teacher) obj);
-        teachersBox.setItems(FXCollections.observableArrayList(TeacherList.getAllTeachers()));
+        list.deleteTeacher((Teacher) obj);
+        teachersBox.setItems(FXCollections.observableArrayList(list.getAllTeachers()));
       }
     }
   }
 
-  private void changeScene(String target, ActionEvent event, TeacherList list) throws IOException
+  private void changeScene(String target, ActionEvent event, TeacherList list)
+      throws IOException, NoSuchFieldException, IllegalAccessException
   {
     FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
     Parent parent = loader.load();
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     AddUpdateController control = loader.getController();
-    control.transferMessage(list);
+    control.transferMessage(list, "teacherList", "tchr");
     stage.getScene().setRoot(parent);
     stage.show();
   }

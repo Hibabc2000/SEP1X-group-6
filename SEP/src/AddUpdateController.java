@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class AddUpdateController implements EventHandler<ActionEvent>
@@ -180,13 +181,16 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     stage.show();
   }
 
-  public void transferMessage(Object message)
+  public void transferMessage(Object message, String name, String target)
+      throws NoSuchFieldException, IllegalAccessException
   {
-    assert message != null;
     System.out.println("Message received.");
     System.out.println(message);
-    teacherList = (TeacherList) message;
-    tchr.setItems(FXCollections.observableArrayList(teacherList));
+    getClass().getDeclaredField(name).set(this, message);
+    if (target.equals("tchr"))
+    {
+      tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+    }
   }
 }
 
