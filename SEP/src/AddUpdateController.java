@@ -59,9 +59,9 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
     dateBox = new DatePicker();
 
-    tchr.setItems(FXCollections.observableArrayList(Teacher_Controller.get()));
+    tchr.setItems(FXCollections.observableArrayList(teacherList));
 
-    cexmnr.setItems(FXCollections.observableArrayList(CoExaminerList.getAllCoExaminers()));
+    cexmnr.setItems(FXCollections.observableArrayList(coExaminerList));
 
     exmBox.setItems(FXCollections.observableArrayList(ExamList.getAllExams()));*/
   }
@@ -184,8 +184,8 @@ public class AddUpdateController implements EventHandler<ActionEvent>
    * @param message - the object we want to pass as a message
    * @param name - the name of the field in AddUpdateController
    * @param target - the name of the ComboBox we want to set
-   * @throws NoSuchFieldException
-   * @throws IllegalAccessException
+   * @throws NoSuchFieldException - method throws this exception if the target field does not exist.
+   * @throws IllegalAccessException - method throws this exception if it does not have access to the target variable
    */
   public void transferMessage(Object message, String name, String target)
       throws NoSuchFieldException, IllegalAccessException

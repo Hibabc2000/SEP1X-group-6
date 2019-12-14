@@ -163,13 +163,22 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   private void changeScene(String target, ActionEvent event, TeacherList list)
       throws IOException, NoSuchFieldException, IllegalAccessException
   {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
-    Parent parent = loader.load();
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    AddUpdateController control = loader.getController();
-    control.transferMessage(list, "teacherList", "tchr");
-    stage.getScene().setRoot(parent);
-    stage.show();
+    if(target.equals("addUpdateSchedule.fxml"))
+    {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
+      Parent parent = loader.load();
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      AddUpdateController control = loader.getController();
+      control.transferMessage(list, "teacherList", "tchr");
+      stage.getScene().setRoot(parent);
+      stage.show();
+    }
+    else
+    {
+      Parent parent = FXMLLoader.load(getClass().getResource(target));
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      stage.getScene().setRoot(parent);
+      stage.show();
+    }
   }
-
 }
