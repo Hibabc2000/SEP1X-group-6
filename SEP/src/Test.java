@@ -7,9 +7,7 @@ import java.io.IOException;
 
 public class Test extends Application
 {
-  RoomList rlist = new RoomList();
-  byte ttt = 1;
-  Room troom = new Room("12",12,ttt);
+
 
   public void start(Stage window) throws IOException
   {
