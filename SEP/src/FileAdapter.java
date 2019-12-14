@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Arrays;
 
 public class FileAdapter
 {
@@ -13,12 +14,20 @@ public class FileAdapter
 
   public void temporaryWrite(Object obj, String tempFileName) throws IOException
   {
-    ioHandler.writeToFile(tempFileName, ((TeacherList) obj).getAllTeachers().toArray());
+    if(obj instanceof TeacherList)
+    {
+      ioHandler.writeToFile(tempFileName, ((TeacherList) obj).getAllTeachers().toArray());
+    }
+    else if(obj instanceof CoExaminerList)
+    {
+      ioHandler.writeToFile(tempFileName, ((CoExaminerList) obj).getAllCoExaminers().toArray());
+    }
   }
 
   public Object[] temporaryRead(String tempFileName)
       throws IOException, ClassNotFoundException
   {
-    return ioHandler.readArrayFromFile(tempFileName);
+    Object[] arr = ioHandler.readArrayFromFile(tempFileName);
+    return arr;
   }
 }

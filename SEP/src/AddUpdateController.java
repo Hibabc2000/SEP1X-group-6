@@ -1,5 +1,4 @@
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -31,7 +29,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   @FXML private ComboBox crs;
   @FXML private ComboBox roomC;
   @FXML private ComboBox tchr;
-  @FXML private ComboBox cexmnr;
+  @FXML private ComboBox<Co_examiner> cexmnr;
   @FXML private DatePicker dateBox;
   @FXML private TextArea alertBox;
   @FXML private ComboBox exmBox;
@@ -43,7 +41,9 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   private CourseList courseList;
   private ExamList examList;
 
-  public AddUpdateController() throws IOException, ClassNotFoundException
+  public AddUpdateController()
+      throws IOException, ClassNotFoundException, NoSuchFieldException,
+      IllegalAccessException
   {
     teacherList = new TeacherList();
     coExaminerList = new CoExaminerList();
@@ -52,26 +52,26 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     examList = new ExamList();
     FileAdapter fileHandler = new FileAdapter(null);
     Object[] objs = fileHandler.temporaryRead("tempTeacher");
-    ArrayList arrayList = new ArrayList(Arrays.asList(objs));
-    for (Object obj:arrayList)
+    for (Object obj:objs)
     {
-      if(obj instanceof Teacher)
-      {
-        teacherList.addTeacher((Teacher) obj);
-      }
+      teacherList.addTeacher((Teacher) obj);
     }
+    for(Object t : teacherList.getAllTeachers())
+    {
+      System.out.println(t);
+    }
+    //tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+    transferMessage(teacherList, "teacherList", "tchr");
     objs = fileHandler.temporaryRead("tempCoExaminer");
-    arrayList = new ArrayList(Arrays.asList(objs));
-    for (Object obj:arrayList)
+    for (Object obj:objs)
     {
       if(obj instanceof Co_examiner)
       {
-        coExaminerList.addCoExaminer((Co_examiner) obj);
+        coExaminerList.addCoExaminer(obj);
       }
     }
     objs = fileHandler.temporaryRead("tempRoom");
-    arrayList = new ArrayList(Arrays.asList(objs));
-    for (Object obj:arrayList)
+    for (Object obj:objs)
     {
       if(obj instanceof Room)
       {
@@ -221,7 +221,11 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     System.out.println(message);
     if (target.equals("tchr"))
     {
-      tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+      if(tchr != null)
+      {
+        tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+      }
+      else System.out.println("TCHR is null");
     }
     if(target.equals("cexmnr"))
     {
