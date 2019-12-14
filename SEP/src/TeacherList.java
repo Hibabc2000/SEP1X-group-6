@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TeacherList
+public class TeacherList implements Serializable
 {
   /**
    * @author Kristóf Lénárd, 293110

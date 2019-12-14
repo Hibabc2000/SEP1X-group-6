@@ -136,13 +136,14 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
       Parent parent = loader.load();
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       AddUpdateController control = loader.getController();
-      control.transferMessage(list, "teacherList", "tchr");
+      control.transferMessage(list, "courseList", "crs");
       stage.getScene().setRoot(parent);
       stage.show();
     }
     else
     {
-      //save data to file
+      FileAdapter fileHandler = new FileAdapter(null);
+      fileHandler.temporaryWrite(list, "tempCourse");
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);

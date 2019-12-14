@@ -145,7 +145,8 @@ public class RoomController implements EventHandler<ActionEvent>
     }
     else
     {
-      //save data to file
+      FileAdapter fileHandler = new FileAdapter(null);
+      fileHandler.temporaryWrite(list, "tempRoom");
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);

@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CoExaminerList
+public class CoExaminerList implements Serializable
 {
   private ArrayList<Co_examiner> coExaminers;
 

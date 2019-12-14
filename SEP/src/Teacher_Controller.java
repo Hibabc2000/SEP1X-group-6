@@ -52,7 +52,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       {
         changeScene("home.fxml", actionEvent, list);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -65,7 +65,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       {
         changeScene("Rooms.fxml", actionEvent, list);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -77,7 +77,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       {
         changeScene("Teacher.fxml", actionEvent, list);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -89,7 +89,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       {
         changeScene("Co-examiner.fxml", actionEvent, list);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -101,7 +101,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       {
         changeScene("addUpdateCourse.fxml", actionEvent, list);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -113,7 +113,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       {
         changeScene("addUpdateSchedule.fxml", actionEvent, list);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -125,7 +125,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       {
         changeScene("Settings.fxml", actionEvent, list);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -161,7 +161,8 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   }
 
   private void changeScene(String target, ActionEvent event, Object list)
-      throws IOException, NoSuchFieldException, IllegalAccessException
+      throws IOException, NoSuchFieldException, IllegalAccessException, ClassNotFoundException,
+      ClassNotFoundException
   {
     if(target.equals("addUpdateSchedule.fxml"))
     {
@@ -175,7 +176,8 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     }
     else
     {
-      //save data to file
+      FileAdapter fileHandler = new FileAdapter(null);
+      fileHandler.temporaryWrite(list, "tempTeacher");
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);

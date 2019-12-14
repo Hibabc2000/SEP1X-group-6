@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AddUpdateController implements EventHandler<ActionEvent>
 {
@@ -38,32 +39,45 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   private Stage stage;
   private TeacherList teacherList;
   private CoExaminerList coExaminerList;
+  private RoomList roomList;
+  private CourseList courseList;
+  private ExamList examList;
 
-  public AddUpdateController()
+  public AddUpdateController() throws IOException, ClassNotFoundException
   {
-    /*
-    exmtyp.getItems().add("Oral");
-    exmtyp.getItems().add("Written");
-
-    ArrayList<Room> tmp = RoomList.getAllRooms();
-    for(int x0 = 0; x0 < tmp.size(); x0++)
+    teacherList = new TeacherList();
+    coExaminerList = new CoExaminerList();
+    roomList = new RoomList();
+    courseList = new CourseList();
+    examList = new ExamList();
+    FileAdapter fileHandler = new FileAdapter(null);
+    Object[] objs = fileHandler.temporaryRead("tempTeacher");
+    ArrayList arrayList = new ArrayList(Arrays.asList(objs));
+    for (Object obj:arrayList)
     {
-      roomC.getItems().add(tmp.get(x0).getRoomNumber());
+      if(obj instanceof Teacher)
+      {
+        teacherList.addTeacher((Teacher) obj);
+      }
     }
-
-
-    for(int x0 = 0; x0 < CourseList.getAllCourses().size(); x0++)
+    objs = fileHandler.temporaryRead("tempCoExaminer");
+    arrayList = new ArrayList(Arrays.asList(objs));
+    for (Object obj:arrayList)
     {
-      crs.getItems().add(CourseList.getAllCourses().get(x0).getCourseName());
+      if(obj instanceof Co_examiner)
+      {
+        coExaminerList.addCoExaminer((Co_examiner) obj);
+      }
     }
-
-    dateBox = new DatePicker();
-
-    tchr.setItems(FXCollections.observableArrayList(teacherList));
-
-    cexmnr.setItems(FXCollections.observableArrayList(coExaminerList));
-
-    exmBox.setItems(FXCollections.observableArrayList(ExamList.getAllExams()));*/
+    objs = fileHandler.temporaryRead("tempRoom");
+    arrayList = new ArrayList(Arrays.asList(objs));
+    for (Object obj:arrayList)
+    {
+      if(obj instanceof Room)
+      {
+        roomList.addRoom((Room) obj);
+      }
+    }
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -183,7 +197,8 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     }
     else
     {
-      //save data to file
+      FileAdapter fileHandler = new FileAdapter(null);
+      fileHandler.temporaryWrite(list, "tempExams");
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);

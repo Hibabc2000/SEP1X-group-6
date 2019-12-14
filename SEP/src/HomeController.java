@@ -141,7 +141,6 @@ public class HomeController implements EventHandler<ActionEvent>
     }
     else
     {
-      //save data to file
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);

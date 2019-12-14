@@ -1,9 +1,11 @@
+import java.io.Serializable;
+
 /**
  * @author Kristóf Lénárd, 293110
  * @version 1.0
  * This is a class for all persons, used only in inheritance.
  */
-public class Co_examiner extends Person
+public class Co_examiner extends Person implements Serializable
 {
   private boolean external;
 
