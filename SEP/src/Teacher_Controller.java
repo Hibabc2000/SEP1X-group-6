@@ -46,13 +46,13 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
 
   @Override public void handle(ActionEvent actionEvent)
   {
-    /*if (actionEvent.getSource() == homeButton)
+    if (actionEvent.getSource() == homeButton)
     {
       try
       {
-        changeScene("Home.fxml", actionEvent);
+        changeScene("home.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -63,9 +63,9 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Rooms.fxml", actionEvent);
+        changeScene("Rooms.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -75,9 +75,9 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Teacher.fxml", actionEvent);
+        changeScene("Teacher.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -87,9 +87,9 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Co-examiner.fxml", actionEvent);
+        changeScene("Co-examiner.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -99,14 +99,14 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("addUpdateCourse.fxml", actionEvent);
+        changeScene("addUpdateCourse.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
       }
-    }*/
+    }
     if (actionEvent.getSource().equals(scheduleButton))
     {
       try
@@ -119,18 +119,18 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
         System.exit(1);
       }
     }
-    /*if (actionEvent.getSource().equals(settingsButton))
+    if (actionEvent.getSource().equals(settingsButton))
     {
       try
       {
-        changeScene("Settings.fxml", actionEvent);
+        changeScene("Settings.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
       }
-    }*/
+    }
 
     if(actionEvent.getSource() == updateButton)
     {
@@ -160,7 +160,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     }
   }
 
-  private void changeScene(String target, ActionEvent event, TeacherList list)
+  private void changeScene(String target, ActionEvent event, Object list)
       throws IOException, NoSuchFieldException, IllegalAccessException
   {
     if(target.equals("addUpdateSchedule.fxml"))
@@ -175,6 +175,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     }
     else
     {
+      //save data to file
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);
