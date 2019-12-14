@@ -39,6 +39,8 @@ public class RoomController implements EventHandler<ActionEvent>
   public RoomController()
   {
     rlist = new RoomList();
+    rooms = new ArrayList<>();
+
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -168,7 +170,7 @@ public class RoomController implements EventHandler<ActionEvent>
   @FXML private Button update;
   @FXML private ChoiceBox room;
   @FXML private ChoiceBox dota;
-  private ArrayList rooms;
+  private ArrayList<Room> rooms;
   @FXML private Label dotaError;
   @FXML private Label seatError;
   @FXML private Label numberError;
@@ -290,6 +292,10 @@ public class RoomController implements EventHandler<ActionEvent>
               if (choice1 == JOptionPane.YES_OPTION)
               {
                 rooms.set(p, temp);
+
+                if (rlist.getAllRooms().get(p).equals(temp))
+                {rlist.getAllRooms().remove(p);
+                  rlist.addRoom(temp);}
                 System.out.println(temp);
                 dota.setValue(null);
                 text1.setText("");
@@ -311,6 +317,7 @@ public class RoomController implements EventHandler<ActionEvent>
             if (choice2 == JOptionPane.YES_OPTION)
             {
               rooms.add(temp);
+              rlist.addRoom(temp);
               System.out.println(temp);
               dota.setValue(null);
               text1.setText("");
@@ -333,6 +340,7 @@ public class RoomController implements EventHandler<ActionEvent>
           if (choice == JOptionPane.YES_OPTION)
           {
             rooms.add(temp);
+            rlist.addRoom(temp);
             System.out.println(temp);
             dota.setValue(null);
             text1.setText("");
@@ -361,6 +369,7 @@ public class RoomController implements EventHandler<ActionEvent>
           if (choice == JOptionPane.YES_OPTION)
           {
             rooms.remove(i);
+            rlist.getAllRooms().remove(i);
             text1.setText("");
             text2.setText("");
 
