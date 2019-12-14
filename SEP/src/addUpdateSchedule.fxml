@@ -125,16 +125,16 @@
             <DatePicker fx:id="dateBox" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
             <ComboBox fx:id="tchr" prefHeight="26.0" prefWidth="173.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
             <ComboBox fx:id="cexmnr" prefHeight="22.0" prefWidth="162.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="274.0" styleClass="impB" text="Update" GridPane.columnSpan="3" GridPane.rowIndex="10" />
+            <Button fx:id="updateB" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="274.0" styleClass="impB" text="Update" GridPane.columnSpan="3" GridPane.rowIndex="10" />
             <Label prefHeight="18.0" prefWidth="66.0" styleClass="tText" text="Add/Edit" GridPane.columnIndex="1" GridPane.rowIndex="11">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <Line endX="157.6929168701172" endY="-0.799595832824707" startX="-100.0" stroke="SILVER" GridPane.rowIndex="12" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" styleClass="actnB" text="Edit" GridPane.rowIndex="14" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" styleClass="actnB" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="14" />
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="3" GridPane.rowSpan="10" />
+            <Button fx:id="editB" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="78.0" styleClass="actnB" text="Edit" GridPane.rowIndex="14" />
+            <Button fx:id="deleteB" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="77.0" styleClass="actnB" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="14" />
+            <TextArea fx:id="alertBox" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="3" GridPane.rowSpan="10" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="34.0" stroke="#8c8c8c" strokeType="INSIDE" width="243.0" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="2" />
             <Label prefHeight="26.0" prefWidth="98.0" text="Alert Box" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <font>

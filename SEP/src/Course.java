@@ -1,8 +1,10 @@
+import java.io.Serializable;
+
 /**
  *@author Marin Bilba, 293141
  *@version 1.2
  */
-public class Course
+public class Course implements Serializable
 {
   private String courseName;
   private String group;

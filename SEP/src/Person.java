@@ -1,9 +1,11 @@
+import java.io.Serializable;
+
 /**
  * @author Kristóf Lénárd, 293110
  * @version 1.0
  * This is a class for all persons, used only in inheritance.
  */
-public abstract class Person
+public abstract class Person implements Serializable
 {
   private String ID;
   private String name;

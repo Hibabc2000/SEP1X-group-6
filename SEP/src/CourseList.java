@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -5,9 +6,9 @@ import java.util.ArrayList;
  * @version 1.0
  * This class stores all the created courses
  */
-public class CourseList
+public class CourseList implements Serializable
 {
-  private static ArrayList<Course> courses;
+  private ArrayList<Course> courses;
 
   public CourseList()
   {
@@ -18,7 +19,8 @@ public class CourseList
   {
     courses.add(course);
   }
-  public static ArrayList<Course> getAllCourses()
+
+  public ArrayList<Course> getAllCourses()
   {
     ArrayList<Course> tmp = new ArrayList<>(courses);
     return tmp;

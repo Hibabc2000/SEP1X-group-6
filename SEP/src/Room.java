@@ -1,4 +1,6 @@
-public class Room
+import java.io.Serializable;
+
+public class Room implements Serializable
 {
   /**
    *@author Ali Bahrani, 294418
