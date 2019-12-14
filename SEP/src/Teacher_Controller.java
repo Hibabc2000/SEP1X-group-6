@@ -161,8 +161,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   }
 
   private void changeScene(String target, ActionEvent event, Object list)
-      throws IOException, NoSuchFieldException, IllegalAccessException, ClassNotFoundException,
-      ClassNotFoundException
+      throws IOException, NoSuchFieldException, IllegalAccessException, ClassNotFoundException
   {
     if(target.equals("addUpdateSchedule.fxml"))
     {

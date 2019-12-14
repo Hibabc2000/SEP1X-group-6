@@ -141,7 +141,7 @@ public class RoomController implements EventHandler<ActionEvent>
       Parent parent = loader.load();
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       AddUpdateController control = loader.getController();
-      control.transferMessage(list, "teacherList", "tchr");
+      control.transferMessage(list, "roomList", "roomC");
       stage.getScene().setRoot(parent);
       stage.show();
     }
@@ -394,6 +394,7 @@ public class RoomController implements EventHandler<ActionEvent>
           text1.setText(((Room) rooms.get(i)).getRoomNumber());
           text2.setText(
               Integer.toString(((Room) rooms.get(i)).getNumberOfSeats()));
+          text1.setEditable(false);
           if (((Room) rooms.get(i)).getProjector() == 0)
           {
             dota.setValue("none");

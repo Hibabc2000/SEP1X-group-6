@@ -173,7 +173,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
       Parent parent = loader.load();
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       AddUpdateController control = loader.getController();
-      control.transferMessage(list, "teacherList", "tchr");
+      control.transferMessage(list, "coExaminerList", "cexmnr");
       stage.getScene().setRoot(parent);
       stage.show();
     }
