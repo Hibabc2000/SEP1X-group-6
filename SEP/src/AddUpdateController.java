@@ -181,11 +181,17 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     stage.show();
   }
 
+  /**
+   * This method transfers an object to AddUpdateController, and loads it into its relevant ComboBox
+   * @param message - the object we want to pass as a message
+   * @param name - the name of the field in AddUpdateController
+   * @param target - the name of the ComboBox we want to set
+   * @throws NoSuchFieldException
+   * @throws IllegalAccessException
+   */
   public void transferMessage(Object message, String name, String target)
       throws NoSuchFieldException, IllegalAccessException
   {
-    System.out.println("Message received.");
-    System.out.println(message);
     getClass().getDeclaredField(name).set(this, message);
     if (target.equals("tchr"))
     {
