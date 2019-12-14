@@ -37,6 +37,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   private Scene scene;
   private Stage stage;
   private TeacherList teacherList;
+  private CoExaminerList coExaminerList;
 
   public AddUpdateController()
   {
@@ -79,9 +80,6 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
 
     }
-
-
-
 
     if (actionEvent.getSource() == homeButton)
     {
@@ -196,6 +194,10 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     if (target.equals("tchr"))
     {
       tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+    }
+    if(target.equals("cexmnr"))
+    {
+      cexmnr.setItems(FXCollections.observableArrayList(coExaminerList.getAllCoExaminers()));
     }
   }
 }
