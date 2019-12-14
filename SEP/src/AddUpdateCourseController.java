@@ -286,6 +286,7 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
       if (!courses.getItems().contains(buffer))
       {
         courses.getItems().add(buffer);
+        courses.getSelectionModel().select(courses.getItems().size()-1);
       }
 //      Set up empty text fields
 name.setText("");
