@@ -52,5 +52,11 @@ public abstract class Person implements Serializable
   {
     this.name = name;
   }
+  public boolean equals(Object obj){
+    if(!(obj instanceof Person))
+      return false;
+    Person other=(Person)obj;
+    return ID.equals(other.ID)&&name.equals(other.name);
+  }
 
 }

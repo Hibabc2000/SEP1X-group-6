@@ -174,6 +174,7 @@ public class RoomController implements EventHandler<ActionEvent>
   @FXML private Label dotaError;
   @FXML private Label seatError;
   @FXML private Label numberError;
+  @FXML private Label editMode;
 
   public void update(ActionEvent e)
   { // UPDATE BUTTON
@@ -308,6 +309,8 @@ public class RoomController implements EventHandler<ActionEvent>
                 dota.setValue(null);
                 text1.setText("");
                 text2.setText("");
+                editMode.setText("");
+                text1.setEditable(true);
 
               }
               else if (choice1 == JOptionPane.NO_OPTION)
@@ -323,7 +326,8 @@ public class RoomController implements EventHandler<ActionEvent>
             int choice2 = JOptionPane.showConfirmDialog(null,
                 "Are you sure you want to update the room?");
             if (choice2 == JOptionPane.YES_OPTION)
-            {
+            { text1.setEditable(true);
+              editMode.setText("");
               rooms.add(temp);
               rlist.addRoom(temp);
               System.out.println(temp);
@@ -346,7 +350,8 @@ public class RoomController implements EventHandler<ActionEvent>
           int choice = JOptionPane.showConfirmDialog(null,
               "Are you sure you want to update the room?");
           if (choice == JOptionPane.YES_OPTION)
-          {
+          {text1.setEditable(true);
+            editMode.setText("");
             rooms.add(temp);
             rlist.addRoom(temp);
             System.out.println(temp);
@@ -365,7 +370,8 @@ public class RoomController implements EventHandler<ActionEvent>
 
     // DELETE BUTTON
     if (e.getSource() == delete)
-    {
+    { editMode.setText("");
+      numberError.setText("");
       String temp = (String) room.getValue();
 
       for (int i = 0; i < rooms.size(); i++)
@@ -375,11 +381,13 @@ public class RoomController implements EventHandler<ActionEvent>
           int choice = JOptionPane.showConfirmDialog(null,
               "Are you sure you want to delete this room?");
           if (choice == JOptionPane.YES_OPTION)
-          {
+          {text1.setEditable(true);
+          editMode.setText(" I hope you have a nice day! \n You are the best secretary ever.\n I love ya <3 ");
             rooms.remove(i);
             rlist.getAllRooms().remove(i);
             text1.setText("");
             text2.setText("");
+            dota.setValue(null);
 
           }
           else if (choice == JOptionPane.NO_OPTION)
@@ -392,7 +400,8 @@ public class RoomController implements EventHandler<ActionEvent>
     }
     // EDIT BUTTON
     if (e.getSource() == edit)
-    {
+    { numberError.setText("You cannot edit this \n field in edit mode! ");
+      editMode.setText("You are in Edit mode now.\n\n If you want to change the room number \n just delete this room and make a new one. \nIf you changed your mind about editing \n then just press update. ");
       String choice = (String) room.getValue();
 
       for (int i = 0; i < rooms.size(); i++)
