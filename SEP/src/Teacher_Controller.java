@@ -187,10 +187,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   {
     if (e.getSource() == updateButton)
     {
-
-      //t = new Teacher(id, name);
-
-      if (name.length() == 0)
+      if (nameField.getText().length() == 0)
       {
         errorName.setText("Enter valid name");
       }
@@ -200,9 +197,9 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
         name=nameField.getText();
       }
 
-      if (id.length() == 0)
+      if (idField.getText().length() == 0)
       {
-        idField.setText("Enter valid name");
+        errorID.setText("Enter valid id");
       }
       else
       {
@@ -214,6 +211,21 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       {
         t = new Teacher(id, name);
         teacherList.addTeacher(t);
+      }
+      if (updateCheck)
+      {
+        Object obj = teachersBox.getSelectionModel().getSelectedItem();
+        if (obj instanceof Teacher)
+        {
+          teachersBox.getItems().removeAll(obj);
+        }
+        updateCheck = false;
+      }
+
+      if (!teachersBox.getItems().contains(t))
+      {
+        teachersBox.getItems().add(t);
+        teachersBox.getSelectionModel().select(teachersBox.getItems().size()-1);
       }
 
       nameField.setText("");
