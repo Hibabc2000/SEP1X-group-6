@@ -6,11 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -35,6 +33,11 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   @FXML private TextField nameField;
   @FXML private TextField idField;
   @FXML private ComboBox teachersBox;
+  @FXML private Label errorID;
+  @FXML private Label errorName;
+
+  private boolean updateCheck;
+
   private Scene scene;
   private Stage stage;
   private TeacherList list;
@@ -50,20 +53,15 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     teacherList = new TeacherList();
     FileAdapter fileHandler = new FileAdapter(null);
     Object[] objs = fileHandler.temporaryRead("tempTeacher");
-    for (Object obj:objs)
+    for (Object obj : objs)
     {
       teacherList.addTeacher((Teacher) obj);
     }
 
-    teachersBox.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+    teachersBox.setItems(
+        FXCollections.observableArrayList(teacherList.getAllTeachers()));
   }
   //************************
-
-
-  public Teacher_Controller()
-  {
-    list = new TeacherList();
-  }
 
   @Override public void handle(ActionEvent actionEvent)
   {
@@ -180,41 +178,70 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       }
     }
     */
-//***************
-    if(actionEvent.getSource() == updateButton)
+    //***************
+    if (actionEvent.getSource() == updateButton)
     {
       String name = nameField.getText();
       String id = idField.getText();
-      Teacher t = new Teacher(id, name);
-      teacherList.addTeacher(t);
-      teachersBox.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+      if (name.length() == 0 || id.length() == 0)
+      {
+        errorName.setText("Enter the name");
+        errorID.setText("Enter the ID");
+      }
+      else
+      {
+        if (updateCheck)
+        {
+          Object obj = teachersBox.getSelectionModel().getSelectedItem();
+          if (obj instanceof Teacher)
+          {
+            teachersBox.getItems().removeAll(obj);
+          }
+          updateCheck = false;
+        }
+
+
+        Teacher t = new Teacher(id, name);
+        teacherList.addTeacher(t);
+        if (!teachersBox.getItems().contains(t))
+        {
+          teachersBox.getItems().add(t);
+          teachersBox.getSelectionModel()
+              .select(teachersBox.getItems().size() - 1);
+        }
+        nameField.setText("");
+        idField.setText("");
+
+      }
     }
-    if(actionEvent.getSource() == editButton)
+    if (actionEvent.getSource() == editButton)
     {
       Object obj = teachersBox.getSelectionModel().getSelectedItem();
       if (obj instanceof Teacher)
       {
         nameField.setText(((Teacher) obj).getName());
         idField.setText(((Teacher) obj).getID());
-        teachersBox.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+        teachersBox.setItems(
+            FXCollections.observableArrayList(teacherList.getAllTeachers()));
+        updateCheck = true;
       }
     }
-    if(actionEvent.getSource() == deleteButton)
+    if (actionEvent.getSource() == deleteButton)
     {
       Object obj = teachersBox.getSelectionModel().getSelectedItem();
       if (obj instanceof Teacher)
       {
-        teacherList.deleteTeacher((Teacher)obj);
-        teachersBox.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+        teacherList.deleteTeacher((Teacher) obj);
+        teachersBox.setItems(
+            FXCollections.observableArrayList(teacherList.getAllTeachers()));
       }
     }
     //****************
   }
 
-
-
   private void changeScene(String target, ActionEvent event, Object list)
-      throws IOException, NoSuchFieldException, IllegalAccessException, ClassNotFoundException
+      throws IOException, NoSuchFieldException, IllegalAccessException,
+      ClassNotFoundException
   {
     /*
     if(target.equals("addUpdateSchedule.fxml"))
@@ -231,12 +258,12 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
     */
 
-      FileAdapter fileHandler = new FileAdapter(null);
-      fileHandler.temporaryWrite(list, "tempTeacher");
-      Parent parent = FXMLLoader.load(getClass().getResource(target));
-      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      stage.getScene().setRoot(parent);
-      stage.show();
+    FileAdapter fileHandler = new FileAdapter(null);
+    fileHandler.temporaryWrite(list, "tempTeacher");
+    Parent parent = FXMLLoader.load(getClass().getResource(target));
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.getScene().setRoot(parent);
+    stage.show();
     //}
   }
 }
