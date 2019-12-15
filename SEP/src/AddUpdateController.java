@@ -45,10 +45,9 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   private CourseList courseList;
   private ExamList examList;
 
-
   public void initialize()
   {
-    exmtyp.getItems().addAll("Oral","Written");
+    exmtyp.getItems().addAll("Oral", "Written");
     for (int x0 = 0; x0 < 59; x0++)
     {
       sHour.getItems().add(x0);
@@ -60,6 +59,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       eMinute.getItems().add(x0);
     }
   }
+
   public AddUpdateController()
       throws IOException, ClassNotFoundException, NoSuchFieldException,
       IllegalAccessException
@@ -71,28 +71,28 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     examList = new ExamList();
     FileAdapter fileHandler = new FileAdapter(null);
     Object[] objs = fileHandler.temporaryRead("tempTeacher");
-    for (Object obj:objs)
+    for (Object obj : objs)
     {
       teacherList.addTeacher((Teacher) obj);
     }
-    for(Object t : teacherList.getAllTeachers())
+    for (Object t : teacherList.getAllTeachers())
     {
       System.out.println(t);
     }
     //tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
     transferMessage(teacherList, "teacherList", "tchr");
     objs = fileHandler.temporaryRead("tempCoExaminer");
-    for (Object obj:objs)
+    for (Object obj : objs)
     {
-      if(obj instanceof Co_examiner)
+      if (obj instanceof Co_examiner)
       {
         coExaminerList.addCoExaminer(obj);
       }
     }
     objs = fileHandler.temporaryRead("tempRoom");
-    for (Object obj:objs)
+    for (Object obj : objs)
     {
-      if(obj instanceof Room)
+      if (obj instanceof Room)
       {
         roomList.addRoom((Room) obj);
       }
@@ -105,11 +105,11 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
 
     }
-    if(actionEvent.getSource() == editB)
+    if (actionEvent.getSource() == editB)
     {
 
     }
-    if(actionEvent.getSource() == deleteB)
+    if (actionEvent.getSource() == deleteB)
     {
 
     }
@@ -204,7 +204,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   private void changeScene(String target, ActionEvent event, TeacherList list)
       throws IOException, NoSuchFieldException, IllegalAccessException
   {
-    if(target.equals("addUpdateSchedule.fxml"))
+    if (target.equals("addUpdateSchedule.fxml"))
     {
       FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
       Parent parent = loader.load();
@@ -227,10 +227,11 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
   /**
    * This method transfers an object to AddUpdateController, and loads it into its relevant ComboBox
+   *
    * @param message - the object we want to pass as a message
-   * @param name - the name of the field in AddUpdateController
-   * @param target - the name of the ComboBox we want to set
-   * @throws NoSuchFieldException - method throws this exception if the target field does not exist.
+   * @param name    - the name of the field in AddUpdateController
+   * @param target  - the name of the ComboBox we want to set
+   * @throws NoSuchFieldException   - method throws this exception if the target field does not exist.
    * @throws IllegalAccessException - method throws this exception if it does not have access to the target variable
    */
   public void transferMessage(Object message, String name, String target)
@@ -240,23 +241,29 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     System.out.println(message);
     if (target.equals("tchr"))
     {
-      if(tchr != null)
+      if (tchr != null)
       {
         tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
       }
-      else System.out.println("TCHR is null");
+      else
+        System.out.println("TCHR is null");
     }
-    if(target.equals("cexmnr"))
+    if (target.equals("cexmnr"))
     {
       cexmnr.setItems(FXCollections.observableArrayList(coExaminerList.getAllCoExaminers()));
     }
 
- if(target.equals("crs")){
-      crs.setItems(FXCollections.observableArrayList(courseList.getAllCourses()));
-    }
- else System.out.println("CRS is null");
+    if (target.equals("crs"))
+    {
+      if (tchr != null)
+      {
+        crs.setItems(FXCollections.observableArrayList(courseList.getAllCourses()));
+      }
+      else
+        System.out.println("CRS is null");
     }
   }
+}
 
 
 

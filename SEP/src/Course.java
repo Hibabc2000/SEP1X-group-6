@@ -107,6 +107,7 @@ public class Course implements Serializable
     Course other=(Course)obj;
     return courseName.equals(other.courseName)&&group.equals(other.group)&&nrStudents==other.nrStudents&&semester==other.semester;
   }
+
 }
 
 

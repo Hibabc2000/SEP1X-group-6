@@ -24,4 +24,9 @@ public class CourseList implements Serializable
   {
     return new ArrayList<>(courses);
   }
+
+  @Override public String toString()
+  {
+    return "CourseList{" + "courses=" + courses + '}';
+  }
 }
