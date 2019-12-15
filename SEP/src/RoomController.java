@@ -184,7 +184,7 @@ public class RoomController implements EventHandler<ActionEvent>
       boolean ready3 = true;
       Room temp = new Room();
       temp.setRoomNumber(text1.getText());
-      int sit;
+      int sit = 0;
 
       try
       {
@@ -246,17 +246,25 @@ public class RoomController implements EventHandler<ActionEvent>
         ready3 = false;
       }
 
+
       else if (text2.getText().length() > 0)
       {
         try
         {
           sit = Integer.parseInt(text2.getText());
-          temp.setNumberOfSeats(sit);
-          seatError.setText("");
-          ready3 = true;
+
+            temp.setNumberOfSeats(sit);
+            seatError.setText("");
+            ready3 = true;
+
           //Catches all NumberFormatExceptions
         }
         catch (NumberFormatException l)
+        {
+          seatError.setText("Invalid number of students");
+          ready3 = false;
+        }
+        if (sit < 0 || sit == 0)
         {
           seatError.setText("Invalid number of students");
           ready3 = false;
