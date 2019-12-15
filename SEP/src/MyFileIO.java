@@ -3,7 +3,14 @@ import java.util.ArrayList;
 
 public class MyFileIO
 {
-   // Writes the given object to a file with the given file name
+   /**
+    *
+    * @param fileName file name
+    * @param obj specific object that should be written
+    * @throws FileNotFoundException
+    * @throws IOException
+    * Writes the given object to a file with the given file name
+    */
    public void writeToFile(String fileName, Object obj) throws FileNotFoundException, IOException
    {
       ObjectOutputStream writeToFile = null;
@@ -30,8 +37,14 @@ public class MyFileIO
          }
       }
    }
-   
-   // Writes the objects in the given array to a file with the given file name
+   /**
+    *
+    * @param fileName file name
+    * @param objs Array of objects that should be written
+    * @throws FileNotFoundException
+    * @throws IOException
+    * Writes the objects in the given array to a file with the given file name
+    */
    public void writeToFile(String fileName, Object[] objs) throws FileNotFoundException, IOException
    {
       ObjectOutputStream writeToFile = null;
@@ -62,8 +75,17 @@ public class MyFileIO
       }
    }
    
-   // Reads the first object from the file with the given file name and returns it.
-   // Whoever calls the method will need to cast it from type Object to its real type
+
+
+   /**
+    *
+    * @param fileName file name
+    * @return Reads the first object from the file with the given file name and returns it.
+    * Whoever calls the method will need to cast it from type Object to its real type
+    * @throws FileNotFoundException
+    * @throws IOException
+    * @throws ClassNotFoundException
+    */
    public Object readObjectFromFile(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException
    {
       Object obj = null;
@@ -99,8 +121,15 @@ public class MyFileIO
       return obj;
    }
  
-   // Reads all objects from the file with the given file name and returns it as an Object[].
-   // Whoever calls the method will need to cast the Objects to their real type
+   /**
+    *
+    * @param fileName file name
+    * @return Reads all objects from the file with the given file name and returns it as an Object[].
+    * Whoever calls the method will need to cast the Objects to their real type
+    * @throws FileNotFoundException
+    * @throws IOException
+    * @throws ClassNotFoundException
+    */
    public Object[] readArrayFromFile(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException
    {
       ArrayList<Object> objs = new ArrayList<Object>();

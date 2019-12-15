@@ -52,6 +52,13 @@ public abstract class Person implements Serializable
   {
     this.name = name;
   }
+
+  /**
+   *
+   * @param obj
+   * @return a boolean true if objects are equal or false if they are not
+   * Methods returns whether the objects are equal or not
+   */
   public boolean equals(Object obj){
     if(!(obj instanceof Person))
       return false;

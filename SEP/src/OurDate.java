@@ -1,11 +1,15 @@
+import java.util.GregorianCalendar;
 public class OurDate
 {
   private int day;
   private int month;
-  private byte startHour;
-  private byte endHour;
+  private int startHour;
+  private int endHour;
   private int year;
-
+  private int sMinute;
+  private int eMinute;
+  private int stMinute;
+  private int etMinute;
   public int getWeek()
   {
     return week;
@@ -18,8 +22,20 @@ public class OurDate
 
   private int week;
   private OurDate startT;
-  public OurDate(int day, int month, int year, byte startHour, byte endHour,OurDate startDate)
+  public OurDate(int day, int month, int year, int startHour, int endHour,int startMinute, int endMinute)
   {
+
+
+    GregorianCalendar currentDate = new GregorianCalendar();
+    int currentDay = currentDate.get(GregorianCalendar.DATE);
+    int currentMonth = currentDate.get(GregorianCalendar.MONTH)+1;
+    int currentYear = currentDate.get(GregorianCalendar.YEAR);
+    OurDate startDate = new OurDate(currentDay,currentMonth,currentYear);
+
+    sMinute = startMinute;
+    eMinute = endMinute;
+    stMinute = (startHour*60)+sMinute;
+    etMinute = (endMinute*60)+eMinute;
     this.day = day;
     this.month = month;
     this.year = year;
@@ -70,6 +86,7 @@ public class OurDate
   }
   public OurDate(int day, int month, int year)
   {
+
     this.day = day;
     this.month = month;
     this.year = year;
@@ -85,18 +102,16 @@ public class OurDate
       {
         if (day == date.getDay())
         {
-          if (endHour < date.getStartHour())
+          if(((etMinute <= date.getEtMinute())&&(stMinute <= date.getStMinute()))||((stMinute >= date.getStMinute())))
           {
             return true;
           }
-          else if (date.getEndHour() < startHour)
+          else if (((etMinute >= date.getStMinute())&&(stMinute >= date.getStMinute()))||((etMinute >= date.getEtMinute())&&(stMinute >= date.getStMinute())))
           {
             return true;
           }
-          else
-          {
-            return false;
-          }
+          else {return false;}
+
         }
         else
         {
@@ -110,35 +125,12 @@ public class OurDate
     }
     else{return false;}
   }
-  public int getDay()
-  {
-    return day;
-  }
-
-  public byte getEndHour()
-  {
-    return endHour;
-  }
-
-  public byte getStartHour()
-  {
-    return startHour;
-  }
 
   public void setDay(int day)
   {
 
   }
 
-  public void setEndHour(byte endHour)
-  {
-    this.endHour = endHour;
-  }
-
-  public void setStartHour(byte startHour)
-  {
-    this.startHour = startHour;
-  }
 
   public void setMonth(int month)
   {
@@ -219,6 +211,76 @@ public class OurDate
         else {return false;}
       }
     }
+  }
+
+  public void setStartHour(int startHour)
+  {
+    this.startHour = startHour;
+  }
+
+  public void setEndHour(int endHour)
+  {
+    this.endHour = endHour;
+  }
+
+  public int geteMinute()
+  {
+    return eMinute;
+  }
+
+  public int getEtMinute()
+  {
+    return etMinute;
+  }
+
+  public int getsMinute()
+  {
+    return sMinute;
+  }
+
+  public int getStMinute()
+  {
+    return stMinute;
+  }
+
+  public void seteMinute(int eMinute)
+  {
+    this.eMinute = eMinute;
+  }
+
+  public void setEtMinute(int etMinute)
+  {
+    this.etMinute = etMinute;
+  }
+
+  public void setsMinute(int sMinute)
+  {
+    this.sMinute = sMinute;
+  }
+
+  public void setStartT(OurDate startT)
+  {
+    this.startT = startT;
+  }
+
+  public void setStMinute(int stMinute)
+  {
+    this.stMinute = stMinute;
+  }
+
+  public int getDay()
+  {
+    return day;
+  }
+
+  public int getEndHour()
+  {
+    return endHour;
+  }
+
+  public int getStartHour()
+  {
+    return startHour;
   }
 }
 

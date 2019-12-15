@@ -32,11 +32,34 @@ public class HomeController implements EventHandler<ActionEvent>
   @FXML private Button settingsButton;
   private ExamList exams;
 
+
+
+  public void initialize()
+      throws IOException, ClassNotFoundException, NoSuchFieldException,
+      IllegalAccessException
+  {
+    TeacherList teacherList = new TeacherList();
+    CourseList courseList = new CourseList();
+    CoExaminerList coExaminerList = new CoExaminerList();
+    RoomList roomList = new RoomList();
+
+    FileAdapter fileHandler = new FileAdapter(null);
+
+    fileHandler.temporaryWrite(courseList, "tempCourse");
+
+    fileHandler.temporaryWrite(teacherList, "tempTeacher");
+
+    fileHandler.temporaryWrite(coExaminerList, "tempCoExaminer");
+
+    fileHandler.temporaryWrite(roomList, "tempRoom");
+  }
+
+
+
   public HomeController()
   {
     exams = new ExamList();
   }
-
   @Override public void handle(ActionEvent actionEvent)
   {
     if (actionEvent.getSource() == homeButton)
@@ -129,6 +152,7 @@ public class HomeController implements EventHandler<ActionEvent>
   private void changeScene(String target, ActionEvent event, Object list)
       throws IOException, NoSuchFieldException, IllegalAccessException
   {
+    /*
     if(target.equals("addUpdateSchedule.fxml"))
     {
       FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
@@ -141,10 +165,11 @@ public class HomeController implements EventHandler<ActionEvent>
     }
     else
     {
+      */
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);
       stage.show();
-    }
+    //}
   }
 }

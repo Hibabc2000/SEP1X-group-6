@@ -3,24 +3,24 @@ import java.util.ArrayList;
 public class Home
 {
 
-  public byte getDay(Exam exam)
+  public int getDay(Exam exam)
   {
-    return (byte) exam.getDate().getDay();
+    return (int) exam.getDate().getDay();
   }
 
-  public byte getStartHour(Exam exam)
+  public int getStartHour(Exam exam)
   {
     return exam.getDate().getStartHour();
   }
 
-  public byte getEndHour(Exam exam)
+  public int getEndHour(Exam exam)
   {
     return exam.getDate().getEndHour();
   }
 
-  public byte getWeek(Exam exam)
+  public int getWeek(Exam exam)
   {
-    return (byte) exam.getDate().getWeek();
+    return (int) exam.getDate().getWeek();
   }
 
   public String getCourseName(Exam exam)

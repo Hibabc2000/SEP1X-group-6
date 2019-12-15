@@ -21,7 +21,7 @@ public class RoomList implements Serializable
    * @return an array list containing all of the rooms
    * returns all of the rooms in an array list
    */
-  public static ArrayList getAllRooms()
+  public ArrayList getAllRooms()
   {
     ArrayList<Room> tmp = new ArrayList<Room>();
     for (int x0 = 0; x0 < rooms.size(); x0++)
@@ -103,6 +103,11 @@ public class RoomList implements Serializable
     }
     return tmp;
   }
+
+  /**
+   * @param room
+   * add a new room object to the roomList
+   */
   //this is a dark territory, enter with caution
   public void addRoom(Room room)
   {

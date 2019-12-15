@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -44,6 +45,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   private RoomList roomList;
   private CourseList courseList;
   private ExamList examList;
+  private boolean updateCheck = false;
 
   public void initialize()
       //**************
@@ -74,12 +76,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       teacherList.addTeacher((Teacher) obj);
     }
-    for(Object t : teacherList.getAllTeachers())
-    {
-      System.out.println(t);
-    }
     //tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
-    transferMessage(teacherList, "teacherList", "tchr");
     objs = fileHandler.temporaryRead("tempCoExaminer");
     for (Object obj:objs)
     {
@@ -96,6 +93,22 @@ public class AddUpdateController implements EventHandler<ActionEvent>
         roomList.addRoom((Room) obj);
       }
     }
+    objs = fileHandler.temporaryRead("tempCourse");
+    for (Object obj:objs)
+    {
+      courseList.addCourse((Course) obj);
+    }
+
+    objs = fileHandler.temporaryRead("tempRoom");
+    for (Object obj:objs)
+    {
+      roomList.addRoom((Room) obj);
+    }
+    transferMessage(teacherList, "teacherList", "tchr");
+    transferMessage(courseList, "courseList", "crs");
+    transferMessage(roomList, "roomList", "roomC");
+    transferMessage(coExaminerList, "coExaminerList", "cexmnr");
+
     //*******************
   }
 
@@ -103,12 +116,14 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       throws IOException, ClassNotFoundException, NoSuchFieldException,
       IllegalAccessException
   {
+
     teacherList = new TeacherList();
     coExaminerList = new CoExaminerList();
     roomList = new RoomList();
     courseList = new CourseList();
     examList = new ExamList();
     FileAdapter fileHandler = new FileAdapter(null);
+
     Object[] objs = fileHandler.temporaryRead("tempTeacher");
     for (Object obj : objs)
     {
@@ -119,7 +134,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       System.out.println(t);
     }
     //tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
-    transferMessage(teacherList, "teacherList", "tchr");
+    //transferMessage(teacherList, "teacherList", "tchr");
     objs = fileHandler.temporaryRead("tempCoExaminer");
     for (Object obj : objs)
     {
@@ -140,12 +155,76 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
   @Override public void handle(ActionEvent actionEvent)
   {
+
     if (actionEvent.getSource() == updateB)
     {
+      String str = "";
+      alertBox.setText("bruh");
+      if(!updateCheck)
+      {
+        if((exmtyp.getValue() != null)&&(crs.getValue() != null)&&(tchr.getValue() != null)&&(cexmnr.getValue() != null)&&(sMinute.getValue() != null)&&(sHour.getValue() != null)&&(eMinute.getValue() !=null)&&(eHour.getValue() != null))
+        {
+          LocalDate value = dateBox.getValue();
 
+          OurDate tmpDate = new OurDate(value.getDayOfMonth(),value.getMonthValue(),value.getYear(),(int)sHour.getValue(),(int)eHour.getValue(),(int)sMinute.getValue(),(int)eMinute.getValue());
+          Exam newExam = new Exam();
+          newExam.scheduleExam((String) exmtyp.getValue(),(Course) crs.getSelectionModel().getSelectedItem(),(Teacher)tchr.getSelectionModel().getSelectedItem(),cexmnr.getSelectionModel().getSelectedItem(),tmpDate,(Room)roomC.getSelectionModel().getSelectedItem());
+        }
+        if(exmtyp == null)
+        {
+          str += "exam type not selected \n";
+        }
+        if(crs == null)
+        {
+          str += "Course is not selected\n";
+        }
+        if(tchr == null)
+        {
+          str += "Teacher is not selected\n";
+        }
+        if(cexmnr == null)
+        {
+          str += "Co-Examiner is not selected\n";
+        }
+        if(sHour == null)
+        {
+          str += "Starting Hour is not selected\n";
+        }
+        if(eMinute == null)
+        {
+          str += "Ending minute is not selected\n";
+        }
+        if(eHour == null)
+        {
+          str += "Ending hour is not selected\n";
+        }
+        if(sMinute == null)
+        {
+          str += "Starting minute is not selected\n";
+        }
+        alertBox.setText(str);
+      }
     }
     if (actionEvent.getSource() == editB)
     {
+      if(exmBox.getValue() != null)
+      {
+        Exam upExam = (Exam)exmBox.getSelectionModel().getSelectedItem();
+        updateCheck = true;
+        exmtyp.setValue(upExam.getExamType());
+        tchr.setValue(upExam.getTeacher());
+        crs.setValue(upExam.getCourse());
+        roomC.setValue(upExam.getRoom());
+        cexmnr.setValue(upExam.getCoExaminer());
+        sHour.setValue(upExam.getDate().getStartHour());
+        eHour.setValue(upExam.getDate().getEndHour());
+        eMinute.setValue(upExam.getDate().geteMinute());
+        sMinute.setValue(upExam.getDate().getsMinute());
+        //LocalDate tdate = new LocalDate.of((int)upExam.getDate().getYear(),(int)upExam.getDate().getMonth(),(int)upExam.getDate().getDay());
+
+
+
+      }
 
     }
     if (actionEvent.getSource() == deleteB)
@@ -300,6 +379,15 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       }
       else
         System.out.println("CRS is null");
+    }
+    if (target.equals("roomC"))
+    {
+      if (tchr != null)
+      {
+        crs.setItems(FXCollections.observableArrayList(courseList.getAllCourses()));
+      }
+      else
+        System.out.println("room is null");
     }
   }
 }

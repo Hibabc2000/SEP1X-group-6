@@ -80,7 +80,7 @@ public class Course implements Serializable
 
   /**
    *
-   * @return semester
+   * @return semester number
    */
   public int getSemester()
   {
@@ -90,17 +90,29 @@ public class Course implements Serializable
   /**
    *
    * @param semester
+   * set the semester number
    */
   public void setSemester(int semester)
   {
     this.semester = semester;
   }
 
+  /**
+   *
+   * @return course name, group, number of students and semester number
+   */
   @Override public String toString()
   {
     return courseName + " | " + group
         + " | " +  + nrStudents +" | "+ semester;
   }
+
+  /**
+   *
+   * @param obj
+   * @return a boolean true if objects are equal or false if they are not
+   * Methods returns whether the objects are equal or not
+   */
   public boolean equals(Object obj){
   if(!(obj instanceof Course))
     return false;
