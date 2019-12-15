@@ -158,17 +158,30 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
     if (actionEvent.getSource() == updateB)
     {
+
       String str = "";
-      alertBox.setText("bruh");
+      alertBox.setText("");
       if(!updateCheck)
       {
+        boolean isThereAnyConflict = false;
         if((exmtyp.getValue() != null)&&(crs.getValue() != null)&&(tchr.getValue() != null)&&(cexmnr.getValue() != null)&&(sMinute.getValue() != null)&&(sHour.getValue() != null)&&(eMinute.getValue() !=null)&&(eHour.getValue() != null))
         {
           LocalDate value = dateBox.getValue();
-
           OurDate tmpDate = new OurDate(value.getDayOfMonth(),value.getMonthValue(),value.getYear(),(int)sHour.getValue(),(int)eHour.getValue(),(int)sMinute.getValue(),(int)eMinute.getValue());
           Exam newExam = new Exam();
           newExam.scheduleExam((String) exmtyp.getValue(),(Course) crs.getSelectionModel().getSelectedItem(),(Teacher)tchr.getSelectionModel().getSelectedItem(),cexmnr.getSelectionModel().getSelectedItem(),tmpDate,(Room)roomC.getSelectionModel().getSelectedItem());
+          if (examList.getAllExams().size() != 0)
+          {
+            for (int x0 = 0; x0 < examList.getAllExams().size(); x0++)
+            {
+              isThereAnyConflict = examList.getAllExams().get(x0).detectConflict(newExam);
+              str = "the exam conflicts with " + examList.getAllExams().get(x0);
+            }
+          }
+          if(!isThereAnyConflict)
+          {
+            examList.addExam(newExam);
+          }
         }
         if(exmtyp == null)
         {
@@ -204,9 +217,39 @@ public class AddUpdateController implements EventHandler<ActionEvent>
         }
         alertBox.setText(str);
       }
+      else
+      {
+        alertBox.setText("");
+        boolean isThereAnyConflict = false;
+        Exam tempExam =(Exam) exmBox.getSelectionModel().getSelectedItem();
+        examList.deleteExam(exmBox.getSelectionModel().getSelectedIndex());
+        if((exmtyp.getValue() != null)&&(crs.getValue() != null)&&(tchr.getValue() != null)&&(cexmnr.getValue() != null)&&(sMinute.getValue() != null)&&(sHour.getValue() != null)&&(eMinute.getValue() !=null)&&(eHour.getValue() != null))
+        {
+          LocalDate value = dateBox.getValue();
+          OurDate tmpDate = new OurDate(value.getDayOfMonth(),value.getMonthValue(),value.getYear(),(int)sHour.getValue(),(int)eHour.getValue(),(int)sMinute.getValue(),(int)eMinute.getValue());
+          tempExam.scheduleExam((String) exmtyp.getValue(),(Course) crs.getSelectionModel().getSelectedItem(),(Teacher)tchr.getSelectionModel().getSelectedItem(),cexmnr.getSelectionModel().getSelectedItem(),tmpDate,(Room)roomC.getSelectionModel().getSelectedItem());
+
+          if (examList.getAllExams().size() != 0)
+          {
+            for (int x0 = 0; x0 < examList.getAllExams().size(); x0++)
+            {
+              isThereAnyConflict = examList.getAllExams().get(x0).detectConflict(tempExam);
+              str = "the exam conflicts with " + examList.getAllExams().get(x0);
+            }
+          }
+          if(!isThereAnyConflict)
+          {
+            examList.addExamAtIndex(exmBox.getSelectionModel().getSelectedIndex(),tempExam);
+          }
+
+
+        }
+        updateCheck = false;
+      }
     }
     if (actionEvent.getSource() == editB)
     {
+      alertBox.setText("");
       if(exmBox.getValue() != null)
       {
         Exam upExam = (Exam)exmBox.getSelectionModel().getSelectedItem();
@@ -220,16 +263,14 @@ public class AddUpdateController implements EventHandler<ActionEvent>
         eHour.setValue(upExam.getDate().getEndHour());
         eMinute.setValue(upExam.getDate().geteMinute());
         sMinute.setValue(upExam.getDate().getsMinute());
-        //LocalDate tdate = new LocalDate.of((int)upExam.getDate().getYear(),(int)upExam.getDate().getMonth(),(int)upExam.getDate().getDay());
-
-
-
+        dateBox.setValue(LocalDate.of(upExam.getDate().getYear(),upExam.getDate().getMonth(),upExam.getDate().getDay()));
       }
 
     }
     if (actionEvent.getSource() == deleteB)
     {
-
+      alertBox.setText("");
+      examList.deleteExam(exmBox.getSelectionModel().getSelectedIndex());
     }
 
     if (actionEvent.getSource() == homeButton)
