@@ -33,6 +33,10 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   @FXML private DatePicker dateBox;
   @FXML private TextArea alertBox;
   @FXML private ComboBox exmBox;
+  @FXML private ComboBox sHour;
+  @FXML private ComboBox sMinute;
+  @FXML private ComboBox eHour;
+  @FXML private ComboBox eMinute;
   private Scene scene;
   private Stage stage;
   private TeacherList teacherList;
@@ -44,7 +48,17 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
   public void initialize()
   {
-    exmtyp.getItems().addAll("oral","Written");
+    exmtyp.getItems().addAll("Oral","Written");
+    for (int x0 = 0; x0 < 59; x0++)
+    {
+      sHour.getItems().add(x0);
+      eHour.getItems().add(x0);
+    }
+    for (int x0 = 0; x0 < 23; x0++)
+    {
+      sMinute.getItems().add(x0);
+      eMinute.getItems().add(x0);
+    }
   }
   public AddUpdateController()
       throws IOException, ClassNotFoundException, NoSuchFieldException,
