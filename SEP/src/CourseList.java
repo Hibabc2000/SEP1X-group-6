@@ -22,7 +22,6 @@ public class CourseList implements Serializable
 
   public ArrayList<Course> getAllCourses()
   {
-    ArrayList<Course> tmp = new ArrayList<>(courses);
-    return tmp;
+    return new ArrayList<>(courses);
   }
 }

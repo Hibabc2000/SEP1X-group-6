@@ -236,7 +236,14 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       cexmnr.setItems(FXCollections.observableArrayList(coExaminerList.getAllCoExaminers()));
     }
+
+ if(target.equals("crs")){
+      crs.setItems(FXCollections.observableArrayList(courseList.getAllCourses()));
+    }
+ else System.out.println("CRS is null");
+    }
   }
-}
+
+
 
 
