@@ -265,12 +265,11 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
         //      Adding the object to course list
         courseList.addCourse(buffer);
 
-
         //updatedNotification.setText("Updated");
       }
       //updatedNotification.setText("");
 
-      System.out.println(semesterNumber);
+
 
       //      Add items to combobox
       //     Duplicate checker

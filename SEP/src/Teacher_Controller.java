@@ -38,6 +38,27 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   private Scene scene;
   private Stage stage;
   private TeacherList list;
+  //******
+  private TeacherList teacherList;
+  //******
+
+  //************************
+  public void initialize()
+      throws IOException, ClassNotFoundException, NoSuchFieldException,
+      IllegalAccessException
+  {
+    teacherList = new TeacherList();
+    FileAdapter fileHandler = new FileAdapter(null);
+    Object[] objs = fileHandler.temporaryRead("tempTeacher");
+    for (Object obj:objs)
+    {
+      teacherList.addTeacher((Teacher) obj);
+    }
+
+    teachersBox.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+  }
+  //************************
+
 
   public Teacher_Controller()
   {
@@ -63,7 +84,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Rooms.fxml", actionEvent, list);
+        changeScene("Rooms.fxml", actionEvent, teacherList);
       }
       catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
@@ -131,7 +152,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
         System.exit(1);
       }
     }
-
+/*
     if(actionEvent.getSource() == updateButton)
     {
       String name = nameField.getText();
@@ -158,11 +179,44 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
         teachersBox.setItems(FXCollections.observableArrayList(list.getAllTeachers()));
       }
     }
+    */
+//***************
+    if(actionEvent.getSource() == updateButton)
+    {
+      String name = nameField.getText();
+      String id = idField.getText();
+      Teacher t = new Teacher(id, name);
+      teacherList.addTeacher(t);
+      teachersBox.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+    }
+    if(actionEvent.getSource() == editButton)
+    {
+      Object obj = teachersBox.getSelectionModel().getSelectedItem();
+      if (obj instanceof Teacher)
+      {
+        nameField.setText(((Teacher) obj).getName());
+        idField.setText(((Teacher) obj).getID());
+        teachersBox.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+      }
+    }
+    if(actionEvent.getSource() == deleteButton)
+    {
+      Object obj = teachersBox.getSelectionModel().getSelectedItem();
+      if (obj instanceof Teacher)
+      {
+        teacherList.deleteTeacher((Teacher)obj);
+        teachersBox.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+      }
+    }
+    //****************
   }
+
+
 
   private void changeScene(String target, ActionEvent event, Object list)
       throws IOException, NoSuchFieldException, IllegalAccessException, ClassNotFoundException
   {
+    /*
     if(target.equals("addUpdateSchedule.fxml"))
     {
       FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
@@ -175,12 +229,14 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     }
     else
     {
+    */
+
       FileAdapter fileHandler = new FileAdapter(null);
       fileHandler.temporaryWrite(list, "tempTeacher");
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);
       stage.show();
-    }
+    //}
   }
 }

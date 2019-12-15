@@ -22,6 +22,10 @@ public class FileAdapter
     {
       ioHandler.writeToFile(tempFileName, ((CoExaminerList) obj).getAllCoExaminers().toArray());
     }
+    else if(obj instanceof CourseList)
+    {
+      ioHandler.writeToFile(tempFileName, ((CourseList) obj).getAllCourses().toArray());
+    }
   }
 
   public Object[] temporaryRead(String tempFileName)
