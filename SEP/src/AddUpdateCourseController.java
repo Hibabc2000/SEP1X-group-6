@@ -184,7 +184,6 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
   int numberOfStudents = 0;
   int semesterNumber = 0;
 
-  private MyFileIO ioHandler;
 
 
 
@@ -192,14 +191,9 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
       throws IOException, ClassNotFoundException, NoSuchFieldException,
       IllegalAccessException
   {
-    FileAdapter fileHandler = new FileAdapter(null);
     courseList = new CourseList();
-    File f = new File("tempCourse");
-    if (!f.exists())
-    {
-      fileHandler.temporaryWrite(courseList,"tempCourse");
-    }
 
+    FileAdapter fileHandler = new FileAdapter(null);
     Object[] objs = fileHandler.temporaryRead("tempCourse");
     for (Object obj : objs)
     {

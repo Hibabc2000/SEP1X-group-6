@@ -1,3 +1,4 @@
+
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 public class Co_examiner_Controller implements EventHandler<ActionEvent>
 {
@@ -42,6 +44,15 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
 
   private boolean checkUpdate;
 
+  /**
+   *
+   * @throws IOException
+   * @throws ClassNotFoundException
+   * @throws NoSuchFieldException
+   * @throws IllegalAccessException
+   * method initialize the courseList object, creates an instance of file Adapter
+   * that is reading from the files and add all objects to the combobox
+   */
   public void initialize()
       throws IOException, ClassNotFoundException, NoSuchFieldException,
       IllegalAccessException
@@ -59,6 +70,11 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
 
   }
 
+  /**
+   *
+   * @param actionEvent action
+   * this method handles the scene switch
+   */
     @Override public void handle(ActionEvent actionEvent)
     {
       if (actionEvent.getSource() == homeButton)
@@ -147,6 +163,13 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
         }
       }
     }
+
+  /**
+   *
+   * @param e action event parameter
+   * @throws InterruptedException
+   * method handles the "Update" button in the GUI
+   */
   public void update(ActionEvent e) throws InterruptedException
   {
     if (e.getSource() == updateButton)
@@ -209,6 +232,12 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     }
   }
 
+  /**
+   *
+   * @param e action event parameter
+   * @throws InterruptedException
+   *  method handles the "Edit" button in the GUI
+   */
   public void edit(ActionEvent e) throws InterruptedException
   {
     if (e.getSource() == editButton)
@@ -231,6 +260,12 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     }
   }
 
+  /**
+   *
+   * @param e action event parameter
+   * @throws InterruptedException
+   *  method handles the "Delete" button in the GUI
+   */
   public void delete(ActionEvent e) throws InterruptedException
   {
 

@@ -35,12 +35,23 @@ public class Co_examiner extends Person implements Serializable
     this.external = external;
   }
 
+  /**
+   *
+   * @return name, id and internal/external boolean state
+   */
   @Override public String toString()
   {
     String ret = "Name: " + this.getName() + ", ID: " + this.getID() + ", Internal: ";
     ret += external;
     return ret;
   }
+
+  /**
+   *
+   * @param obj
+   * @return a boolean true if objects are equal or false if they are not
+   * Methods returns whether the objects are equal or not
+   */
   public boolean equals(Object obj){
     if(!(obj instanceof Co_examiner))
       return false;

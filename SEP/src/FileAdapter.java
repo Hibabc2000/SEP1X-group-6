@@ -12,6 +12,13 @@ public class FileAdapter
     ioHandler = new MyFileIO();
   }
 
+  /**
+   *
+   * @param obj
+   * @param tempFileName file name
+   * @throws IOException
+   * Use the MyFileIO class to save all lists object in their files
+   */
   public void temporaryWrite(Object obj, String tempFileName) throws IOException
   {
     if(obj instanceof TeacherList)
@@ -32,6 +39,13 @@ public class FileAdapter
     }
   }
 
+  /**
+   *
+   * @param tempFileName file name
+   * @return the objects that read from the file
+   * @throws IOException
+   * @throws ClassNotFoundException
+   */
   public Object[] temporaryRead(String tempFileName)
       throws IOException, ClassNotFoundException
   {
