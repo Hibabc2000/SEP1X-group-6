@@ -1,3 +1,4 @@
+import javafx.collections.FXCollections;
 import javafx.event
 
     .ActionEvent;
@@ -9,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
 
 public class AddUpdateCourseController implements EventHandler<ActionEvent>
@@ -132,6 +135,7 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
   private void changeScene(String target, ActionEvent event, Object list)
       throws IOException, NoSuchFieldException, IllegalAccessException
   {
+    /*
     if(target.equals("addUpdateSchedule.fxml"))
     {
       FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
@@ -144,13 +148,15 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
     }
     else
     {
+    */
+
       FileAdapter fileHandler = new FileAdapter(null);
-      fileHandler.temporaryWrite(list, "tempCourse");
+      fileHandler.temporaryWrite(courseList, "tempCourse");
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);
       stage.show();
-    }
+    //}
   }
 
   // Controller settings
@@ -178,9 +184,25 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
   int numberOfStudents = 0;
   int semesterNumber = 0;
 
+
+
+
   public void initialize()
+      throws IOException, ClassNotFoundException, NoSuchFieldException,
+      IllegalAccessException
   {
     courseList = new CourseList();
+
+    FileAdapter fileHandler = new FileAdapter(null);
+    Object[] objs = fileHandler.temporaryRead("tempCourse");
+    for (Object obj : objs)
+    {
+      System.out.println("a");
+      courseList.addCourse((Course) obj);
+    }
+    courses.setItems(FXCollections.observableArrayList(courseList.getAllCourses()));
+
+
   }
 
   public void update(ActionEvent e) throws InterruptedException
