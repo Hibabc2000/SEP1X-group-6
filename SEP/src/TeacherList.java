@@ -21,7 +21,7 @@ public class TeacherList implements Serializable
    */
   public ArrayList getAllTeachers()
   {
-    return new ArrayList<Teacher>(teachers);
+    return new ArrayList<>(teachers);
   }
 
   /**

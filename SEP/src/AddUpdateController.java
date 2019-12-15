@@ -46,6 +46,10 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   private ExamList examList;
 
   public void initialize()
+      //**************
+      throws IOException, ClassNotFoundException, NoSuchFieldException,
+      IllegalAccessException
+      //**************
   {
     exmtyp.getItems().addAll("Oral", "Written");
     for (int x0 = 0; x0 < 59; x0++)
@@ -58,6 +62,41 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       sMinute.getItems().add(x0);
       eMinute.getItems().add(x0);
     }
+    //*******************
+    teacherList = new TeacherList();
+    coExaminerList = new CoExaminerList();
+    roomList = new RoomList();
+    courseList = new CourseList();
+    examList = new ExamList();
+    FileAdapter fileHandler = new FileAdapter(null);
+    Object[] objs = fileHandler.temporaryRead("tempTeacher");
+    for (Object obj:objs)
+    {
+      teacherList.addTeacher((Teacher) obj);
+    }
+    for(Object t : teacherList.getAllTeachers())
+    {
+      System.out.println(t);
+    }
+    //tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+    transferMessage(teacherList, "teacherList", "tchr");
+    objs = fileHandler.temporaryRead("tempCoExaminer");
+    for (Object obj:objs)
+    {
+      if(obj instanceof Co_examiner)
+      {
+        coExaminerList.addCoExaminer(obj);
+      }
+    }
+    objs = fileHandler.temporaryRead("tempRoom");
+    for (Object obj:objs)
+    {
+      if(obj instanceof Room)
+      {
+        roomList.addRoom((Room) obj);
+      }
+    }
+    //*******************
   }
 
   public AddUpdateController()
