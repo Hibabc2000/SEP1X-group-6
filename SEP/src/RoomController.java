@@ -32,12 +32,15 @@ public class RoomController implements EventHandler<ActionEvent>
   @FXML private Button courseButton;
   @FXML private Button scheduleButton;
   @FXML private Button settingsButton;
+  private RoomList rlist;
   private Scene scene;
   private Stage stage;
 
   public RoomController()
   {
-    rooms = new ArrayList();
+    rlist = new RoomList();
+    rooms = new ArrayList<>();
+
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -46,9 +49,9 @@ public class RoomController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Home.fxml", actionEvent);
+        changeScene("home.fxml", actionEvent, rlist);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -59,9 +62,9 @@ public class RoomController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Rooms.fxml", actionEvent);
+        changeScene("Rooms.fxml", actionEvent, rlist);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -71,9 +74,9 @@ public class RoomController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Teacher.fxml", actionEvent);
+        changeScene("Teacher.fxml", actionEvent, rlist);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -83,9 +86,9 @@ public class RoomController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Co-examiner.fxml", actionEvent);
+        changeScene("Co-examiner.fxml", actionEvent, rlist);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -95,9 +98,9 @@ public class RoomController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("addUpdateCourse.fxml", actionEvent);
+        changeScene("addUpdateCourse.fxml", actionEvent, rlist);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -107,9 +110,9 @@ public class RoomController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("addUpdateSchedule.fxml", actionEvent);
+        changeScene("addUpdateSchedule.fxml", actionEvent, rlist);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -119,9 +122,9 @@ public class RoomController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Settings.fxml", actionEvent);
+        changeScene("Settings.fxml", actionEvent, rlist);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -129,12 +132,28 @@ public class RoomController implements EventHandler<ActionEvent>
     }
   }
 
-  private void changeScene(String target, ActionEvent event) throws IOException
+  private void changeScene(String target, ActionEvent event, Object list)
+      throws IOException, NoSuchFieldException, IllegalAccessException
   {
-    Parent parent = FXMLLoader.load(getClass().getResource(target));
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.getScene().setRoot(parent);
-    stage.show();
+    if(target.equals("addUpdateSchedule.fxml"))
+    {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
+      Parent parent = loader.load();
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      AddUpdateController control = loader.getController();
+      control.transferMessage(list, "roomList", "roomC");
+      stage.getScene().setRoot(parent);
+      stage.show();
+    }
+    else
+    {
+      FileAdapter fileHandler = new FileAdapter(null);
+      fileHandler.temporaryWrite(list, "tempRoom");
+      Parent parent = FXMLLoader.load(getClass().getResource(target));
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      stage.getScene().setRoot(parent);
+      stage.show();
+    }
   }
 
   /**
@@ -151,7 +170,7 @@ public class RoomController implements EventHandler<ActionEvent>
   @FXML private Button update;
   @FXML private ChoiceBox room;
   @FXML private ChoiceBox dota;
-  private ArrayList rooms;
+  private ArrayList<Room> rooms;
   @FXML private Label dotaError;
   @FXML private Label seatError;
   @FXML private Label numberError;
@@ -273,6 +292,10 @@ public class RoomController implements EventHandler<ActionEvent>
               if (choice1 == JOptionPane.YES_OPTION)
               {
                 rooms.set(p, temp);
+
+                if (rlist.getAllRooms().get(p).equals(temp))
+                {rlist.getAllRooms().remove(p);
+                  rlist.addRoom(temp);}
                 System.out.println(temp);
                 dota.setValue(null);
                 text1.setText("");
@@ -294,6 +317,7 @@ public class RoomController implements EventHandler<ActionEvent>
             if (choice2 == JOptionPane.YES_OPTION)
             {
               rooms.add(temp);
+              rlist.addRoom(temp);
               System.out.println(temp);
               dota.setValue(null);
               text1.setText("");
@@ -316,6 +340,7 @@ public class RoomController implements EventHandler<ActionEvent>
           if (choice == JOptionPane.YES_OPTION)
           {
             rooms.add(temp);
+            rlist.addRoom(temp);
             System.out.println(temp);
             dota.setValue(null);
             text1.setText("");
@@ -344,6 +369,7 @@ public class RoomController implements EventHandler<ActionEvent>
           if (choice == JOptionPane.YES_OPTION)
           {
             rooms.remove(i);
+            rlist.getAllRooms().remove(i);
             text1.setText("");
             text2.setText("");
 
@@ -368,6 +394,7 @@ public class RoomController implements EventHandler<ActionEvent>
           text1.setText(((Room) rooms.get(i)).getRoomNumber());
           text2.setText(
               Integer.toString(((Room) rooms.get(i)).getNumberOfSeats()));
+          text1.setEditable(false);
           if (((Room) rooms.get(i)).getProjector() == 0)
           {
             dota.setValue("none");

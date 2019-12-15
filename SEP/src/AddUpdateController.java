@@ -1,5 +1,4 @@
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AddUpdateController implements EventHandler<ActionEvent>
 {
@@ -29,39 +29,60 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   @FXML private ComboBox crs;
   @FXML private ComboBox roomC;
   @FXML private ComboBox tchr;
-  @FXML private ComboBox cexmnr;
+  @FXML private ComboBox<Co_examiner> cexmnr;
   @FXML private DatePicker dateBox;
   @FXML private TextArea alertBox;
   @FXML private ComboBox exmBox;
   private Scene scene;
   private Stage stage;
   private TeacherList teacherList;
+  private CoExaminerList coExaminerList;
+  private RoomList roomList;
+  private CourseList courseList;
+  private ExamList examList;
 
-  public AddUpdateController()
+
+  public void initialize()
   {
-    /*
-    exmtyp.getItems().add("Oral");
-    exmtyp.getItems().add("Written");
-
-    ArrayList<Room> tmp = RoomList.getAllRooms();
-    for(int x0 = 0; x0 < tmp.size(); x0++)
+    exmtyp.getItems().addAll("oral","Written");
+  }
+  public AddUpdateController()
+      throws IOException, ClassNotFoundException, NoSuchFieldException,
+      IllegalAccessException
+  {
+    teacherList = new TeacherList();
+    coExaminerList = new CoExaminerList();
+    roomList = new RoomList();
+    courseList = new CourseList();
+    examList = new ExamList();
+    FileAdapter fileHandler = new FileAdapter(null);
+    Object[] objs = fileHandler.temporaryRead("tempTeacher");
+    for (Object obj:objs)
     {
-      roomC.getItems().add(tmp.get(x0).getRoomNumber());
+      teacherList.addTeacher((Teacher) obj);
     }
-
-
-    for(int x0 = 0; x0 < CourseList.getAllCourses().size(); x0++)
+    for(Object t : teacherList.getAllTeachers())
     {
-      crs.getItems().add(CourseList.getAllCourses().get(x0).getCourseName());
+      System.out.println(t);
     }
-
-    dateBox = new DatePicker();
-
-    tchr.setItems(FXCollections.observableArrayList(Teacher_Controller.get()));
-
-    cexmnr.setItems(FXCollections.observableArrayList(CoExaminerList.getAllCoExaminers()));
-
-    exmBox.setItems(FXCollections.observableArrayList(ExamList.getAllExams()));*/
+    //tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+    transferMessage(teacherList, "teacherList", "tchr");
+    objs = fileHandler.temporaryRead("tempCoExaminer");
+    for (Object obj:objs)
+    {
+      if(obj instanceof Co_examiner)
+      {
+        coExaminerList.addCoExaminer(obj);
+      }
+    }
+    objs = fileHandler.temporaryRead("tempRoom");
+    for (Object obj:objs)
+    {
+      if(obj instanceof Room)
+      {
+        roomList.addRoom((Room) obj);
+      }
+    }
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -79,32 +100,26 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
     }
 
-
-
-
     if (actionEvent.getSource() == homeButton)
     {
       try
       {
-        changeScene("Home.fxml", actionEvent);
+        changeScene("home.fxml", actionEvent, null);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
       }
-      Alert alert = new Alert(Alert.AlertType.INFORMATION,
-          "Successful load on Home!");
-      alert.showAndWait();
     }
 
     if (actionEvent.getSource().equals(roomButton))
     {
       try
       {
-        changeScene("Rooms.fxml", actionEvent);
+        changeScene("Rooms.fxml", actionEvent, null);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -114,9 +129,9 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Teacher.fxml", actionEvent);
+        changeScene("Teacher.fxml", actionEvent, null);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -126,9 +141,9 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Co-examiner.fxml", actionEvent);
+        changeScene("Co-examiner.fxml", actionEvent, null);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -138,9 +153,9 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Course.fxml", actionEvent);
+        changeScene("addUpdateCourse.fxml", actionEvent, null);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -150,9 +165,9 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("addUpdateSchedule.fxml", actionEvent);
+        changeScene("addUpdateSchedule.fxml", actionEvent, null);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -162,9 +177,9 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Settings.fxml", actionEvent);
+        changeScene("Settings.fxml", actionEvent, null);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -172,22 +187,63 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     }
   }
 
-  private void changeScene(String target, ActionEvent event) throws IOException
+  private void changeScene(String target, ActionEvent event, TeacherList list)
+      throws IOException, NoSuchFieldException, IllegalAccessException
   {
-    Parent parent = FXMLLoader.load(getClass().getResource(target));
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.getScene().setRoot(parent);
-    stage.show();
+    if(target.equals("addUpdateSchedule.fxml"))
+    {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
+      Parent parent = loader.load();
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      AddUpdateController control = loader.getController();
+      control.transferMessage(list, "teacherList", "tchr");
+      stage.getScene().setRoot(parent);
+      stage.show();
+    }
+    else
+    {
+      FileAdapter fileHandler = new FileAdapter(null);
+      fileHandler.temporaryWrite(list, "tempExams");
+      Parent parent = FXMLLoader.load(getClass().getResource(target));
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      stage.getScene().setRoot(parent);
+      stage.show();
+    }
   }
 
-  public void transferMessage(Object message)
+  /**
+   * This method transfers an object to AddUpdateController, and loads it into its relevant ComboBox
+   * @param message - the object we want to pass as a message
+   * @param name - the name of the field in AddUpdateController
+   * @param target - the name of the ComboBox we want to set
+   * @throws NoSuchFieldException - method throws this exception if the target field does not exist.
+   * @throws IllegalAccessException - method throws this exception if it does not have access to the target variable
+   */
+  public void transferMessage(Object message, String name, String target)
+      throws NoSuchFieldException, IllegalAccessException
   {
-    assert message != null;
-    System.out.println("Message received.");
+    getClass().getDeclaredField(name).set(this, message);
     System.out.println(message);
-    teacherList = (TeacherList) message;
-    tchr.setItems(FXCollections.observableArrayList(teacherList));
+    if (target.equals("tchr"))
+    {
+      if(tchr != null)
+      {
+        tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+      }
+      else System.out.println("TCHR is null");
+    }
+    if(target.equals("cexmnr"))
+    {
+      cexmnr.setItems(FXCollections.observableArrayList(coExaminerList.getAllCoExaminers()));
+    }
+
+ if(target.equals("crs")){
+      crs.setItems(FXCollections.observableArrayList(courseList.getAllCourses()));
+    }
+ else System.out.println("CRS is null");
+    }
   }
-}
+
+
 
 

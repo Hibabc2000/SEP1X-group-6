@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 //the class is temporary
-public class ExamList
+public class ExamList implements Serializable
 {
   private static ArrayList<Exam> exams;
   public ExamList()

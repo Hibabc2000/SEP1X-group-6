@@ -7,6 +7,8 @@ import java.io.IOException;
 
 public class Test extends Application
 {
+
+
   public void start(Stage window) throws IOException
   {
     FXMLLoader loader = new FXMLLoader();

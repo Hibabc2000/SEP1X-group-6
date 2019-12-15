@@ -37,7 +37,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   @FXML private ComboBox teachersBox;
   private Scene scene;
   private Stage stage;
-  private static TeacherList list;
+  private TeacherList list;
 
   public Teacher_Controller()
   {
@@ -46,13 +46,13 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
 
   @Override public void handle(ActionEvent actionEvent)
   {
-    /*if (actionEvent.getSource() == homeButton)
+    if (actionEvent.getSource() == homeButton)
     {
       try
       {
-        changeScene("Home.fxml", actionEvent);
+        changeScene("home.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -63,9 +63,9 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Rooms.fxml", actionEvent);
+        changeScene("Rooms.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -75,9 +75,9 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Teacher.fxml", actionEvent);
+        changeScene("Teacher.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -87,9 +87,9 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Co-examiner.fxml", actionEvent);
+        changeScene("Co-examiner.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -99,46 +99,46 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("addUpdateCourse.fxml", actionEvent);
+        changeScene("addUpdateCourse.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
       }
-    }*/
+    }
     if (actionEvent.getSource().equals(scheduleButton))
     {
       try
       {
         changeScene("addUpdateSchedule.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
       }
     }
-    /*if (actionEvent.getSource().equals(settingsButton))
+    if (actionEvent.getSource().equals(settingsButton))
     {
       try
       {
-        changeScene("Settings.fxml", actionEvent);
+        changeScene("Settings.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException e)
       {
         e.printStackTrace();
         System.exit(1);
       }
-    }*/
+    }
 
     if(actionEvent.getSource() == updateButton)
     {
       String name = nameField.getText();
       String id = idField.getText();
       Teacher t = new Teacher(id, name);
-      TeacherList.addTeacher(t);
-      teachersBox.setItems(FXCollections.observableArrayList(TeacherList.getAllTeachers()));
+      list.addTeacher(t);
+      teachersBox.setItems(FXCollections.observableArrayList(list.getAllTeachers()));
     }
     if(actionEvent.getSource() == editButton)
     {
@@ -154,21 +154,33 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       Object obj = teachersBox.getSelectionModel().getSelectedItem();
       if (obj instanceof Teacher)
       {
-        TeacherList.deleteTeacher((Teacher) obj);
-        teachersBox.setItems(FXCollections.observableArrayList(TeacherList.getAllTeachers()));
+        list.deleteTeacher((Teacher) obj);
+        teachersBox.setItems(FXCollections.observableArrayList(list.getAllTeachers()));
       }
     }
   }
 
-  private void changeScene(String target, ActionEvent event, TeacherList list) throws IOException
+  private void changeScene(String target, ActionEvent event, Object list)
+      throws IOException, NoSuchFieldException, IllegalAccessException, ClassNotFoundException
   {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
-    Parent parent = loader.load();
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    AddUpdateController control = loader.getController();
-    control.transferMessage(list);
-    stage.getScene().setRoot(parent);
-    stage.show();
+    if(target.equals("addUpdateSchedule.fxml"))
+    {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
+      Parent parent = loader.load();
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      AddUpdateController control = loader.getController();
+      control.transferMessage(list, "teacherList", "tchr");
+      stage.getScene().setRoot(parent);
+      stage.show();
+    }
+    else
+    {
+      FileAdapter fileHandler = new FileAdapter(null);
+      fileHandler.temporaryWrite(list, "tempTeacher");
+      Parent parent = FXMLLoader.load(getClass().getResource(target));
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      stage.getScene().setRoot(parent);
+      stage.show();
+    }
   }
-
 }

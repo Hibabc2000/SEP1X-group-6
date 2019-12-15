@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Exam
+public class Exam implements Serializable
 {
   private String examType;
   private Room room;

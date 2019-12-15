@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -27,13 +28,13 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
   @FXML private TextField idField;
   @FXML private CheckBox internalBox;
   @FXML private ComboBox<Co_examiner> coExaminersBox;
-  private ArrayList<Co_examiner> list;
+  private CoExaminerList list;
   private Scene scene;
   private Stage stage;
 
   public Co_examiner_Controller()
   {
-    list = new ArrayList<Co_examiner>();
+    list = new CoExaminerList();
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -42,9 +43,9 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Home.fxml", actionEvent);
+        changeScene("Home.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -55,9 +56,9 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Rooms.fxml", actionEvent);
+        changeScene("Rooms.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -67,9 +68,9 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Teacher.fxml", actionEvent);
+        changeScene("Teacher.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -79,9 +80,9 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Co-examiner.fxml", actionEvent);
+        changeScene("Co-examiner.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -91,9 +92,9 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("addUpdateCourse.fxml", actionEvent);
+        changeScene("addUpdateCourse.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -103,9 +104,9 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("addUpdateSchedule.fxml", actionEvent);
+        changeScene("addUpdateSchedule.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -115,64 +116,76 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Settings.fxml", actionEvent);
+        changeScene("Settings.fxml", actionEvent, list);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
       }
     }
-
-
-    if(actionEvent.getSource() == updateButton)
+    if (actionEvent.getSource() == updateButton)
     {
       String name = nameField.getText();
       String id = idField.getText();
       boolean external = false;
-      if(internalBox.isSelected())
+      if (internalBox.isSelected())
       {
         external = true;
       }
       Co_examiner t = new Co_examiner(id, name, external);
-      list.add(t);
+      list.addCoExaminer(t);
       System.out.println(t.getName() + "  " + t.getID());
-      coExaminersBox.setItems(FXCollections.observableArrayList(list));
+      coExaminersBox.setItems(
+          FXCollections.observableArrayList(list.getAllCoExaminers()));
     }
-    if(actionEvent.getSource() == editButton)
+    if (actionEvent.getSource() == editButton)
     {
-      Object obj = coExaminersBox.getSelectionModel().getSelectedItem();
-      if (obj instanceof Co_examiner)
+      Co_examiner obj = coExaminersBox.getSelectionModel().getSelectedItem();
+      nameField.setText(obj.getName());
+      idField.setText(obj.getID());
+      if (obj.isExternal())
       {
-        nameField.setText(((Co_examiner) obj).getName());
-        idField.setText(((Co_examiner) obj).getID());
-        if(((Co_examiner) obj).isExternal())
-        {
-          internalBox.setSelected(true);
-        }
-        else
-        {
-          internalBox.setSelected(false);
-        }
+        internalBox.setSelected(true);
+      }
+      else
+      {
+        internalBox.setSelected(false);
       }
     }
-    if(actionEvent.getSource() == deleteButton)
+    if (actionEvent.getSource() == deleteButton)
     {
-      Object obj = coExaminersBox.getSelectionModel().getSelectedItem();
-      if (obj instanceof Co_examiner)
+      Co_examiner obj = coExaminersBox.getSelectionModel().getSelectedItem();
+      if (obj != null)
       {
-        list.remove(obj);
-        coExaminersBox.setItems(FXCollections.observableArrayList(list));
+        list.deleteCoExaminer(obj);
+        coExaminersBox.setItems(FXCollections.observableArrayList(list.getAllCoExaminers()));
       }
     }
   }
 
-  private void changeScene(String target, ActionEvent event) throws IOException
+  private void changeScene(String target, ActionEvent event, Object list)
+      throws IOException, NoSuchFieldException, IllegalAccessException
   {
-    Parent parent = FXMLLoader.load(getClass().getResource(target));
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.getScene().setRoot(parent);
-    stage.show();
+    if(target.equals("addUpdateSchedule.fxml"))
+    {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
+      Parent parent = loader.load();
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      AddUpdateController control = loader.getController();
+      control.transferMessage(list, "coExaminerList", "cexmnr");
+      stage.getScene().setRoot(parent);
+      stage.show();
+    }
+    else
+    {
+      FileAdapter fileHandler = new FileAdapter(null);
+      fileHandler.temporaryWrite(list, "tempCoExaminer");
+      Parent parent = FXMLLoader.load(getClass().getResource(target));
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      stage.getScene().setRoot(parent);
+      stage.show();
+    }
   }
 }
 
