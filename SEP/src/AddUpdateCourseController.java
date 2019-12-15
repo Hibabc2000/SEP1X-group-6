@@ -37,11 +37,10 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
   private Scene scene;
   private Stage stage;
 
-  public AddUpdateCourseController()
-  {
-    list = new CourseList();
-  }
-
+  /**
+   * @param actionEvent action
+   * this method handles the scene switch
+   */
   @Override public void handle(ActionEvent actionEvent)
   {
     if (actionEvent.getSource() == homeButton)
@@ -131,7 +130,6 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
     }
   }
 
-
   private void changeScene(String target, ActionEvent event, Object list)
       throws IOException, NoSuchFieldException, IllegalAccessException
   {
@@ -184,9 +182,15 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
   int numberOfStudents = 0;
   int semesterNumber = 0;
 
-
-
-
+  /**
+   *
+   * @throws IOException
+   * @throws ClassNotFoundException
+   * @throws NoSuchFieldException
+   * @throws IllegalAccessException
+   * method initialize the courseList object, creates an instance of file Adapter
+   * that is reading from the files and add all objects to the combobox
+   */
   public void initialize()
       throws IOException, ClassNotFoundException, NoSuchFieldException,
       IllegalAccessException
@@ -205,6 +209,12 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
 
   }
 
+  /**
+   *
+   * @param e action event parameter
+   * @throws InterruptedException
+   * method handles the "Update" button in the GUI
+   */
   public void update(ActionEvent e) throws InterruptedException
   {
     if (e.getSource() == update)
@@ -317,6 +327,12 @@ name.setText("");
     }
   }
 
+  /**
+   *
+   * @param e action event parameter
+   * @throws InterruptedException
+   * method handles the "Edit" button in the GUI
+   */
   public void edit(ActionEvent e) throws InterruptedException
   {
     if (e.getSource() == edit)
@@ -333,6 +349,12 @@ name.setText("");
     }
   }
 
+  /**
+   *
+   * @param e action event parameter
+   * @throws InterruptedException
+   * method handles the "Delete" button in the GUI
+   */
   public void delete(ActionEvent e) throws InterruptedException
   {
     if (e.getSource() == delete)

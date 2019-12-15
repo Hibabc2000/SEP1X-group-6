@@ -103,6 +103,11 @@ public class RoomList implements Serializable
     }
     return tmp;
   }
+
+  /**
+   * @param room
+   * add a new room object to the roomList
+   */
   //this is a dark territory, enter with caution
   public void addRoom(Room room)
   {

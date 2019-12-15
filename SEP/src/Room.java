@@ -12,6 +12,7 @@ public class Room implements Serializable
   private byte projector;
   /**
    * no argument constructor
+   * initializing projector state, number of seats and room number
    */
   public Room()
   {

@@ -50,11 +50,21 @@ public class TeacherList implements Serializable
     return true;
   }
 
+  /**
+   *
+   * @param t teacher object
+   * add a new teacher to the Teacher list
+   */
   public void addTeacher(Teacher t)
   {
     teachers.add(t);
   }
 
+  /**
+   *
+   * @param t teacher object
+   * delete the teacher object from the Teacher list
+   */
   public void deleteTeacher(Teacher t)
   {
     int index = 0;

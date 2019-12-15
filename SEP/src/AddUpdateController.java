@@ -225,7 +225,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
 
       }
-*/
+
     }
     if (actionEvent.getSource() == deleteB)
     {
