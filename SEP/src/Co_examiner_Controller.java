@@ -27,143 +27,223 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
   @FXML private TextField nameField;
   @FXML private TextField idField;
   @FXML private CheckBox internalBox;
-  @FXML private ComboBox<Co_examiner> coExaminersBox;
-  private CoExaminerList list;
+  @FXML private ComboBox coExaminersBox;
+
   private Scene scene;
   private Stage stage;
 
-  public Co_examiner_Controller()
+  private CoExaminerList list;
+  @FXML private Label nameFieldError;
+  @FXML private Label idFieldError;
+  private String nameCoExm = null;
+  private String idCoExm = null;
+  private Co_examiner buffer;
+ private boolean external = false;
+
+  private boolean checkUpdate;
+
+  public void initialize()
+      throws IOException, ClassNotFoundException, NoSuchFieldException,
+      IllegalAccessException
   {
     list = new CoExaminerList();
+
+    FileAdapter fileHandler = new FileAdapter(null);
+    Object[] objs = fileHandler.temporaryRead("tempCoExaminer");
+    for (Object obj : objs)
+    {
+      System.out.println("a");
+      list.addCoExaminer((Co_examiner) obj);
+    }
+    coExaminersBox.setItems(FXCollections.observableArrayList(list.getAllCoExaminers()));
+
   }
 
-  @Override public void handle(ActionEvent actionEvent)
-  {
-    if (actionEvent.getSource() == homeButton)
+    @Override public void handle(ActionEvent actionEvent)
     {
-      try
+      if (actionEvent.getSource() == homeButton)
       {
-        changeScene("Home.fxml", actionEvent, list);
+        try
+        {
+          changeScene("Home.fxml", actionEvent, list);
+        }
+        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        {
+          e.printStackTrace();
+          System.exit(1);
+        }
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
-      {
-        e.printStackTrace();
-        System.exit(1);
-      }
-    }
 
-    if (actionEvent.getSource().equals(roomButton))
-    {
-      try
+      if (actionEvent.getSource().equals(roomButton))
       {
-        changeScene("Rooms.fxml", actionEvent, list);
+        try
+        {
+          changeScene("Rooms.fxml", actionEvent, list);
+        }
+        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        {
+          e.printStackTrace();
+          System.exit(1);
+        }
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      if (actionEvent.getSource().equals(teacherButton))
       {
-        e.printStackTrace();
-        System.exit(1);
+        try
+        {
+          changeScene("Teacher.fxml", actionEvent, list);
+        }
+        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        {
+          e.printStackTrace();
+          System.exit(1);
+        }
+      }
+      if (actionEvent.getSource().equals(coExaminerButton))
+      {
+        try
+        {
+          changeScene("Co-examiner.fxml", actionEvent, list);
+        }
+        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        {
+          e.printStackTrace();
+          System.exit(1);
+        }
+      }
+      if (actionEvent.getSource().equals(courseButton))
+      {
+        try
+        {
+          changeScene("addUpdateCourse.fxml", actionEvent, list);
+        }
+        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        {
+          e.printStackTrace();
+          System.exit(1);
+        }
+      }
+      if (actionEvent.getSource().equals(scheduleButton))
+      {
+        try
+        {
+          changeScene("addUpdateSchedule.fxml", actionEvent, list);
+        }
+        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        {
+          e.printStackTrace();
+          System.exit(1);
+        }
+      }
+      if (actionEvent.getSource().equals(settingsButton))
+      {
+        try
+        {
+          changeScene("Settings.fxml", actionEvent, list);
+        }
+        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        {
+          e.printStackTrace();
+          System.exit(1);
+        }
       }
     }
-    if (actionEvent.getSource().equals(teacherButton))
+  public void update(ActionEvent e) throws InterruptedException
+  {
+    if (e.getSource() == updateButton)
     {
-      try
+      //      Name Field Checks
+      if (nameField.getText().length() == 0)
       {
-        changeScene("Teacher.fxml", actionEvent, list);
+        nameFieldError.setText("Enter the Name");
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      else
       {
-        e.printStackTrace();
-        System.exit(1);
+        nameFieldError.setText("");
+        nameCoExm = nameField.getText();
       }
-    }
-    if (actionEvent.getSource().equals(coExaminerButton))
-    {
-      try
+      //      Group Name Checks
+      if (idField.getText().length() == 0)
       {
-        changeScene("Co-examiner.fxml", actionEvent, list);
+        idFieldError.setText("Enter the ID");
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      else
       {
-        e.printStackTrace();
-        System.exit(1);
+        idFieldError.setText("");
+        idCoExm = idField.getText();
       }
-    }
-    if (actionEvent.getSource().equals(courseButton))
-    {
-      try
-      {
-        changeScene("addUpdateCourse.fxml", actionEvent, list);
-      }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
-      {
-        e.printStackTrace();
-        System.exit(1);
-      }
-    }
-    if (actionEvent.getSource().equals(scheduleButton))
-    {
-      try
-      {
-        changeScene("addUpdateSchedule.fxml", actionEvent, list);
-      }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
-      {
-        e.printStackTrace();
-        System.exit(1);
-      }
-    }
-    if (actionEvent.getSource().equals(settingsButton))
-    {
-      try
-      {
-        changeScene("Settings.fxml", actionEvent, list);
-      }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
-      {
-        e.printStackTrace();
-        System.exit(1);
-      }
-    }
-    if (actionEvent.getSource() == updateButton)
-    {
-      String name = nameField.getText();
-      String id = idField.getText();
-      boolean external = false;
+
       if (internalBox.isSelected())
       {
         external = true;
       }
-      Co_examiner t = new Co_examiner(id, name, external);
-      list.addCoExaminer(t);
-      System.out.println(t.getName() + "  " + t.getID());
-      coExaminersBox.setItems(
-          FXCollections.observableArrayList(list.getAllCoExaminers()));
-    }
-    if (actionEvent.getSource() == editButton)
-    {
-      Co_examiner obj = coExaminersBox.getSelectionModel().getSelectedItem();
-      nameField.setText(obj.getName());
-      idField.setText(obj.getID());
-      if (obj.isExternal())
+      if (nameFieldError.getText().length() == 0
+          && idFieldError.getText().length() == 0)
       {
-        internalBox.setSelected(true);
+        //  Creating the Co-Examiner object
+        buffer = new Co_examiner(idCoExm,nameCoExm, external);
       }
-      else
+      //      Adding the object to Co-Exm list
+      list.addCoExaminer(buffer);
+
+      //      Add items to combobox
+      //     Duplicate checker
+      if (checkUpdate)
       {
-        internalBox.setSelected(false);
+        Object obj = coExaminersBox.getSelectionModel().getSelectedItem();
+        if (obj instanceof Co_examiner)
+        {
+          coExaminersBox.getItems().removeAll(obj);
+        }
+        checkUpdate = false;
       }
-    }
-    if (actionEvent.getSource() == deleteButton)
-    {
-      Co_examiner obj = coExaminersBox.getSelectionModel().getSelectedItem();
-      if (obj != null)
+      if (!(coExaminersBox.getItems().contains(buffer)))
       {
-        list.deleteCoExaminer(obj);
-        coExaminersBox.setItems(FXCollections.observableArrayList(list.getAllCoExaminers()));
+        coExaminersBox.getItems().add(buffer);
+        coExaminersBox.getSelectionModel()
+            .select(coExaminersBox.getItems().size() - 1);
+      }
+      //      Set up empty text fields
+      nameField.setText("");
+      idField.setText("");
+
+    }
+  }
+
+  public void edit(ActionEvent e) throws InterruptedException
+  {
+    if (e.getSource() == editButton)
+    {
+      Object obj = coExaminersBox.getSelectionModel().getSelectedItem();
+      if (obj instanceof Co_examiner)
+      {
+        nameField.setText(((Co_examiner) obj).getName());
+        idField.setText(((Co_examiner) obj).getID());
+        checkUpdate = true;
+        if (((Co_examiner) obj).isExternal())
+        {
+          internalBox.setSelected(true);
+        }
+        else
+        {
+          internalBox.setSelected(false);
+        }
       }
     }
   }
 
+  public void delete(ActionEvent e) throws InterruptedException
+  {
+
+    if (e.getSource() == deleteButton)
+    {
+      Object obj = coExaminersBox.getSelectionModel().getSelectedItem();
+      if (obj instanceof Co_examiner)
+      {
+        coExaminersBox.getItems().removeAll(obj);
+      }
+
+    }
+  }
   private void changeScene(String target, ActionEvent event, Object list)
       throws IOException, NoSuchFieldException, IllegalAccessException
   {

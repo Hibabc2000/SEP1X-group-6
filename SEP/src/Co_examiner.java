@@ -41,4 +41,10 @@ public class Co_examiner extends Person implements Serializable
     ret += external;
     return ret;
   }
+  public boolean equals(Object obj){
+    if(!(obj instanceof Co_examiner))
+      return false;
+    Co_examiner other=(Co_examiner)obj;
+    return super.equals(other)&&external==other.external;
+  }
 }
