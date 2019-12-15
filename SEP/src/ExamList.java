@@ -12,7 +12,7 @@ public class ExamList implements Serializable
   {
     exams.add(exam);
   }
-  public static ArrayList<Exam> getAllExams()
+  public ArrayList<Exam> getAllExams()
   {
     if (exams != null)
     {
@@ -20,4 +20,14 @@ public class ExamList implements Serializable
     }
     return new ArrayList<>();
   }
+  public void deleteExam(int index)
+  {
+    exams.remove(index);
+  }
+  public void addExamAtIndex(int index, Exam exam)
+  {
+    exams.add(index,exam);
+  }
+
+
 }
