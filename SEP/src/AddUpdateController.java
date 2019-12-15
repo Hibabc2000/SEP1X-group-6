@@ -41,6 +41,11 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   private CourseList courseList;
   private ExamList examList;
 
+
+  public void initialize()
+  {
+    exmtyp.getItems().addAll("oral","Written");
+  }
   public AddUpdateController()
       throws IOException, ClassNotFoundException, NoSuchFieldException,
       IllegalAccessException

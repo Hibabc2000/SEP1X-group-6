@@ -77,32 +77,33 @@
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="104.60003662109375" minWidth="10.0" prefWidth="97.00001220703125" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.20002441406251" minWidth="10.0" prefWidth="87.79998779296875" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.4000244140625" minWidth="10.0" prefWidth="75.00001220703123" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.4000244140625" minWidth="10.0" prefWidth="43.80000000000001" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.5999755859375" minWidth="10.0" prefWidth="76.39998779296872" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.4000244140625" minWidth="10.0" prefWidth="75.60001220703123" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.8" minWidth="10.0" prefWidth="95.00002441406252" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.79999999999995" minWidth="10.0" prefWidth="51.80002441406259" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.00003662109376" minWidth="10.0" prefWidth="98.4" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.40001220703127" minWidth="10.0" prefWidth="98.4" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.19998779296878" minWidth="10.0" prefWidth="17.600000000000023" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.5999755859375" minWidth="10.0" prefWidth="40.20004882812498" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.4000244140625" minWidth="10.0" prefWidth="76.199951171875" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.8" minWidth="10.0" prefWidth="124.60004882812495" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.79999999999995" minWidth="10.0" prefWidth="35.199951171875" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.39999999999998" minWidth="0.0" prefWidth="0.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.199951171875" minWidth="0.0" prefWidth="0.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="26.59999885559082" minHeight="10.0" prefHeight="16.999992752075194" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="45.8000072479248" minHeight="7.800000000000004" prefHeight="33.99998168945312" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="51.39998474121094" minHeight="10.0" prefHeight="26.400018310546876" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="83.19999999999999" minHeight="10.0" prefHeight="36.40001831054688" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="51.39998474121094" minHeight="10.0" prefHeight="16.800006103515628" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="83.19999999999999" minHeight="10.0" prefHeight="39.19999389648437" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="61.59998931884766" minHeight="10.0" prefHeight="45.599999999999994" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="46.400000000000006" minHeight="10.0" prefHeight="46.400000000000006" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="37.59995117187498" minHeight="10.0" prefHeight="37.59995117187498" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="49.79998779296875" minHeight="10.0" prefHeight="42.60003662109375" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="45.60001220703123" minHeight="10.0" prefHeight="22.800012207031273" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="70.20003662109377" minHeight="0.0" prefHeight="8.600024414062489" vgrow="SOMETIMES" />
-          <RowConstraints fillHeight="false" maxHeight="75.1999633789062" minHeight="10.0" prefHeight="45.199987792968784" vgrow="ALWAYS" />
-            <RowConstraints fillHeight="false" maxHeight="91.60001220703123" minHeight="10.0" prefHeight="91.60001220703123" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="68.8000244140625" minHeight="10.0" prefHeight="34.00001220703126" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.60002441406249" minHeight="10.0" prefHeight="33.199987792968756" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="83.39996337890625" minHeight="10.0" prefHeight="37.79998779296875" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="74.19999999999999" minHeight="10.0" prefHeight="38.79998779296875" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="69.59995117187498" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="59.79996337890623" minHeight="10.0" prefHeight="17.200036621093773" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="70.20003662109377" minHeight="0.0" prefHeight="11.599963378906239" vgrow="SOMETIMES" />
+          <RowConstraints fillHeight="false" maxHeight="79.60000000000002" minHeight="10.0" prefHeight="35.80000000000001" vgrow="ALWAYS" />
+            <RowConstraints fillHeight="false" maxHeight="91.60001220703123" minHeight="10.0" prefHeight="55.799999999999955" vgrow="ALWAYS" />
           <RowConstraints maxHeight="33.39999999999998" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -111,41 +112,56 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Line endX="156.8928680419922" endY="-0.43447360396385193" startX="-100.0" stroke="SILVER" GridPane.rowIndex="2" />
+            <Line endX="193.69288635253906" endY="0.06894681602716446" startX="-100.0" stroke="SILVER" GridPane.rowIndex="2" />
             <Label styleClass="fText" text="Exam Type:" GridPane.rowIndex="3" />
             <Label styleClass="fText" text="Course:" GridPane.rowIndex="4" />
             <Label styleClass="fText" text="Room:" GridPane.rowIndex="5" />
-            <Label styleClass="fText" text="Start/End:" GridPane.rowIndex="7" />
-            <Label styleClass="fText" text="Teacher:" GridPane.rowIndex="8" />
-            <Label prefHeight="18.0" prefWidth="86.0" styleClass="fText" text="Co-examiner:" GridPane.rowIndex="9" />
-            <ComboBox fx:id="exmtyp" prefHeight="26.0" prefWidth="182.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-            <ComboBox fx:id="crs" prefHeight="26.0" prefWidth="174.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
-            <ComboBox fx:id="roomC" prefHeight="26.0" prefWidth="168.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <Label styleClass="fText" text="Start:" GridPane.rowIndex="7" />
+            <Label styleClass="fText" text="Teacher:" GridPane.rowIndex="9" />
+            <Label prefHeight="18.0" prefWidth="86.0" styleClass="fText" text="Co-examiner:" GridPane.rowIndex="10" />
+            <ComboBox fx:id="exmtyp" prefHeight="27.0" prefWidth="213.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+            <ComboBox fx:id="crs" prefHeight="27.0" prefWidth="214.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+            <ComboBox fx:id="roomC" prefHeight="27.0" prefWidth="196.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
             <Label styleClass="fText" text="OurDate:" GridPane.rowIndex="6" />
-            <DatePicker fx:id="dateBox" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-            <ComboBox fx:id="tchr" prefHeight="26.0" prefWidth="173.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
-            <ComboBox fx:id="cexmnr" prefHeight="22.0" prefWidth="162.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <Button fx:id="updateB" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="274.0" styleClass="impB" text="Update" GridPane.columnSpan="3" GridPane.rowIndex="10" />
-            <Label prefHeight="18.0" prefWidth="66.0" styleClass="tText" text="Add/Edit" GridPane.columnIndex="1" GridPane.rowIndex="11">
+            <DatePicker fx:id="dateBox" prefHeight="27.0" prefWidth="206.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+            <ComboBox fx:id="tchr" prefHeight="27.0" prefWidth="221.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+            <ComboBox fx:id="cexmnr" prefHeight="27.0" prefWidth="210.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+            <Button fx:id="updateB" mnemonicParsing="false" onAction="#handle" prefHeight="27.0" prefWidth="294.0" styleClass="impB" text="Update" GridPane.columnSpan="3" GridPane.rowIndex="11" />
+            <Label prefHeight="30.0" prefWidth="87.0" styleClass="tText" text="Add/Edit" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12">
                <font>
-                  <Font size="14.0" />
+                  <Font size="20.0" />
                </font>
+               <GridPane.margin>
+                  <Insets left="15.0" />
+               </GridPane.margin>
             </Label>
-            <Line endX="157.6929168701172" endY="-0.799595832824707" startX="-100.0" stroke="SILVER" GridPane.rowIndex="12" />
-            <Button fx:id="editB" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="78.0" styleClass="actnB" text="Edit" GridPane.rowIndex="14" />
-            <Button fx:id="deleteB" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="77.0" styleClass="actnB" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="14" />
-            <TextArea fx:id="alertBox" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="3" GridPane.rowSpan="10" />
+            <Line endX="192.8928985595703" endY="-0.01068581361323595" startX="-100.0" stroke="SILVER" GridPane.rowIndex="13" />
+            <Button fx:id="editB" mnemonicParsing="false" onAction="#handle" prefHeight="27.0" prefWidth="98.0" styleClass="actnB" text="Edit" GridPane.rowIndex="15">
+               <GridPane.margin>
+                  <Insets bottom="20.0" />
+               </GridPane.margin></Button>
+            <TextArea fx:id="alertBox" editable="false" prefHeight="370.0" prefWidth="246.0" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="3" GridPane.rowSpan="10" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="34.0" stroke="#8c8c8c" strokeType="INSIDE" width="243.0" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="2" />
             <Label prefHeight="26.0" prefWidth="98.0" text="Alert Box" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <font>
                   <Font size="17.0" />
                </font></Label>
-            <ImageView fitHeight="24.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="10">
+            <ImageView fitHeight="24.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="11">
                <image>
                   <Image url="@../../../../Desktop/checktst.png" />
                </image>
             </ImageView>
-            <ComboBox fx:id="exmBox" prefHeight="26.0" prefWidth="274.0" styleClass="dDown" GridPane.columnSpan="3" GridPane.rowIndex="13" />
+            <ComboBox fx:id="exmBox" prefHeight="27.0" prefWidth="296.0" styleClass="dDown" GridPane.columnSpan="3" GridPane.rowIndex="14" />
+            <Label styleClass="fText" text="End:" GridPane.rowIndex="8" />
+            <ComboBox prefWidth="150.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <ComboBox prefWidth="150.0" styleClass="dDown" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <ComboBox prefWidth="150.0" styleClass="dDown" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <ComboBox prefWidth="150.0" styleClass="dDown" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="97.0" styleClass="dDown" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="15">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="5.0" />
+               </GridPane.margin>
+            </Button>
          </children>
          <padding>
             <Insets left="10.0" />
