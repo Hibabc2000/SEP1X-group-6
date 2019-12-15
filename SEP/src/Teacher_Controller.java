@@ -44,6 +44,9 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
   //******
   private TeacherList teacherList;
   //******
+  private Teacher t;
+  private String name;
+  private String id;
 
   //************************
   public void initialize()
@@ -179,65 +182,72 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     }
     */
     //***************
-    if (actionEvent.getSource() == updateButton)
+  }
+  public void update(ActionEvent e) throws InterruptedException
+  {
+    if (e.getSource() == updateButton)
     {
-      String name = nameField.getText();
-      String id = idField.getText();
-      if (name.length() == 0 || id.length() == 0)
+
+      //t = new Teacher(id, name);
+
+      if (name.length() == 0)
       {
-        errorName.setText("Enter the name");
-        errorID.setText("Enter the ID");
+        errorName.setText("Enter valid name");
       }
       else
       {
-        if (updateCheck)
-        {
-          Object obj = teachersBox.getSelectionModel().getSelectedItem();
-          if (obj instanceof Teacher)
-          {
-            teachersBox.getItems().removeAll(obj);
-          }
-          updateCheck = false;
-        }
-
-
-        Teacher t = new Teacher(id, name);
-        teacherList.addTeacher(t);
-        if (!teachersBox.getItems().contains(t))
-        {
-          teachersBox.getItems().add(t);
-          teachersBox.getSelectionModel()
-              .select(teachersBox.getItems().size() - 1);
-        }
-        nameField.setText("");
-        idField.setText("");
-
+        errorName.setText("");
+        name=nameField.getText();
       }
+
+      if (id.length() == 0)
+      {
+        idField.setText("Enter valid name");
+      }
+      else
+      {
+        errorID.setText("");
+        id=idField.getText();
+      }
+
+      if (errorName.getText().length() == 0 && errorID.getText().length() == 0)
+      {
+        t = new Teacher(id, name);
+        teacherList.addTeacher(t);
+      }
+
+      nameField.setText("");
+      idField.setText("");
+
     }
-    if (actionEvent.getSource() == editButton)
+
+  }
+  public void edit(ActionEvent e) throws InterruptedException
+  {
+    if (e.getSource() == editButton)
     {
       Object obj = teachersBox.getSelectionModel().getSelectedItem();
       if (obj instanceof Teacher)
       {
         nameField.setText(((Teacher) obj).getName());
         idField.setText(((Teacher) obj).getID());
-        teachersBox.setItems(
-            FXCollections.observableArrayList(teacherList.getAllTeachers()));
         updateCheck = true;
       }
     }
-    if (actionEvent.getSource() == deleteButton)
+  }
+  public void delete(ActionEvent e) throws InterruptedException
+  {
+    if (e.getSource() == deleteButton)
     {
       Object obj = teachersBox.getSelectionModel().getSelectedItem();
       if (obj instanceof Teacher)
       {
-        teacherList.deleteTeacher((Teacher) obj);
-        teachersBox.setItems(
-            FXCollections.observableArrayList(teacherList.getAllTeachers()));
+        teachersBox.getItems().removeAll(obj);
       }
     }
-    //****************
   }
+    //****************
+
 
   private void changeScene(String target, ActionEvent event, Object list)
       throws IOException, NoSuchFieldException, IllegalAccessException,
