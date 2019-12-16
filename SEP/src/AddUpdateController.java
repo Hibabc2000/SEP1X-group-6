@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class AddUpdateController implements EventHandler<ActionEvent>
 {
@@ -30,7 +28,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   @FXML private ComboBox crs;
   @FXML private ComboBox roomC;
   @FXML private ComboBox tchr;
-  @FXML private ComboBox<Co_examiner> cexmnr;
+  @FXML private ComboBox<CoExaminer> cexmnr;
   @FXML private DatePicker dateBox;
   @FXML private TextArea alertBox;
   @FXML private ComboBox exmBox;
@@ -81,7 +79,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     objs = fileHandler.temporaryRead("tempCoExaminer");
     for (Object obj:objs)
     {
-      if(obj instanceof Co_examiner)
+      if(obj instanceof CoExaminer)
       {
         coExaminerList.addCoExaminer(obj);
       }

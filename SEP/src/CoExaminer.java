@@ -5,14 +5,14 @@ import java.io.Serializable;
  * @version 1.0
  * This is a class for all persons, used only in inheritance.
  */
-public class Co_examiner extends Person implements Serializable
+public class CoExaminer extends Person implements Serializable
 {
   private boolean external;
 
   /**
    * This method is a four-argument constructor for co-examiners.
    */
-  public Co_examiner(String ID, String name,
+  public CoExaminer(String ID, String name,
       boolean external)
   {
     super(ID, name);
@@ -53,9 +53,9 @@ public class Co_examiner extends Person implements Serializable
  * Methods returns whether the objects are equal or not
  */
   public boolean equals(Object obj){
-    if(!(obj instanceof Co_examiner))
+    if(!(obj instanceof CoExaminer))
       return false;
-    Co_examiner other=(Co_examiner)obj;
+    CoExaminer other=(CoExaminer)obj;
     return super.equals(other)&&external==other.external;
   }
 }
