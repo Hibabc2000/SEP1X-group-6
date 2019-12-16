@@ -69,7 +69,6 @@ public class HomeController implements EventHandler<ActionEvent>
   }
 
 
-
   public HomeController()
   {
     exams = new ExamList();

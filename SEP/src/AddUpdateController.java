@@ -150,7 +150,6 @@ public class AddUpdateController implements EventHandler<ActionEvent>
         roomList.addRoom((Room) obj);
       }
     }
-
  */
   }
 
