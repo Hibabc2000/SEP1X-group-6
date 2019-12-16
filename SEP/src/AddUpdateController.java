@@ -46,6 +46,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   private CourseList courseList;
   private ExamList examList;
   private boolean updateCheck = false;
+  private OurDate tmpDate;
 
   public void initialize()
       //**************
@@ -133,8 +134,6 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       System.out.println(t);
     }
-    //tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
-    //transferMessage(teacherList, "teacherList", "tchr");
     objs = fileHandler.temporaryRead("tempCoExaminer");
     for (Object obj : objs)
     {
@@ -167,7 +166,12 @@ public class AddUpdateController implements EventHandler<ActionEvent>
         if((exmtyp.getValue() != null)&&(crs.getValue() != null)&&(tchr.getValue() != null)&&(cexmnr.getValue() != null)&&(sMinute.getValue() != null)&&(sHour.getValue() != null)&&(eMinute.getValue() !=null)&&(eHour.getValue() != null))
         {
           LocalDate value = dateBox.getValue();
-          OurDate tmpDate = new OurDate(value.getDayOfMonth(),value.getMonthValue(),value.getYear(),(int)sHour.getValue(),(int)eHour.getValue(),(int)sMinute.getValue(),(int)eMinute.getValue());
+          if (value != null)
+          {
+            tmpDate = new OurDate(value.getDayOfMonth(), value.getMonthValue(),
+                value.getYear(), (int) sHour.getValue(), (int) eHour.getValue(),
+                (int) sMinute.getValue(), (int) eMinute.getValue());
+          }
           Exam newExam = new Exam();
           newExam.scheduleExam((String) exmtyp.getValue(),(Course) crs.getSelectionModel().getSelectedItem(),(Teacher)tchr.getSelectionModel().getSelectedItem(),cexmnr.getSelectionModel().getSelectedItem(),tmpDate,(Room)roomC.getSelectionModel().getSelectedItem());
           if (examList.getAllExams().size() != 0)
@@ -226,7 +230,12 @@ public class AddUpdateController implements EventHandler<ActionEvent>
         if((exmtyp.getValue() != null)&&(crs.getValue() != null)&&(tchr.getValue() != null)&&(cexmnr.getValue() != null)&&(sMinute.getValue() != null)&&(sHour.getValue() != null)&&(eMinute.getValue() !=null)&&(eHour.getValue() != null))
         {
           LocalDate value = dateBox.getValue();
-          OurDate tmpDate = new OurDate(value.getDayOfMonth(),value.getMonthValue(),value.getYear(),(int)sHour.getValue(),(int)eHour.getValue(),(int)sMinute.getValue(),(int)eMinute.getValue());
+          if (value != null)
+          {
+            tmpDate = new OurDate(value.getDayOfMonth(), value.getMonthValue(),
+                value.getYear(), (int) sHour.getValue(), (int) eHour.getValue(),
+                (int) sMinute.getValue(), (int) eMinute.getValue());
+          }
           tempExam.scheduleExam((String) exmtyp.getValue(),(Course) crs.getSelectionModel().getSelectedItem(),(Teacher)tchr.getSelectionModel().getSelectedItem(),cexmnr.getSelectionModel().getSelectedItem(),tmpDate,(Room)roomC.getSelectionModel().getSelectedItem());
 
           if (examList.getAllExams().size() != 0)
@@ -414,7 +423,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
 
     if (target.equals("crs"))
     {
-      if (tchr != null)
+      if (crs != null)
       {
         crs.setItems(FXCollections.observableArrayList(courseList.getAllCourses()));
       }
@@ -423,9 +432,9 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     }
     if (target.equals("roomC"))
     {
-      if (tchr != null)
+      if (roomC != null)
       {
-        crs.setItems(FXCollections.observableArrayList(courseList.getAllCourses()));
+        roomC.setItems(FXCollections.observableArrayList(roomList.getAllRooms()));
       }
       else
         System.out.println("room is null");
