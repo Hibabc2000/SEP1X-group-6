@@ -35,15 +35,17 @@ public class RoomController implements EventHandler<ActionEvent>
   private RoomList rlist;
   private Scene scene;
   private Stage stage;
+  private Room temp;
 
   public RoomController() throws IOException, ClassNotFoundException
   {
     FileAdapter fileHandler = new FileAdapter(null);
     Object[] arr = fileHandler.temporaryRead("tempRoom");
     rlist = new RoomList();
-    for(Object obj : arr)
+    rooms = new ArrayList<>();
+    for (Object obj : arr)
     {
-      if(obj instanceof Room)
+      if (obj instanceof Room)
       {
         rlist.addRoom((Room) obj);
       }
@@ -142,7 +144,7 @@ public class RoomController implements EventHandler<ActionEvent>
   private void changeScene(String target, ActionEvent event, Object list)
       throws IOException, NoSuchFieldException, IllegalAccessException
   {
-    if(target.equals("addUpdateSchedule.fxml"))
+    if (target.equals("addUpdateSchedule.fxml"))
     {
       FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
       Parent parent = loader.load();
@@ -254,16 +256,15 @@ public class RoomController implements EventHandler<ActionEvent>
         ready3 = false;
       }
 
-
       else if (text2.getText().length() > 0)
       {
         try
         {
           sit = Integer.parseInt(text2.getText());
 
-            temp.setNumberOfSeats(sit);
-            seatError.setText("");
-            ready3 = true;
+          temp.setNumberOfSeats(sit);
+          seatError.setText("");
+          ready3 = true;
 
           //Catches all NumberFormatExceptions
         }
@@ -310,8 +311,11 @@ public class RoomController implements EventHandler<ActionEvent>
                 rooms.set(p, temp);
 
                 if (rlist.getAllRooms().get(p).equals(temp))
-                {rlist.getAllRooms().remove(p);
-                  rlist.addRoom(temp);}
+                {
+                  rlist.getAllRooms().remove(p);
+                  rlist.addRoom(temp);
+
+                }
                 System.out.println(temp);
                 dota.setValue(null);
                 text1.setText("");
@@ -333,7 +337,8 @@ public class RoomController implements EventHandler<ActionEvent>
             int choice2 = JOptionPane.showConfirmDialog(null,
                 "Are you sure you want to update the room?");
             if (choice2 == JOptionPane.YES_OPTION)
-            { text1.setEditable(true);
+            {
+              text1.setEditable(true);
               editMode.setText("");
               rooms.add(temp);
               rlist.addRoom(temp);
@@ -357,7 +362,8 @@ public class RoomController implements EventHandler<ActionEvent>
           int choice = JOptionPane.showConfirmDialog(null,
               "Are you sure you want to update the room?");
           if (choice == JOptionPane.YES_OPTION)
-          {text1.setEditable(true);
+          {
+            text1.setEditable(true);
             editMode.setText("");
             rooms.add(temp);
             rlist.addRoom(temp);
@@ -377,7 +383,8 @@ public class RoomController implements EventHandler<ActionEvent>
 
     // DELETE BUTTON
     if (e.getSource() == delete)
-    { editMode.setText("");
+    {
+      editMode.setText("");
       numberError.setText("");
       String temp = (String) room.getValue();
 
@@ -388,8 +395,10 @@ public class RoomController implements EventHandler<ActionEvent>
           int choice = JOptionPane.showConfirmDialog(null,
               "Are you sure you want to delete this room?");
           if (choice == JOptionPane.YES_OPTION)
-          {text1.setEditable(true);
-          editMode.setText(" I hope you have a nice day! \n You are the best secretary ever.\n I love ya <3 ");
+          {
+            text1.setEditable(true);
+            editMode.setText(
+                " I hope you have a nice day! \n You are the best secretary ever.\n I love ya <3 ");
             rooms.remove(i);
             rlist.getAllRooms().remove(i);
             text1.setText("");
@@ -407,8 +416,10 @@ public class RoomController implements EventHandler<ActionEvent>
     }
     // EDIT BUTTON
     if (e.getSource() == edit)
-    { numberError.setText("You cannot edit this \n field in edit mode! ");
-      editMode.setText("You are in Edit mode now.\n\n If you want to change the room number \n just delete this room and make a new one. \nIf you changed your mind about editing \n then just press update. ");
+    {
+      numberError.setText("You cannot edit this \n field in edit mode! ");
+      editMode.setText(
+          "You are in Edit mode now.\n\n If you want to change the room number \n just delete this room and make a new one. \nIf you changed your mind about editing \n then just press update. ");
       String choice = (String) room.getValue();
 
       for (int i = 0; i < rooms.size(); i++)

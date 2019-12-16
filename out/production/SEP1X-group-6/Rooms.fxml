@@ -102,12 +102,12 @@
                   <Insets top="30.0" />
                </FlowPane.margin>
             </Label>
-            <Label fx:id="numberError" prefHeight="30.0" prefWidth="154.0">
+            <Label fx:id="numberError" prefHeight="30.0" prefWidth="154.0" textFill="RED">
                <FlowPane.margin>
                   <Insets top="-120.0" />
                </FlowPane.margin>
             </Label>
-            <Label fx:id="seatError" prefHeight="30.0" prefWidth="154.0">
+            <Label fx:id="seatError" prefHeight="30.0" prefWidth="154.0" textFill="RED">
                <FlowPane.margin>
                   <Insets left="-154.0" top="110.0" />
                </FlowPane.margin>
@@ -142,7 +142,7 @@
                   <Insets left="50.0" top="75.0" />
                </FlowPane.margin>
             </Button>
-            <Label fx:id="dotaError" prefHeight="30.0" prefWidth="154.0">
+            <Label fx:id="dotaError" prefHeight="30.0" prefWidth="154.0" textFill="RED">
                <FlowPane.margin>
                   <Insets left="-167.0" top="-35.0" />
                </FlowPane.margin>
