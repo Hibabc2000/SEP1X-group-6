@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class CoExaminerList implements Serializable
 {
-  private ArrayList<Co_examiner> coExaminers;
+  private ArrayList<CoExaminer> coExaminers;
 
   /**
    * No argument constructor, co-examiners list initialization
@@ -26,9 +26,9 @@ public class CoExaminerList implements Serializable
    */
   public void addCoExaminer(Object object)
   {
-    if (object instanceof Co_examiner)
+    if (object instanceof CoExaminer)
     {
-      coExaminers.add((Co_examiner) object);
+      coExaminers.add((CoExaminer) object);
     }
   }
 
@@ -36,9 +36,9 @@ public class CoExaminerList implements Serializable
    * @param c co-examiner object
    * deleting co-examiner object from the list
    */
-  public void deleteCoExaminer(Co_examiner c)
+  public void deleteCoExaminer(CoExaminer c)
   {
-    for (Co_examiner coExaminer : coExaminers)
+    for (CoExaminer coExaminer : coExaminers)
     {
       if(c.equals(coExaminer))
       {
@@ -52,7 +52,7 @@ public class CoExaminerList implements Serializable
    *
    * @return an ArrayList of Co-Examiner
    */
-  public ArrayList<Co_examiner> getAllCoExaminers()
+  public ArrayList<CoExaminer> getAllCoExaminers()
   {
     return new ArrayList<>(coExaminers);
   }

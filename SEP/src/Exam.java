@@ -1,5 +1,4 @@
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Exam implements Serializable
 {
@@ -7,7 +6,7 @@ public class Exam implements Serializable
   private Room room;
   private Course course;
   private Teacher teacher;
-  private Co_examiner coExaminer;
+  private CoExaminer coExaminer;
   private OurDate date;
   public Exam()
   {
@@ -19,7 +18,7 @@ public class Exam implements Serializable
     coExaminer=null;
     this.room = null;
   }
-  public void scheduleExam(String examType, Course course, Teacher teacher, Co_examiner coExaminer,OurDate date, Room inroom)
+  public void scheduleExam(String examType, Course course, Teacher teacher, CoExaminer coExaminer,OurDate date, Room inroom)
   {
     this.examType = examType;
     this.course=course;
@@ -38,7 +37,7 @@ public class Exam implements Serializable
     return date;
   }
 
-  public Co_examiner getCoExaminer()
+  public CoExaminer getCoExaminer()
   {
     return coExaminer;
   }
@@ -53,7 +52,7 @@ public class Exam implements Serializable
     return teacher;
   }
 
-  public void setCoExaminer(Co_examiner coExaminer)
+  public void setCoExaminer(CoExaminer coExaminer)
   {
     this.coExaminer = coExaminer;
   }

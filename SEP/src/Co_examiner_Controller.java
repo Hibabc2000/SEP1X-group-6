@@ -11,8 +11,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 
 public class Co_examiner_Controller implements EventHandler<ActionEvent>
 {
@@ -39,7 +37,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
   @FXML private Label idFieldError;
   private String nameCoExm = null;
   private String idCoExm = null;
-  private Co_examiner buffer;
+  private CoExaminer buffer;
  private boolean external = false;
 
   private boolean checkUpdate;
@@ -64,7 +62,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     for (Object obj : objs)
     {
       System.out.println("a");
-      list.addCoExaminer((Co_examiner) obj);
+      list.addCoExaminer((CoExaminer) obj);
     }
     coExaminersBox.setItems(FXCollections.observableArrayList(list.getAllCoExaminers()));
 
@@ -203,7 +201,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
           && idFieldError.getText().length() == 0)
       {
         //  Creating the Co-Examiner object
-        buffer = new Co_examiner(idCoExm,nameCoExm, external);
+        buffer = new CoExaminer(idCoExm,nameCoExm, external);
       }
       //      Adding the object to Co-Exm list
       list.addCoExaminer(buffer);
@@ -213,7 +211,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
       if (checkUpdate)
       {
         Object obj = coExaminersBox.getSelectionModel().getSelectedItem();
-        if (obj instanceof Co_examiner)
+        if (obj instanceof CoExaminer)
         {
           coExaminersBox.getItems().removeAll(obj);
         }
@@ -243,12 +241,12 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     if (e.getSource() == editButton)
     {
       Object obj = coExaminersBox.getSelectionModel().getSelectedItem();
-      if (obj instanceof Co_examiner)
+      if (obj instanceof CoExaminer)
       {
-        nameField.setText(((Co_examiner) obj).getName());
-        idField.setText(((Co_examiner) obj).getID());
+        nameField.setText(((CoExaminer) obj).getName());
+        idField.setText(((CoExaminer) obj).getID());
         checkUpdate = true;
-        if (((Co_examiner) obj).isExternal())
+        if (((CoExaminer) obj).isExternal())
         {
           internalBox.setSelected(true);
         }
@@ -272,7 +270,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     if (e.getSource() == deleteButton)
     {
       Object obj = coExaminersBox.getSelectionModel().getSelectedItem();
-      if (obj instanceof Co_examiner)
+      if (obj instanceof CoExaminer)
       {
         coExaminersBox.getItems().removeAll(obj);
       }
