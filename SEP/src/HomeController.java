@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -43,15 +45,27 @@ public class HomeController implements EventHandler<ActionEvent>
     CoExaminerList coExaminerList = new CoExaminerList();
     RoomList roomList = new RoomList();
 
+    File existence = new File("tempCourse");
     FileAdapter fileHandler = new FileAdapter(null);
-
-    fileHandler.temporaryWrite(courseList, "tempCourse");
-
-    fileHandler.temporaryWrite(teacherList, "tempTeacher");
-
-    fileHandler.temporaryWrite(coExaminerList, "tempCoExaminer");
-
-    fileHandler.temporaryWrite(roomList, "tempRoom");
+    if(!existence.exists())
+    {
+      fileHandler.temporaryWrite(courseList, "tempCourse");
+    }
+    existence = new File("tempTeacher");
+    if(!existence.exists())
+    {
+      fileHandler.temporaryWrite(teacherList, "tempTeacher");
+    }
+    existence = new File("tempCoExaminer");
+    if(!existence.exists())
+    {
+      fileHandler.temporaryWrite(coExaminerList, "tempCoExaminer");
+    }
+    existence = new File("tempRoom");
+    if(!existence.exists())
+    {
+      fileHandler.temporaryWrite(roomList, "tempRoom");
+    }
   }
 
 
