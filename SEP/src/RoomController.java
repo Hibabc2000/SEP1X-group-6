@@ -36,11 +36,18 @@ public class RoomController implements EventHandler<ActionEvent>
   private Scene scene;
   private Stage stage;
 
-  public RoomController()
+  public RoomController() throws IOException, ClassNotFoundException
   {
+    FileAdapter fileHandler = new FileAdapter(null);
+    Object[] arr = fileHandler.temporaryRead("tempRoom");
     rlist = new RoomList();
-    rooms = new ArrayList<>();
-
+    for(Object obj : arr)
+    {
+      if(obj instanceof Room)
+      {
+        rlist.addRoom((Room) obj);
+      }
+    }
   }
 
   @Override public void handle(ActionEvent actionEvent)
