@@ -113,5 +113,28 @@ public class Room implements Serializable
     tmp.setNumberOfSeats(numberOfSeats);
     tmp.setProjector(projector);
   }
+
+  public String toString()
+  {
+    String ret = "";
+    ret = "Room: " + getRoomNumber() + ", Number of seats: " + getNumberOfSeats();
+    if (getProjector() == (byte) 0)
+    {
+      ret += ", Projector: none";
+    }
+    else if (getProjector() == (byte) 1)
+    {
+      ret += ", Projector: VGA only";
+    }
+    else if (getProjector() == (byte) 2)
+    {
+      ret += ", Projector: HDMI only";
+    }
+    else if (getProjector() == (byte) 3)
+    {
+      ret += ", Projector: VGA and HDMI";
+    }
+    return ret;
+  }
 }
 
