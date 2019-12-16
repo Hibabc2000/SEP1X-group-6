@@ -18,14 +18,14 @@ public class Exam implements Serializable
     coExaminer=null;
     this.room = null;
   }
-  public void scheduleExam(String examType, Course course, Teacher teacher, CoExaminer coExaminer,OurDate date, Room inroom)
+  public void scheduleExam(String examType, Course course, Teacher teacher, CoExaminer coExaminer,OurDate date, Room inRoom)
   {
     this.examType = examType;
     this.course=course;
     this.teacher=teacher;
     this.coExaminer=coExaminer;
     this.date=date;
-    this.room=inroom;
+    this.room=inRoom;
   }
   public String getExamType()
   {

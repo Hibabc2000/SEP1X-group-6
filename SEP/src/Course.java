@@ -33,14 +33,7 @@ public class Course implements Serializable
   {
     return courseName;
   }
-  /**
-   * @param courseName the course name
-   * sets the course name
-   */
-  public void setCourseName(String courseName)
-  {
-    this.courseName = courseName;
-  }
+
 
   /**
    * @return group name
@@ -52,15 +45,6 @@ public class Course implements Serializable
   }
 
   /**
-   * @param group
-   * sets the group name
-   */
-  public void setGroup(String group)
-  {
-    this.group = group;
-  }
-
-  /**
    *
    * @return total number of students
    */
@@ -69,14 +53,6 @@ public class Course implements Serializable
     return nrStudents;
   }
 
-  /**
-   *
-   * @param nrStudents total number of students
-   */
-  public void setNrStudents(int nrStudents)
-  {
-    this.nrStudents = nrStudents;
-  }
 
   /**
    *
@@ -87,15 +63,6 @@ public class Course implements Serializable
     return semester;
   }
 
-  /**
-   *
-   * @param semester
-   * set the semester number
-   */
-  public void setSemester(int semester)
-  {
-    this.semester = semester;
-  }
 
   /**
    *
