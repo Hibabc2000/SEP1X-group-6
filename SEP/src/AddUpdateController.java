@@ -103,10 +103,17 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       roomList.addRoom((Room) obj);
     }
+    objs = fileHandler.temporaryRead("tempExam");
+    for (Object obj:objs)
+    {
+      examList.addExam((Exam)obj);
+    }
     transferMessage(teacherList, "teacherList", "tchr");
     transferMessage(courseList, "courseList", "crs");
     transferMessage(roomList, "roomList", "roomC");
     transferMessage(coExaminerList, "coExaminerList", "cexmnr");
+    transferMessage(teacherList, "teacherList", "tchr");
+    transferMessage(examList, "examList", "examBox");
 
     //*******************
   }
@@ -148,7 +155,6 @@ public class AddUpdateController implements EventHandler<ActionEvent>
         roomList.addRoom((Room) obj);
       }
     }
-
  */
   }
 
@@ -163,7 +169,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       if(!updateCheck)
       {
         boolean isThereAnyConflict = false;
-        if((exmtyp.getValue() != null)&&(crs.getValue() != null)&&(tchr.getValue() != null)&&(cexmnr.getValue() != null)&&(sMinute.getValue() != null)&&(sHour.getValue() != null)&&(eMinute.getValue() !=null)&&(eHour.getValue() != null))
+        if((exmtyp.getValue() != null)&&(crs.getValue() != null)&&(tchr.getValue() != null)&&(cexmnr.getValue() != null)&&(sMinute.getValue() != null)&&(sHour.getValue() != null)&&(eMinute.getValue() !=null)&&(eHour.getValue() != null)&&(roomC.getValue() != null))
         {
           LocalDate value = dateBox.getValue();
           if (value != null)
@@ -388,7 +394,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       */
       FileAdapter fileHandler = new FileAdapter(null);
-      fileHandler.temporaryWrite(examList, "tempExams");
+      fileHandler.temporaryWrite(examList, "tempExam");
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);
@@ -441,6 +447,10 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       }
       else
         System.out.println("room is null");
+    }
+    if (target.equals("examBox"))
+    {
+      exmBox.setItems(FXCollections.observableArrayList(examList.getAllExams()));
     }
   }
 }

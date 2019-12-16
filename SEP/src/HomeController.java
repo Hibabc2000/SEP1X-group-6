@@ -66,8 +66,13 @@ public class HomeController implements EventHandler<ActionEvent>
     {
       fileHandler.temporaryWrite(roomList, "tempRoom");
     }
-  }
+    existence = new File("tempExam");
+    if(!existence.exists())
+    {
+      fileHandler.temporaryWrite(exams, "tempExam");
+    }
 
+  }
 
 
   public HomeController()

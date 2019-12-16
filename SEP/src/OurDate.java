@@ -1,5 +1,6 @@
+import java.io.Serializable;
 import java.util.GregorianCalendar;
-public class OurDate
+public class OurDate implements Serializable
 {
   private int day;
   private int month;

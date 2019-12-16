@@ -37,6 +37,10 @@ public class FileAdapter
     {
       ioHandler.writeToFile(tempFileName, ((RoomList) obj).getAllRooms().toArray());
     }
+    else if(obj instanceof ExamList)
+    {
+      ioHandler.writeToFile(tempFileName, ((ExamList) obj).getAllExams().toArray());
+    }
   }
 
   /**

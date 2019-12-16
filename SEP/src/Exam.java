@@ -103,5 +103,9 @@ public class Exam implements Serializable
     if ((teacher.equals(exam.getTeacher()))&&(coExaminer.equals(exam.getCoExaminer()))&&(course.equals(getCourse()))&&(room.equals(exam.getRoom()))&&(date.equals(exam.getDate()))){return true;}
     else {return false;}
   }
+  public String toString()
+  {
+    return course.toString() + "at" + date.getYear() + "/" + date.getMonth() +"/" + date.getDay() + "(week"+date.getWeek()+")";
+  }
 }
 
