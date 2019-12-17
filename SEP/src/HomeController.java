@@ -179,7 +179,7 @@ public class HomeController implements EventHandler<ActionEvent>
     {
       try
       {
-        export(exams, "dotation.xml");
+        export("dotation.xml");
       }
       catch (XmlConverterException ignored)
       {
@@ -196,9 +196,9 @@ public class HomeController implements EventHandler<ActionEvent>
       stage.show();
   }
 
-  private void export(ExamList examList, String fileName) throws XmlConverterException
+  private void export(String fileName) throws XmlConverterException
   {
     FileAdapter adapter = new FileAdapter(null);
-    adapter.exportToXML(examList, fileName);
+    adapter.exportToXML(exams.getAllExams().toArray(), fileName);
   }
 }

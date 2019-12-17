@@ -3,7 +3,6 @@ import persistence.XmlConverterException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FileAdapter
 {
@@ -64,9 +63,13 @@ public class FileAdapter
     return arr;
   }
 
-  public void exportToXML(Object object, String filename) throws XmlConverterException
+  public void exportToXML(Object[] object, String filename) throws
+      XmlConverterException
   {
-    MyXmlConverter xmlConverter = new MyXmlConverter();
-    xmlConverter.toXml(object, filename);
+    MyXmlConverter xmlConverter = new MyXmlConverter(filename);
+    for(Object obj : object)
+    {
+      xmlConverter.toXml(obj, filename);
+    }
   }
 }
