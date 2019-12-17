@@ -1,4 +1,3 @@
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -6,14 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import persistence.XmlConverterException;
 
 public class HomeController implements EventHandler<ActionEvent>
 {
@@ -104,7 +102,7 @@ public class HomeController implements EventHandler<ActionEvent>
       {
         changeScene("home.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -117,7 +115,7 @@ public class HomeController implements EventHandler<ActionEvent>
       {
         changeScene("Rooms.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e )
+      catch (IOException e )
       {
         e.printStackTrace();
         System.exit(1);
@@ -129,7 +127,7 @@ public class HomeController implements EventHandler<ActionEvent>
       {
         changeScene("Teacher.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -141,7 +139,7 @@ public class HomeController implements EventHandler<ActionEvent>
       {
         changeScene("Co-examiner.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -153,7 +151,7 @@ public class HomeController implements EventHandler<ActionEvent>
       {
         changeScene("addUpdateCourse.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -165,7 +163,7 @@ public class HomeController implements EventHandler<ActionEvent>
       {
         changeScene("addUpdateSchedule.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -177,35 +175,36 @@ public class HomeController implements EventHandler<ActionEvent>
       {
         changeScene("Settings.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
       }
     }
+    if (actionEvent.getSource().equals(exportButton))
+    {
+      try
+      {
+        export(exams, "dotation.xml");
+      }
+      catch (XmlConverterException ignored)
+      {
+
+      }
+    }
   }
 
-  private void changeScene(String target, ActionEvent event, Object list)
-      throws IOException, NoSuchFieldException, IllegalAccessException
+  private void changeScene(String target, ActionEvent event, Object list) throws IOException
   {
-    /*
-    if(target.equals("addUpdateSchedule.fxml"))
-    {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
-      Parent parent = loader.load();
-      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      AddUpdateController control = loader.getController();
-      control.transferMessage(list, "teacherList", "tchr");
-      stage.getScene().setRoot(parent);
-      stage.show();
-    }
-    else
-    {
-      */
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);
       stage.show();
-    //}
+  }
+
+  private void export(ExamList examList, String fileName) throws XmlConverterException
+  {
+    FileAdapter adapter = new FileAdapter(null);
+    adapter.exportToXML(examList, fileName);
   }
 }

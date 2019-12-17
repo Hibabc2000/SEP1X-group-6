@@ -1,3 +1,6 @@
+import persistence.MyXmlConverter;
+import persistence.XmlConverterException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,5 +62,11 @@ public class FileAdapter
   {
     Object[] arr = ioHandler.readArrayFromFile(tempFileName);
     return arr;
+  }
+
+  public void exportToXML(Object object, String filename) throws XmlConverterException
+  {
+    MyXmlConverter xmlConverter = new MyXmlConverter();
+    xmlConverter.toXml(object, filename);
   }
 }
