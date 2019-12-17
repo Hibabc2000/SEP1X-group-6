@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
-public class AddUpdateCourseController implements EventHandler<ActionEvent>
+public class Course_Controller implements EventHandler<ActionEvent>
 {
   @FXML private Button homeButton;
   @FXML private Button roomButton;

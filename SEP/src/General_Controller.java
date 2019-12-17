@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -130,7 +129,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
       Parent parent = loader.load();
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      AddUpdateController control = loader.getController();
+      Schedule_Exam_Controller control = loader.getController();
       control.transferMessage(list, "teacherList", "tchr");
       stage.getScene().setRoot(parent);
       stage.show();

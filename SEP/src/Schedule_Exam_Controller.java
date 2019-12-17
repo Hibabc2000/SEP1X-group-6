@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class AddUpdateController implements EventHandler<ActionEvent>
+public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
 {
   @FXML private Button homeButton;
   @FXML private Button roomButton;
@@ -133,7 +133,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     //*******************
   }
 
-  public AddUpdateController()
+  public Schedule_Exam_Controller()
       throws IOException, ClassNotFoundException, NoSuchFieldException,
       IllegalAccessException
   {

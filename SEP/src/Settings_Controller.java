@@ -17,7 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 
-public class SettingsController implements EventHandler<ActionEvent> {
+public class Settings_Controller implements EventHandler<ActionEvent> {
   @FXML
   private Button homeButton;
   @FXML
@@ -44,7 +44,7 @@ public class SettingsController implements EventHandler<ActionEvent> {
   private ArrayList<OurDate> dates;
   private boolean aaaa;
 
-  public SettingsController()
+  public Settings_Controller()
   {
   }
 
