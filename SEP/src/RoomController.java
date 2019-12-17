@@ -58,7 +58,7 @@ public class RoomController implements EventHandler<ActionEvent>
     {
       room.setItems(FXCollections.observableArrayList(rlist.getAllRooms()));
     }
-    catch (NullPointerException e)
+    catch (NullPointerException ignored)
     {
 
     }
@@ -84,7 +84,7 @@ public class RoomController implements EventHandler<ActionEvent>
     {
       room.setItems(FXCollections.observableArrayList(rlist.getAllRooms()));
     }
-    catch (NullPointerException e)
+    catch (NullPointerException ignored)
     {
 
     }
@@ -186,281 +186,9 @@ public class RoomController implements EventHandler<ActionEvent>
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.getScene().setRoot(parent);
     stage.show();
-
   }
 
-  /*
-    public void update(ActionEvent e)
-    { // UPDATE BUTTON
-      if (e.getSource() == update)
-      {
-        boolean ready1 = true;
-        boolean ready2 = true;
-        boolean ready3 = true;
-        Room temp = new Room();
-        temp.setRoomNumber(text1.getText());
-        int sit = 0;
-
-        try
-        {
-          String pro = (String) dota.getValue();
-          if (pro.equals("HDMI"))
-          {
-            temp.setProjector((byte) 1);
-            dotaError.setText("");
-            ready1 = true;
-            System.out.println(pro);
-          }
-          else if (pro.equals("VGA"))
-          {
-            temp.setProjector((byte) 2);
-            dotaError.setText("");
-            ready1 = true;
-          }
-          else if (pro.contains("and"))
-          {
-            temp.setProjector((byte) 3);
-            dotaError.setText("");
-            ready1 = true;
-          }
-          else if (pro.equals("none"))
-          {
-            temp.setProjector((byte) 0);
-            dotaError.setText("");
-            ready1 = true;
-          }
-          else
-          {
-            temp.setProjector((byte) -1);
-            dotaError.setText("Choose a dotation");
-            ready1 = false;
-            System.out.println(pro);
-          }
-
-        }
-        catch (NullPointerException n)
-        {
-          dotaError.setText("Choose a dotation");
-          ready1 = false;
-        }
-
-        if (text1.getText().length() == 0)
-        {
-          numberError.setText("Enter the room number");
-          ready2 = false;
-        }
-        else if (text1.getText().length() > 0)
-        {
-          numberError.setText("");
-          temp.setRoomNumber(text1.getText());
-          ready2 = true;
-        }
-        if (text2.getText().length() == 0)
-        {
-          seatError.setText("Enter the number of seats");
-          ready3 = false;
-        }
-
-        else if (text2.getText().length() > 0)
-        {
-          try
-          {
-            sit = Integer.parseInt(text2.getText());
-
-            temp.setNumberOfSeats(sit);
-            seatError.setText("");
-            ready3 = true;
-
-            //Catches all NumberFormatExceptions
-          }
-          catch (NumberFormatException l)
-          {
-            seatError.setText("Invalid number of students");
-            ready3 = false;
-          }
-          if (sit < 0 || sit == 0)
-          {
-            seatError.setText("Invalid number of students");
-            ready3 = false;
-          }
-
-        }
-        else
-        {
-          seatError.setText("");
-          ready3 = true;
-          sit = Integer.parseInt(text2.getText());
-          temp.setNumberOfSeats(sit);
-        }
-        System.out.println(ready1);
-        System.out.println(ready2);
-        System.out.println(ready3);
-
-        if (ready1 == true && ready2 == true && ready3 == true)
-        {
-          boolean ready4 = false;
-          if (rooms.size() > 0)
-          {
-            for (int p = 0; p < rooms.size(); p++)
-            {
-              if (text1.getText().equals(((Room) rooms.get(p)).getRoomNumber()))
-              {
-                ready4 = true;
-                dotaError.setText("");
-                seatError.setText("");
-                numberError.setText("");
-                int choice1 = JOptionPane.showConfirmDialog(null,
-                    "Are you sure you want to change the information about this room?");
-                if (choice1 == JOptionPane.YES_OPTION)
-                {
-                  rooms.set(p, temp);
-
-                  if (rlist.getAllRooms().get(p).equals(temp))
-                  {
-                    rlist.getAllRooms().remove(p);
-                    rlist.addRoom(temp);
-
-                  }
-                  System.out.println(temp);
-                  dota.setValue(null);
-                  text1.setText("");
-                  text2.setText("");
-                  editMode.setText("");
-                  text1.setEditable(true);
-
-                }
-                else if (choice1 == JOptionPane.NO_OPTION)
-                {
-                }
-              }
-            }
-            if (ready4 == false)
-            {
-              dotaError.setText("");
-              seatError.setText("");
-              numberError.setText("");
-              int choice2 = JOptionPane.showConfirmDialog(null,
-                  "Are you sure you want to update the room?");
-              if (choice2 == JOptionPane.YES_OPTION)
-              {
-                text1.setEditable(true);
-                editMode.setText("");
-                rooms.add(temp);
-                rlist.addRoom(temp);
-                System.out.println(temp);
-                dota.setValue(null);
-                text1.setText("");
-                text2.setText("");
-
-              }
-              else if (choice2 == JOptionPane.NO_OPTION)
-              {
-              }
-            }
-
-          }
-          else
-          {
-            dotaError.setText("");
-            seatError.setText("");
-            numberError.setText("");
-            int choice = JOptionPane.showConfirmDialog(null,
-                "Are you sure you want to update the room?");
-            if (choice == JOptionPane.YES_OPTION)
-            {
-              text1.setEditable(true);
-              editMode.setText("");
-              rooms.add(temp);
-              rlist.addRoom(temp);
-              System.out.println(temp);
-              dota.setValue(null);
-              text1.setText("");
-              text2.setText("");
-
-            }
-            else if (choice == JOptionPane.NO_OPTION)
-            {
-            }
-          }
-
-        }
-      }
-
-      // DELETE BUTTON
-   //   if (e.getSource() == delete)
-     // {
-       // editMode.setText("");
-        //6numberError.setText("");
-        //String temp = (String) room.getValue();
-
-        //for (int i = 0; i < rooms.size(); i++)
-        //{
-          //if (((Room) rooms.get(i)).getRoomNumber().equals(temp))
-          //{
-            //int choice = JOptionPane.showConfirmDialog(null,
-              //  "Are you sure you want to delete this room?");
-            //if (choice == JOptionPane.YES_OPTION)
-            //{
-             // text1.setEditable(true);
-              //editMode.setText(
-                //  " I hope you have a nice day! \n You are the best secretary ever.\n I love ya <3 ");
-              //rooms.remove(i);
-              //rlist.getAllRooms().remove(i);
-              //text1.setText("");
-              //text2.setText("");
-              //dota.setValue(null);
-
-            //}
-           // else if (choice == JOptionPane.NO_OPTION)
-            //{
-            //}
-
-          //}
-        //}
-
-      //}
-      // EDIT BUTTON
-      if (e.getSource() == edit)
-      {
-        numberError.setText("You cannot edit this \n field in edit mode! ");
-        editMode.setText(
-            "You are in Edit mode now.\n\n If you want to change the room number \n just delete this room and make a new one. \nIf you changed your mind about editing \n then just press update. ");
-        String choice = (String) room.getValue();
-
-        for (int i = 0; i < rooms.size(); i++)
-        {
-          if (((Room) rooms.get(i)).getRoomNumber().equals(choice))
-          {
-            text1.setText(((Room) rooms.get(i)).getRoomNumber());
-            text2.setText(
-                Integer.toString(((Room) rooms.get(i)).getNumberOfSeats()));
-            text1.setEditable(false);
-            if (((Room) rooms.get(i)).getProjector() == 0)
-            {
-              dota.setValue("none");
-            }
-            else if (((Room) rooms.get(i)).getProjector() == 1)
-            {
-              dota.setValue("HDMI");
-            }
-            else if (((Room) rooms.get(i)).getProjector() == 2)
-            {
-              dota.setValue("VGA");
-            }
-            else if (((Room) rooms.get(i)).getProjector() == 3)
-            {
-              dota.setValue("HDMI and VGA");
-            }
-            else if (((Room) rooms.get(i)).getProjector() == -1)
-            {
-              System.out.println("error");
-            }
-          }
-
-        }
-      }
-    } */
-  public void update(ActionEvent e) throws InterruptedException
+  public void update(ActionEvent e)
   {
     if (e.getSource() == update)
     {
@@ -561,7 +289,7 @@ public class RoomController implements EventHandler<ActionEvent>
 
   }
 
-  public void delete(ActionEvent e) throws InterruptedException
+  public void delete(ActionEvent e)
   {
     if (e.getSource() == delete)
     {
