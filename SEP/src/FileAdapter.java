@@ -59,11 +59,10 @@ public class FileAdapter
   public Object[] temporaryRead(String tempFileName)
       throws IOException, ClassNotFoundException
   {
-    Object[] arr = ioHandler.readArrayFromFile(tempFileName);
-    return arr;
+    return ioHandler.readArrayFromFile(tempFileName);
   }
 
-  public void exportToXML(Object object, String filename) throws XmlConverterException
+  public void exportToXML(ExamList object, String filename) throws XmlConverterException
   {
     MyXmlConverter xmlConverter = new MyXmlConverter(filename);
     xmlConverter.toXml(object, filename);

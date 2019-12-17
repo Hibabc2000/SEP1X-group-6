@@ -214,6 +214,7 @@ public class HomeController implements EventHandler<ActionEvent>
         exams = (ExamList) obj;
       }
     }
-    fileAdapter.exportToXML(exams.getAllExams(), fileName);
+    System.out.println(exams.toString());
+    fileAdapter.exportToXML(exams, fileName);
   }
 }

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 //the class is temporary
 public class ExamList implements Serializable
 {
-  private static ArrayList<Exam> exams;
+  private ArrayList<Exam> exams;
   public ExamList()
   {
     exams = new ArrayList<>();
