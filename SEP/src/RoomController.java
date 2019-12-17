@@ -49,18 +49,9 @@ public class RoomController implements EventHandler<ActionEvent>
   private int seat = 0;
   private boolean updateCheck;
 
-  public RoomController()
-      throws IOException, ClassNotFoundException, NoSuchFieldException,
-      IllegalAccessException
+  public RoomController() throws IOException, ClassNotFoundException
   {
     rlist = new RoomList();
-    ArrayList arr = new ArrayList();
-    arr.add("HDMI");
-    arr.add("VGA");
-    arr.add("HDMI and VGA");
-    arr.add("none");
-    dota.setItems(FXCollections.observableArrayList(arr));
-
     FileAdapter fileHandler = new FileAdapter(null);
     Object[] objs = fileHandler.temporaryRead("tempRoom");
     for (Object obj : objs)
@@ -75,9 +66,18 @@ public class RoomController implements EventHandler<ActionEvent>
     {
 
     }
-
   }
 
+
+  public void initialize()
+  {
+    ArrayList arr = new ArrayList();
+    arr.add("HDMI");
+    arr.add("VGA");
+    arr.add("HDMI and VGA");
+    arr.add("none");
+    dota.setItems(FXCollections.observableArrayList(arr));
+  }
   @Override public void handle(ActionEvent actionEvent)
   {
     if (actionEvent.getSource() == homeButton)
