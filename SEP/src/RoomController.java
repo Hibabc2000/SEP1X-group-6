@@ -69,7 +69,7 @@ public class RoomController implements EventHandler<ActionEvent>
   }
 
 
-  public void initialize()
+  public void initialize() throws IOException, ClassNotFoundException
   {
     ArrayList arr = new ArrayList();
     arr.add("HDMI");
@@ -77,6 +77,21 @@ public class RoomController implements EventHandler<ActionEvent>
     arr.add("HDMI and VGA");
     arr.add("none");
     dota.setItems(FXCollections.observableArrayList(arr));
+    rlist = new RoomList();
+    FileAdapter fileHandler = new FileAdapter(null);
+    Object[] objs = fileHandler.temporaryRead("tempRoom");
+    for (Object obj : objs)
+    {
+      rlist.addRoom((Room) obj);
+    }
+    try
+    {
+      room.setItems(FXCollections.observableArrayList(rlist.getAllRooms()));
+    }
+    catch (NullPointerException e)
+    {
+
+    }
   }
   @Override public void handle(ActionEvent actionEvent)
   {
