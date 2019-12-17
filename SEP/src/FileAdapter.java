@@ -63,13 +63,9 @@ public class FileAdapter
     return arr;
   }
 
-  public void exportToXML(Object[] object, String filename) throws
-      XmlConverterException
+  public void exportToXML(Object object, String filename) throws XmlConverterException
   {
     MyXmlConverter xmlConverter = new MyXmlConverter(filename);
-    for(Object obj : object)
-    {
-      xmlConverter.toXml(obj, filename);
-    }
+    xmlConverter.toXml(object, filename);
   }
 }

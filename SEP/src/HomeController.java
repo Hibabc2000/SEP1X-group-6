@@ -79,7 +79,6 @@ public class HomeController implements EventHandler<ActionEvent>
     {
       fileHandler.temporaryWrite(dates,"tempSEDates");
     }
-
   }
 
 
@@ -94,7 +93,7 @@ public class HomeController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("home.fxml", actionEvent, null);
+        changeScene("home.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -107,7 +106,7 @@ public class HomeController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Rooms.fxml", actionEvent, null);
+        changeScene("Rooms.fxml", actionEvent);
       }
       catch (IOException e )
       {
@@ -119,7 +118,7 @@ public class HomeController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Teacher.fxml", actionEvent, null);
+        changeScene("Teacher.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -131,7 +130,7 @@ public class HomeController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Co-examiner.fxml", actionEvent, null);
+        changeScene("Co-examiner.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -143,7 +142,7 @@ public class HomeController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("addUpdateCourse.fxml", actionEvent, null);
+        changeScene("addUpdateCourse.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -155,7 +154,7 @@ public class HomeController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("addUpdateSchedule.fxml", actionEvent, null);
+        changeScene("addUpdateSchedule.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -167,7 +166,7 @@ public class HomeController implements EventHandler<ActionEvent>
     {
       try
       {
-        changeScene("Settings.fxml", actionEvent, null);
+        changeScene("Settings.fxml", actionEvent);
       }
       catch (IOException e)
       {
@@ -181,14 +180,14 @@ public class HomeController implements EventHandler<ActionEvent>
       {
         export("dotation.xml");
       }
-      catch (XmlConverterException ignored)
+      catch (XmlConverterException | IOException | ClassNotFoundException ignored)
       {
 
       }
     }
   }
 
-  private void changeScene(String target, ActionEvent event, Object list) throws IOException
+  private void changeScene(String target, ActionEvent event) throws IOException
   {
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -196,9 +195,25 @@ public class HomeController implements EventHandler<ActionEvent>
       stage.show();
   }
 
-  private void export(String fileName) throws XmlConverterException
+  private void export(String fileName)
+      throws XmlConverterException, IOException, ClassNotFoundException
   {
-    FileAdapter adapter = new FileAdapter(null);
-    adapter.exportToXML(exams.getAllExams().toArray(), fileName);
+    FileAdapter fileAdapter = new FileAdapter(null);
+    Object[] arr = fileAdapter.temporaryRead("tempExam");
+    for(Object obj : arr)
+    {
+      System.out.println(obj);
+      if(obj instanceof Exam)
+      {
+        System.out.println("This is an Exam");
+        exams.addExam((Exam) obj);
+      }
+      else if(obj instanceof ExamList)
+      {
+        System.out.println("Examlist");
+        exams = (ExamList) obj;
+      }
+    }
+    fileAdapter.exportToXML(exams.getAllExams(), fileName);
   }
 }
