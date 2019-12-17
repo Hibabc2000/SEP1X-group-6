@@ -33,10 +33,8 @@ public class HomeController implements EventHandler<ActionEvent>
   @FXML private Button courseButton;
   @FXML private Button scheduleButton;
   @FXML private Button settingsButton;
+  @FXML private Button exportButton;
   private ExamList exams;
-
-
-
   public void initialize()
       throws IOException, ClassNotFoundException, NoSuchFieldException,
       IllegalAccessException
@@ -91,6 +89,13 @@ public class HomeController implements EventHandler<ActionEvent>
   {
     exams = new ExamList();
   }
+
+  public void exportSchedule(ActionEvent actionEvent)
+  {
+
+  }
+
+
   @Override public void handle(ActionEvent actionEvent)
   {
     if (actionEvent.getSource() == homeButton)

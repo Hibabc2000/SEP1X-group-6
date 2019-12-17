@@ -3,6 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class SettingsController implements EventHandler<ActionEvent> {
   private DatePicker stDate;
   @FXML
   private DatePicker enDate;
+  @FXML Button reset;
   private OurDate startDate;
   private OurDate endDate;
   private ArrayList<OurDate> dates;
@@ -95,6 +97,32 @@ public class SettingsController implements EventHandler<ActionEvent> {
       try {
         this.changeScene("home.fxml", actionEvent, this.dates);
       } catch (NoSuchFieldException | IllegalAccessException | ClassNotFoundException | IOException var9) {
+        var9.printStackTrace();
+        System.exit(1);
+      }
+    }
+
+    if (actionEvent.getSource() == reset) {
+      try
+      {
+        File file1 = new File("tempCoExaminer");
+        File file2 = new File("tempCourse");
+        File file3 = new File("tempExam");
+        File file4 = new File("tempRoom");
+        File file5 = new File("tempSEDates");
+        File file6 = new File("tempTeacher");
+        if (file1.delete()&&
+        file2.delete()&&
+        file3.delete()&&
+        file4.delete()&&
+        file5.delete()&&
+        file6.delete())
+        {
+          System.out.println("delete successful");
+        }
+        this.changeScene("home.fxml", actionEvent, null);
+      }
+      catch (NoSuchFieldException | IllegalAccessException | ClassNotFoundException | IOException var9) {
         var9.printStackTrace();
         System.exit(1);
       }
