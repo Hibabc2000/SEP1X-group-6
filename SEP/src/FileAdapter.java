@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FileAdapter
@@ -41,8 +42,11 @@ public class FileAdapter
     {
       ioHandler.writeToFile(tempFileName, ((ExamList) obj).getAllExams().toArray());
     }
+    else if(obj instanceof ArrayList)
+    {
+      ioHandler.writeToFile(tempFileName, ((ArrayList)obj).toArray());
+    }
   }
-
   /**
    *
    * @param tempFileName file name

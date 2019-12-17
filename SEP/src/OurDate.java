@@ -94,6 +94,11 @@ public class OurDate implements Serializable
     startHour = 0;
     endHour = 0;
     week = 0;
+    stMinute = 0;
+    etMinute = 0;
+    sMinute = 0;
+    eMinute = 0;
+
   }
   public boolean compare(OurDate date)
   {
@@ -150,7 +155,7 @@ public class OurDate implements Serializable
 
   public void setYear(int year)
   {
-    this.year = year;
+    year = year;
   }
 
   public boolean isLeapYear()
@@ -177,7 +182,7 @@ public class OurDate implements Serializable
     {
       return 28;
     }
-    else if ( month == 2)
+    else if ( month == 2 && isLeapYear() )
     {
       return 29;
     }
@@ -193,7 +198,7 @@ public class OurDate implements Serializable
     {
       return 28;
     }
-    else if ( cmonth == 2)
+    else if ( cmonth == 2 && isLeapYear() )
     {
       return 29;
     }

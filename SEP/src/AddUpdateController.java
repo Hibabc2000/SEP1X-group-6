@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class AddUpdateController implements EventHandler<ActionEvent>
 {
@@ -36,6 +37,8 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   @FXML private ComboBox sMinute;
   @FXML private ComboBox eHour;
   @FXML private ComboBox eMinute;
+  private Scene scene;
+  private Stage stage;
   private TeacherList teacherList;
   private CoExaminerList coExaminerList;
   private RoomList roomList;
@@ -43,10 +46,15 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   private ExamList examList;
   private boolean updateCheck = false;
   private OurDate tmpDate;
+  private OurDate startDate;
+  private OurDate endDate;
+  private boolean bbbb;
 
   public void initialize()
+      //**************
       throws IOException, ClassNotFoundException, NoSuchFieldException,
       IllegalAccessException
+      //**************
   {
     exmtyp.getItems().addAll("Oral", "Written");
     for (int x0 = 0; x0 < 59; x0++)
@@ -71,6 +79,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       teacherList.addTeacher((Teacher) obj);
     }
+    //tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
     objs = fileHandler.temporaryRead("tempCoExaminer");
     for (Object obj:objs)
     {
@@ -92,10 +101,27 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       courseList.addCourse((Course) obj);
     }
+
+   // objs = fileHandler.temporaryRead("tempRoom");
+    //for (Object obj:objs)
+    //{
+     // roomList.addRoom((Room) obj);
+    //}
     objs = fileHandler.temporaryRead("tempExam");
     for (Object obj:objs)
     {
       examList.addExam((Exam)obj);
+    }
+    objs = fileHandler.temporaryRead("tempSEDates");
+    if(objs.length != 0 )
+    {
+      startDate = (OurDate) objs[0];
+      endDate = (OurDate) objs[1];
+      bbbb = true;
+    }
+    else
+    {
+      bbbb = false;
     }
     transferMessage(teacherList, "teacherList", "tchr");
     transferMessage(courseList, "courseList", "crs");
@@ -158,17 +184,28 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       if(!updateCheck)
       {
         boolean isThereAnyConflict = false;
-        if((exmtyp.getValue() != null)&&(crs.getValue() != null)&&(tchr.getValue() != null)&&(cexmnr.getValue() != null)&&(sMinute.getValue() != null)&&(sHour.getValue() != null)&&(eMinute.getValue() !=null)&&(eHour.getValue() != null)&&(roomC.getValue() != null))
+        if (!bbbb)
         {
+          alertBox.setText("please set the starting and ending date of the exam period in the settings tab");
+          System.out.println("please set the starting and ending date of the exam period in the settings tab");
+        }
+        else if((exmtyp.getValue() != null)&&(crs.getValue() != null)&&(tchr.getValue() != null)&&(cexmnr.getValue() != null)&&(sMinute.getValue() != null)&&(sHour.getValue() != null)&&(eMinute.getValue() !=null)&&(eHour.getValue() != null)&&(roomC.getValue() != null))
+        {
+
           LocalDate value = dateBox.getValue();
           if (value != null)
           {
-            tmpDate = new OurDate(value.getDayOfMonth(), value.getMonthValue(),
-                value.getYear(), (int) sHour.getValue(), (int) eHour.getValue(),
-                (int) sMinute.getValue(), (int) eMinute.getValue());
+            tmpDate = new OurDate(value.getDayOfMonth(), value.getMonthValue(), value.getYear(), (int) sHour.getValue(), (int) eHour.getValue(), (int) sMinute.getValue(), (int) eMinute.getValue());
           }
+          if((!tmpDate.isBefore(startDate))&&(!endDate.isBefore(tmpDate)))
+          {
+
           Exam newExam = new Exam();
-          newExam.scheduleExam((String) exmtyp.getValue(),(Course) crs.getSelectionModel().getSelectedItem(),(Teacher)tchr.getSelectionModel().getSelectedItem(),cexmnr.getSelectionModel().getSelectedItem(),tmpDate,(Room)roomC.getSelectionModel().getSelectedItem());
+          newExam.scheduleExam((String) exmtyp.getValue(),
+              (Course) crs.getSelectionModel().getSelectedItem(),
+              (Teacher) tchr.getSelectionModel().getSelectedItem(),
+              cexmnr.getSelectionModel().getSelectedItem(), tmpDate,
+              (Room) roomC.getSelectionModel().getSelectedItem());
           if (examList.getAllExams().size() != 0)
           {
             for (int x0 = 0; x0 < examList.getAllExams().size(); x0++)
@@ -177,42 +214,52 @@ public class AddUpdateController implements EventHandler<ActionEvent>
               str = "the exam conflicts with " + examList.getAllExams().get(x0);
             }
           }
-          if(!isThereAnyConflict)
+          if (!isThereAnyConflict)
           {
             examList.addExam(newExam);
           }
         }
-        if(exmtyp == null)
+          else
+          {
+            alertBox.setText("exam is not in the exam period");
+            System.out.println("exam is not in the exam period");
+          }
+        }
+        if(exmtyp.getValue() == null)
         {
           str += "exam type not selected \n";
         }
-        if(crs == null)
+        if(crs.getValue() == null)
         {
           str += "Course is not selected\n";
         }
-        if(tchr == null)
+        if(tchr.getValue() == null)
         {
           str += "Teacher is not selected\n";
         }
-        if(cexmnr == null)
+        if(cexmnr.getValue() == null)
         {
           str += "Co-Examiner is not selected\n";
         }
-        if(sHour == null)
+        if(sHour.getValue() == null)
         {
           str += "Starting Hour is not selected\n";
         }
-        if(eMinute == null)
+        if(eMinute.getValue() == null)
         {
           str += "Ending minute is not selected\n";
         }
-        if(eHour == null)
+        if(eHour.getValue() == null)
         {
           str += "Ending hour is not selected\n";
         }
-        if(sMinute == null)
+        if(sMinute.getValue() == null)
         {
           str += "Starting minute is not selected\n";
+        }
+        if(roomC.getValue() == null)
+        {
+          str += "Room is not selected \n";
         }
         alertBox.setText(str);
       }
@@ -284,7 +331,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("home.fxml", actionEvent, examList);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -297,7 +344,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("Rooms.fxml", actionEvent, examList);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -309,7 +356,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("Teacher.fxml", actionEvent, examList);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -321,7 +368,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("Co-examiner.fxml", actionEvent, examList);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -333,7 +380,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("addUpdateCourse.fxml", actionEvent, examList);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -345,7 +392,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("addUpdateSchedule.fxml", actionEvent, examList);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -357,7 +404,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("Settings.fxml", actionEvent, examList);
       }
-      catch (IOException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -366,14 +413,29 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   }
 
   private void changeScene(String target, ActionEvent event, ExamList examList)
-      throws IOException
+      throws IOException, NoSuchFieldException, IllegalAccessException
   {
+    /*
+    if (target.equals("addUpdateSchedule.fxml"))
+    {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
+      Parent parent = loader.load();
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      AddUpdateController control = loader.getController();
+      control.transferMessage(list, "teacherList", "tchr");
+      stage.getScene().setRoot(parent);
+      stage.show();
+    }
+    else
+    {
+      */
       FileAdapter fileHandler = new FileAdapter(null);
       fileHandler.temporaryWrite(examList, "tempExam");
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);
       stage.show();
+    //}
   }
 
   /**
