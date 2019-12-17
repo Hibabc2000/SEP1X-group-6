@@ -98,11 +98,11 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       courseList.addCourse((Course) obj);
     }
 
-    objs = fileHandler.temporaryRead("tempRoom");
-    for (Object obj:objs)
-    {
-      roomList.addRoom((Room) obj);
-    }
+   // objs = fileHandler.temporaryRead("tempRoom");
+    //for (Object obj:objs)
+    //{
+     // roomList.addRoom((Room) obj);
+    //}
     objs = fileHandler.temporaryRead("tempExam");
     for (Object obj:objs)
     {

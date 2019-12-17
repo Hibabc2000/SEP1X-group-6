@@ -100,7 +100,7 @@ public class HomeController implements EventHandler<ActionEvent>
       {
         changeScene("Rooms.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException | NoSuchFieldException | IllegalAccessException e )
       {
         e.printStackTrace();
         System.exit(1);

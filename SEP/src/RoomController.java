@@ -10,21 +10,24 @@ import java.util.ArrayList;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.w3c.dom.ls.LSOutput;
 
 import javax.swing.*;
 import java.io.IOException;
 
-/**
- * @author Kristóf Lénárd, 293110
- * @version v1.0
- * A class for controlling the common GUI elements.
- */
 
+/**
+ * @author Oliver Isaac, 293131
+ * @version 1.5.6.1
+ * this class is just a conTROLLer class for my Room UI.
+ */
 public class RoomController implements EventHandler<ActionEvent>
 {
+
   @FXML private Button homeButton;
   @FXML private Button roomButton;
   @FXML private Button teacherButton;
@@ -32,24 +35,42 @@ public class RoomController implements EventHandler<ActionEvent>
   @FXML private Button courseButton;
   @FXML private Button scheduleButton;
   @FXML private Button settingsButton;
+  @FXML private TextField text1;
+  @FXML private TextField text2;
+  @FXML private Button delete;
+  @FXML private Button edit;
+  @FXML private Button update;
+  @FXML private ComboBox room;
+  @FXML private ChoiceBox dota = null;
+  @FXML private Label dotaError;
+  @FXML private Label seatError;
+  @FXML private Label numberError;
+  @FXML private Label editMode;
   private RoomList rlist;
+
+  private ArrayList<String> list2;
+
   private Scene scene;
   private Stage stage;
   private Room temp;
-
-  public RoomController() throws IOException, ClassNotFoundException
-  {
+  private String pro=null;
+  private byte dotatitonIsInFrench=-1;
+  private String number=null;
+  private int seat = 0;
+  private boolean updateCheck;
+  public RoomController() throws IOException, ClassNotFoundException,NoSuchFieldException,
+      IllegalAccessException
+  {rlist = new RoomList();
     FileAdapter fileHandler = new FileAdapter(null);
-    Object[] arr = fileHandler.temporaryRead("tempRoom");
-    rlist = new RoomList();
-    rooms = new ArrayList<>();
-    for (Object obj : arr)
+    Object[] objs = fileHandler.temporaryRead("tempRoom");
+
+    //rooms = new ArrayList<>();
+    for (Object obj : objs)
     {
-      if (obj instanceof Room)
-      {
-        rlist.addRoom((Room) obj);
-      }
+      rlist.addRoom((Room)obj);
     }
+    room.setItems(FXCollections.observableArrayList(rlist.getAllRooms()));
+
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -143,7 +164,7 @@ public class RoomController implements EventHandler<ActionEvent>
 
   private void changeScene(String target, ActionEvent event, Object list)
       throws IOException, NoSuchFieldException, IllegalAccessException
-  {
+  { /*
     if (target.equals("addUpdateSchedule.fxml"))
     {
       FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
@@ -155,36 +176,19 @@ public class RoomController implements EventHandler<ActionEvent>
       stage.show();
     }
     else
-    {
+    {*/
       FileAdapter fileHandler = new FileAdapter(null);
-      fileHandler.temporaryWrite(list, "tempRoom");
+      fileHandler.temporaryWrite(rlist, "tempRoom");
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);
       stage.show();
+
     }
-  }
 
-  /**
-   * @author Oliver Isaac, 293131
-   * @version 1.5.6.1
-   * this class is just a conTROLLer class for my Room UI.
-   */
-  private ArrayList<String> list;
-  private ArrayList<String> list2;
-  @FXML private TextField text1;
-  @FXML private TextField text2;
-  @FXML private Button delete;
-  @FXML private Button edit;
-  @FXML private Button update;
-  @FXML private ChoiceBox room;
-  @FXML private ChoiceBox dota;
-  private ArrayList<Room> rooms;
-  @FXML private Label dotaError;
-  @FXML private Label seatError;
-  @FXML private Label numberError;
-  @FXML private Label editMode;
 
+
+/*
   public void update(ActionEvent e)
   { // UPDATE BUTTON
     if (e.getSource() == update)
@@ -382,38 +386,38 @@ public class RoomController implements EventHandler<ActionEvent>
     }
 
     // DELETE BUTTON
-    if (e.getSource() == delete)
-    {
-      editMode.setText("");
-      numberError.setText("");
-      String temp = (String) room.getValue();
+ //   if (e.getSource() == delete)
+   // {
+     // editMode.setText("");
+      //6numberError.setText("");
+      //String temp = (String) room.getValue();
 
-      for (int i = 0; i < rooms.size(); i++)
-      {
-        if (((Room) rooms.get(i)).getRoomNumber().equals(temp))
-        {
-          int choice = JOptionPane.showConfirmDialog(null,
-              "Are you sure you want to delete this room?");
-          if (choice == JOptionPane.YES_OPTION)
-          {
-            text1.setEditable(true);
-            editMode.setText(
-                " I hope you have a nice day! \n You are the best secretary ever.\n I love ya <3 ");
-            rooms.remove(i);
-            rlist.getAllRooms().remove(i);
-            text1.setText("");
-            text2.setText("");
-            dota.setValue(null);
+      //for (int i = 0; i < rooms.size(); i++)
+      //{
+        //if (((Room) rooms.get(i)).getRoomNumber().equals(temp))
+        //{
+          //int choice = JOptionPane.showConfirmDialog(null,
+            //  "Are you sure you want to delete this room?");
+          //if (choice == JOptionPane.YES_OPTION)
+          //{
+           // text1.setEditable(true);
+            //editMode.setText(
+              //  " I hope you have a nice day! \n You are the best secretary ever.\n I love ya <3 ");
+            //rooms.remove(i);
+            //rlist.getAllRooms().remove(i);
+            //text1.setText("");
+            //text2.setText("");
+            //dota.setValue(null);
 
-          }
-          else if (choice == JOptionPane.NO_OPTION)
-          {
-          }
+          //}
+         // else if (choice == JOptionPane.NO_OPTION)
+          //{
+          //}
 
-        }
-      }
+        //}
+      //}
 
-    }
+    //}
     // EDIT BUTTON
     if (e.getSource() == edit)
     {
@@ -454,31 +458,161 @@ public class RoomController implements EventHandler<ActionEvent>
 
       }
     }
-  }
-
-  public void starting(MouseEvent event)
+  } */
+public void update(ActionEvent e) throws InterruptedException
+{
+  if (e.getSource() == update)
   {
-    Load();
+    if (text1.getText().length() == 0)
+    {
+      numberError.setText("Enter valid name");
+    }
+    else
+    {
+      numberError.setText("");
+      number=text1.getText();
+    }
+
+    if (text2.getText().length() == 0)
+    {
+      seatError.setText("Enter valid id");
+    }
+
+    else
+    seatError.setText("");
+    try
+    {
+      seat = Integer.parseInt(text2.getText());
+      //Catches all NumberFormatExceptions but not other errors
+    }
+    catch (NumberFormatException ex)
+    {
+      seatError.setText("Invalid number of students");
+    }
+    if (seat < 0 || seat == 0)
+    {
+      seatError.setText("Invalid number of students");
+    }
+    if (dota.getValue()==null)
+    {
+      dotaError.setText("Choose a dotation");
+    }
+    else dotaError.setText(""); try
+  {
+    pro = (String) dota.getValue();
+    if (pro.equals("HDMI"))
+    {
+      dotatitonIsInFrench=2;
+
+    }
+    else if (pro.equals("VGA"))
+    {
+      dotatitonIsInFrench=1;
+
+    }
+    else if (pro.contains("and"))
+    {
+      dotatitonIsInFrench=3;
+    }
+    else if (pro.equals("none"))
+    {
+        dotatitonIsInFrench=0;
+    }
+
+
+  }
+  catch (NullPointerException n)
+  {
+    dotaError.setText("Choose a dotation");
+
   }
 
+
+
+    if (numberError.getText().length() == 0 && seatError.getText().length() == 0 && dotaError.getText().length()== 0)
+    {
+      temp = new Room(number,seat,dotatitonIsInFrench);
+      rlist.addRoom(temp);
+    }
+    if (updateCheck)
+    {
+      Object obj = room.getSelectionModel().getSelectedItem();
+      if (obj instanceof Room)
+      {
+        room.getItems().removeAll(obj);
+      }
+      updateCheck = false;
+    }
+
+    if (!room.getItems().contains(temp))
+    {
+      room.getItems().add(temp);
+      room.getSelectionModel().select(room.getItems().size()-1);
+
+    }
+
+    text1.setText("");
+    text2.setText("");
+    dota.setValue(null);
+
+  }
+
+}
+  public void delete(ActionEvent e) throws InterruptedException
+  {
+    if (e.getSource() == delete)
+    {
+      Object obj = room.getSelectionModel().getSelectedItem();
+      if (obj instanceof Room)
+      {
+        room.getItems().removeAll(obj);
+        editMode.setText(
+            " I hope you have a nice day! \n You are the best secretary ever.\n I love ya <3 ");
+      }
+
+
+
+
+    }
+  }
+
+
+
+
+
+
+  public void edit(ActionEvent e) throws InterruptedException
+  {
+    if (e.getSource() == edit)
+    {
+      Object obj = room.getSelectionModel().getSelectedItem();
+      if (obj instanceof Room)
+      {
+        text1.setText(((Room) obj).getRoomNumber());
+        text2.setText(Integer.toString(((Room) obj).getNumberOfSeats()));
+        if (((Room) obj).getProjector()==1){
+        dota.setValue("VGA");}
+        else if (((Room) obj).getProjector()==2){dota.setValue("HDMI");}
+        else if (((Room) obj).getProjector()==3){dota.setValue("HDMI and VGA");}
+        else if (((Room) obj).getProjector()==0) {dota.setValue("none");}
+        updateCheck = true;
+      }
+    }
+  }
+/*
   public void starting2(MouseEvent event)
   {
     init();
 
-  }
 
-  private void Load()
+  }
+  public void starting ()
+
   {
-    list = new ArrayList<String>();
-    for (int i = 0; i < rooms.size(); i++)
-    {
-      list.add(((Room) rooms.get(i)).getRoomNumber());
-    }
+    YouFkingPieceOfShitJavaIHopeYouWillRotInHellTogetherWithThePieceOfShitSceneBuilderYouAreUselessIhateYouEvenJavascriptIsBetter();
+ }
 
-    room.setItems(FXCollections.observableArrayList(list));
 
-    room.show();
-  }
 
   private void init()
   {
@@ -496,5 +630,9 @@ public class RoomController implements EventHandler<ActionEvent>
     dota.show();
 
   }
-
+  private void YouFkingPieceOfShitJavaIHopeYouWillRotInHellTogetherWithThePieceOfShitSceneBuilderYouAreUselessIhateYouEvenJavascriptIsBetter()
+  {
+    room.setItems(FXCollections.observableArrayList(rlist.getAllRooms()));
+  }
+*/
 }
