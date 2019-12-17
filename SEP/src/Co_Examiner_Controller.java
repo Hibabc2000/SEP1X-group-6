@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Co_examiner_Controller implements EventHandler<ActionEvent>
+public class Co_Examiner_Controller implements EventHandler<ActionEvent>
 {
   @FXML private Button homeButton;
   @FXML private Button roomButton;
