@@ -22,9 +22,9 @@ public class Room implements Serializable
   }
   /**
    * a three argument constructor for all fields
-   * @param numberOfSeats
-   * @param roomNumber
-   * @param projector
+   * @param numberOfSeats - the number of seats in the room
+   * @param roomNumber - the room identifying number
+   * @param projector - the type of projector inside the room
    */
   public Room(String roomNumber,int numberOfSeats, byte projector)
   {

@@ -55,7 +55,7 @@ public abstract class Person implements Serializable
 
   /**
    *
-   * @param obj
+   * @param obj - the object that is to be evaluated for equality
    * @return a boolean true if objects are equal or false if they are not
    * Methods returns whether the objects are equal or not
    */

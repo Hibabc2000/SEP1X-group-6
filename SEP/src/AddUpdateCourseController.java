@@ -177,23 +177,20 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
   private boolean updateCheck = false;
   private Course buffer;
   private CourseList courseList;
-  String courseName = null;
-  String groupName = null;
-  int numberOfStudents = 0;
-  int semesterNumber = 0;
+  private String courseName = null;
+  private String groupName = null;
+  private int numberOfStudents = 0;
+  private int semesterNumber = 0;
 
   /**
    *
-   * @throws IOException
-   * @throws ClassNotFoundException
-   * @throws NoSuchFieldException
-   * @throws IllegalAccessException
+   * @throws IOException - throws this exception on error while reading file
+   * @throws ClassNotFoundException - throws this exception if no such class exists
    * method initialize the courseList object, creates an instance of file Adapter
    * that is reading from the files and add all objects to the combobox
    */
   public void initialize()
-      throws IOException, ClassNotFoundException, NoSuchFieldException,
-      IllegalAccessException
+      throws IOException, ClassNotFoundException
   {
     courseList = new CourseList();
 
@@ -212,10 +209,9 @@ public class AddUpdateCourseController implements EventHandler<ActionEvent>
   /**
    *
    * @param e action event parameter
-   * @throws InterruptedException
    * method handles the "Update" button in the GUI
    */
-  public void update(ActionEvent e) throws InterruptedException
+  public void update(ActionEvent e)
   {
     if (e.getSource() == update)
     {
@@ -330,10 +326,9 @@ name.setText("");
   /**
    *
    * @param e action event parameter
-   * @throws InterruptedException
    * method handles the "Edit" button in the GUI
    */
-  public void edit(ActionEvent e) throws InterruptedException
+  public void edit(ActionEvent e)
   {
     if (e.getSource() == edit)
     {
@@ -352,10 +347,9 @@ name.setText("");
   /**
    *
    * @param e action event parameter
-   * @throws InterruptedException
    * method handles the "Delete" button in the GUI
    */
-  public void delete(ActionEvent e) throws InterruptedException
+  public void delete(ActionEvent e)
   {
     if (e.getSource() == delete)
     {

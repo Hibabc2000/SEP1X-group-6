@@ -36,8 +36,6 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   @FXML private ComboBox sMinute;
   @FXML private ComboBox eHour;
   @FXML private ComboBox eMinute;
-  private Scene scene;
-  private Stage stage;
   private TeacherList teacherList;
   private CoExaminerList coExaminerList;
   private RoomList roomList;
@@ -47,10 +45,8 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   private OurDate tmpDate;
 
   public void initialize()
-      //**************
       throws IOException, ClassNotFoundException, NoSuchFieldException,
       IllegalAccessException
-      //**************
   {
     exmtyp.getItems().addAll("Oral", "Written");
     for (int x0 = 0; x0 < 59; x0++)
@@ -75,7 +71,6 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       teacherList.addTeacher((Teacher) obj);
     }
-    //tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
     objs = fileHandler.temporaryRead("tempCoExaminer");
     for (Object obj:objs)
     {
@@ -97,12 +92,6 @@ public class AddUpdateController implements EventHandler<ActionEvent>
     {
       courseList.addCourse((Course) obj);
     }
-
-   // objs = fileHandler.temporaryRead("tempRoom");
-    //for (Object obj:objs)
-    //{
-     // roomList.addRoom((Room) obj);
-    //}
     objs = fileHandler.temporaryRead("tempExam");
     for (Object obj:objs)
     {
@@ -295,7 +284,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("home.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -308,7 +297,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("Rooms.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -320,7 +309,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("Teacher.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -332,7 +321,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("Co-examiner.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -344,7 +333,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("addUpdateCourse.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -356,7 +345,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("addUpdateSchedule.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -368,7 +357,7 @@ public class AddUpdateController implements EventHandler<ActionEvent>
       {
         changeScene("Settings.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -377,29 +366,14 @@ public class AddUpdateController implements EventHandler<ActionEvent>
   }
 
   private void changeScene(String target, ActionEvent event, ExamList examList)
-      throws IOException, NoSuchFieldException, IllegalAccessException
+      throws IOException
   {
-    /*
-    if (target.equals("addUpdateSchedule.fxml"))
-    {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
-      Parent parent = loader.load();
-      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      AddUpdateController control = loader.getController();
-      control.transferMessage(list, "teacherList", "tchr");
-      stage.getScene().setRoot(parent);
-      stage.show();
-    }
-    else
-    {
-      */
       FileAdapter fileHandler = new FileAdapter(null);
       fileHandler.temporaryWrite(examList, "tempExam");
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);
       stage.show();
-    //}
   }
 
   /**

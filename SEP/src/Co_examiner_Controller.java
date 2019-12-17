@@ -28,32 +28,27 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
   @FXML private TextField idField;
   @FXML private CheckBox internalBox;
   @FXML private ComboBox coExaminersBox;
+  @FXML private Label nameFieldError;
+  @FXML private Label idFieldError;
 
   private Scene scene;
   private Stage stage;
-
   private CoExaminerList list;
-  @FXML private Label nameFieldError;
-  @FXML private Label idFieldError;
   private String nameCoExm = null;
   private String idCoExm = null;
   private CoExaminer buffer;
- private boolean external = false;
-
+  private boolean external = false;
   private boolean checkUpdate;
 
   /**
    *
-   * @throws IOException
-   * @throws ClassNotFoundException
-   * @throws NoSuchFieldException
-   * @throws IllegalAccessException
+   * @throws IOException - throws this exception on error while reading file
+   * @throws ClassNotFoundException - throws this exception if no such class exists
    * method initialize the courseList object, creates an instance of file Adapter
    * that is reading from the files and add all objects to the combobox
    */
   public void initialize()
-      throws IOException, ClassNotFoundException, NoSuchFieldException,
-      IllegalAccessException
+      throws IOException, ClassNotFoundException
   {
     list = new CoExaminerList();
 
@@ -202,14 +197,14 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
       if (nameFieldError.getText().length() == 0
           && idFieldError.getText().length() == 0)
       {
-        //  Creating the Co-Examiner object
+        //    Creating the Co-Examiner object
         buffer = new CoExaminer(idCoExm,nameCoExm, external);
       }
       //      Adding the object to Co-Exm list
       list.addCoExaminer(buffer);
 
       //      Add items to combobox
-      //     Duplicate checker
+      //      Duplicate checker
       if (checkUpdate)
       {
         Object obj = coExaminersBox.getSelectionModel().getSelectedItem();

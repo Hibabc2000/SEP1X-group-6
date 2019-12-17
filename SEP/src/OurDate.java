@@ -150,7 +150,7 @@ public class OurDate implements Serializable
 
   public void setYear(int year)
   {
-    year = year;
+    this.year = year;
   }
 
   public boolean isLeapYear()
@@ -177,7 +177,7 @@ public class OurDate implements Serializable
     {
       return 28;
     }
-    else if ( month == 2 && isLeapYear() )
+    else if ( month == 2)
     {
       return 29;
     }
@@ -193,7 +193,7 @@ public class OurDate implements Serializable
     {
       return 28;
     }
-    else if ( cmonth == 2 && isLeapYear() )
+    else if ( cmonth == 2)
     {
       return 29;
     }
