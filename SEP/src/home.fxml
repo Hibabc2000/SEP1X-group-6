@@ -76,7 +76,7 @@
                         <TableColumn fx:id="Teacher" editable="false" text="Teacher" />
                     </columns>
                   </TableView>
-                  <Button fx:id="exportButton" layoutX="417.0" layoutY="31.0" mnemonicParsing="false" onAction="#exportSchedule" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: #239E9C;" text="Export Schedule" textFill="WHITE">
+                  <Button fx:id="exportButton" layoutX="417.0" layoutY="31.0" mnemonicParsing="false" onAction="#handle" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: #239E9C;" text="Export Schedule" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>

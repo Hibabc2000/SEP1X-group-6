@@ -88,12 +88,6 @@ public class HomeController implements EventHandler<ActionEvent>
     exams = new ExamList();
   }
 
-  public void exportSchedule(ActionEvent actionEvent)
-  {
-
-  }
-
-
   @Override public void handle(ActionEvent actionEvent)
   {
     if (actionEvent.getSource() == homeButton)
