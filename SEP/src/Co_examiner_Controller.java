@@ -61,8 +61,10 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
     Object[] objs = fileHandler.temporaryRead("tempCoExaminer");
     for (Object obj : objs)
     {
-      System.out.println("a");
-      list.addCoExaminer((CoExaminer) obj);
+      if(obj instanceof CoExaminer)
+      {
+        list.addCoExaminer((CoExaminer) obj);
+      }
     }
     coExaminersBox.setItems(FXCollections.observableArrayList(list.getAllCoExaminers()));
 
