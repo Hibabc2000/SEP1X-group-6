@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 public class OurDate implements Serializable
@@ -27,11 +28,31 @@ public class OurDate implements Serializable
   {
 
 
+    /*
     GregorianCalendar currentDate = new GregorianCalendar();
     int currentDay = currentDate.get(GregorianCalendar.DATE);
     int currentMonth = currentDate.get(GregorianCalendar.MONTH)+1;
     int currentYear = currentDate.get(GregorianCalendar.YEAR);
     OurDate startDate = new OurDate(currentDay,currentMonth,currentYear);
+     */
+    try
+    {
+      OurDate startDate;
+      FileAdapter fileHandler = new FileAdapter(null);
+      Object[] objs = fileHandler.temporaryRead("tempTeacher");
+      objs = fileHandler.temporaryRead("tempSEDates");
+      if (objs.length != 0)
+      {
+        startDate = (OurDate) objs[0];
+      }
+      else
+      {
+        GregorianCalendar currentDate = new GregorianCalendar();
+        int currentDay = currentDate.get(GregorianCalendar.DATE);
+        int currentMonth = currentDate.get(GregorianCalendar.MONTH) + 1;
+        int currentYear = currentDate.get(GregorianCalendar.YEAR);
+        startDate = new OurDate(currentDay, currentMonth, currentYear);
+      }
 
     sMinute = startMinute;
     eMinute = endMinute;
@@ -42,6 +63,7 @@ public class OurDate implements Serializable
     this.year = year;
     this.startHour = startHour;
     this.endHour = endHour;
+
     startT = startDate;
     if (year == startDate.getYear())
     {
@@ -83,7 +105,15 @@ public class OurDate implements Serializable
       }
 
     }
-
+    }
+    catch (IOException e)
+    {
+      System.exit(2);
+    }
+    catch (ClassNotFoundException e)
+    {
+      System.exit(3);
+    }
   }
   public OurDate(int day, int month, int year)
   {

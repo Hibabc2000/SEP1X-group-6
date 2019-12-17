@@ -44,7 +44,8 @@ public class SettingsController implements EventHandler<ActionEvent> {
   private ArrayList<OurDate> dates;
   private boolean aaaa;
 
-  public SettingsController() {
+  public SettingsController()
+  {
   }
 
   public void initialize() throws IOException, ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
