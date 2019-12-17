@@ -81,7 +81,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
         {
           changeScene("Home.fxml", actionEvent, list);
         }
-        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        catch (IOException e)
         {
           e.printStackTrace();
           System.exit(1);
@@ -94,7 +94,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
         {
           changeScene("Rooms.fxml", actionEvent, list);
         }
-        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        catch (IOException e)
         {
           e.printStackTrace();
           System.exit(1);
@@ -106,7 +106,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
         {
           changeScene("Teacher.fxml", actionEvent, list);
         }
-        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        catch (IOException e)
         {
           e.printStackTrace();
           System.exit(1);
@@ -118,7 +118,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
         {
           changeScene("Co-examiner.fxml", actionEvent, list);
         }
-        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        catch (IOException e)
         {
           e.printStackTrace();
           System.exit(1);
@@ -130,7 +130,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
         {
           changeScene("addUpdateCourse.fxml", actionEvent, list);
         }
-        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        catch (IOException e)
         {
           e.printStackTrace();
           System.exit(1);
@@ -142,7 +142,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
         {
           changeScene("addUpdateSchedule.fxml", actionEvent, list);
         }
-        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        catch (IOException e)
         {
           e.printStackTrace();
           System.exit(1);
@@ -154,7 +154,7 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
         {
           changeScene("Settings.fxml", actionEvent, list);
         }
-        catch (IOException | NoSuchFieldException | IllegalAccessException e)
+        catch (IOException e)
         {
           e.printStackTrace();
           System.exit(1);
@@ -277,28 +277,14 @@ public class Co_examiner_Controller implements EventHandler<ActionEvent>
 
     }
   }
-  private void changeScene(String target, ActionEvent event, Object list)
-      throws IOException, NoSuchFieldException, IllegalAccessException
+  private void changeScene(String target, ActionEvent event, Object list) throws IOException
   {
-    if(target.equals("addUpdateSchedule.fxml"))
-    {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
-      Parent parent = loader.load();
-      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      AddUpdateController control = loader.getController();
-      control.transferMessage(list, "coExaminerList", "cexmnr");
-      stage.getScene().setRoot(parent);
-      stage.show();
-    }
-    else
-    {
       FileAdapter fileHandler = new FileAdapter(null);
       fileHandler.temporaryWrite(list, "tempCoExaminer");
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);
       stage.show();
-    }
   }
 }
 
