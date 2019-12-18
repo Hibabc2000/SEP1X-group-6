@@ -87,12 +87,12 @@
                   <Insets top="10.0" />
                </FlowPane.margin>
             </Label>
-            <TextField fx:id="text1">
+            <TextField fx:id="text1" styleClass="field1">
                <FlowPane.margin>
                   <Insets top="10.0" />
                </FlowPane.margin>
             </TextField>
-            <ComboBox fx:id="room" prefWidth="150.0" promptText="Rooms">
+            <ComboBox fx:id="room" prefWidth="150.0" promptText="Rooms" styleClass="dDown">
                <FlowPane.margin>
                   <Insets left="50.0" right="150.0" top="10.0" />
                </FlowPane.margin>
@@ -102,24 +102,24 @@
                   <Insets left="10.0" top="15.0" />
                </FlowPane.margin>
             </Label>
-            <Button fx:id="edit" mnemonicParsing="false" onAction="#edit" text="Edit">
+            <Button fx:id="edit" mnemonicParsing="false" onAction="#edit" styleClass="actnB" text="Edit">
                <FlowPane.margin>
                   <Insets left="50.0" top="10.0" />
                </FlowPane.margin>
             </Button>
-            <Button fx:id="delete" mnemonicParsing="false" onAction="#delete" text="Delete">
+            <Button fx:id="delete" mnemonicParsing="false" onAction="#delete" styleClass="actnB" text="Delete">
                <FlowPane.margin>
                   <Insets left="50.0" right="175.0" top="10.0" />
                </FlowPane.margin>
             </Button>
-            <Label text="Seats: ">
+            <Label styleClass="fText" text="Seats: ">
                <FlowPane.margin>
                   <Insets top="15.0" />
                </FlowPane.margin>
             </Label>
-            <TextField fx:id="text2">
+            <TextField fx:id="text2" prefHeight="27.0" prefWidth="150.0" styleClass="field1">
                <FlowPane.margin>
-                  <Insets left="20.0" right="385.0" top="15.0" />
+                  <Insets left="18.0" right="381.0" top="15.0" />
                </FlowPane.margin>
             </TextField>
             <Label fx:id="seatError" prefHeight="30.0" prefWidth="200.0" text="SeatError">
@@ -127,14 +127,14 @@
                   <Insets left="10.0" right="400.0" top="15.0" />
                </FlowPane.margin>
             </Label>
-            <Label text="Projector: ">
+            <Label styleClass="fText" text="Projector: ">
                <FlowPane.margin>
                   <Insets top="10.0" />
                </FlowPane.margin>
             </Label>
-            <ComboBox fx:id="dota" prefWidth="150.0">
+            <ComboBox fx:id="dota" prefWidth="150.0" styleClass="dDown">
                <FlowPane.margin>
-                  <Insets right="385.0" top="10.0" />
+                  <Insets right="350.0" top="10.0" />
                </FlowPane.margin>
             </ComboBox>
             <Label fx:id="dotaError" prefHeight="30.0" prefWidth="200.0" text="SeatError">
@@ -142,7 +142,7 @@
                   <Insets left="10.0" right="400.0" top="15.0" />
                </FlowPane.margin>
             </Label>
-            <Button fx:id="update" mnemonicParsing="false" onAction="#update" prefHeight="35.0" prefWidth="200.0" text="Update">
+            <Button fx:id="update" mnemonicParsing="false" onAction="#update" prefHeight="35.0" prefWidth="200.0" styleClass="impB" text="Update">
                <FlowPane.margin>
                   <Insets left="5.0" top="10.0" />
                </FlowPane.margin>
