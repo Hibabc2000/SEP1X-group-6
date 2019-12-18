@@ -110,7 +110,6 @@ public class General_Controller implements EventHandler<ActionEvent>
       catch (IOException e)
       {
         e.printStackTrace();
-        e.printStackTrace();
         System.exit(1);
       }
     }

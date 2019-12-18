@@ -48,7 +48,7 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
   {
   }
 
-  public void initialize() throws IOException, ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
+  public void initialize() throws IOException, ClassNotFoundException {
     this.dates = new ArrayList();
     this.startDate = new OurDate(1, 1, 1);
     this.endDate = new OurDate(1, 1, 1);
@@ -72,7 +72,7 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
 
   }
 
-  private void changeScene(String target, ActionEvent event, Object list) throws IOException, NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
+  private void changeScene(String target, ActionEvent event, Object list) throws IOException {
     FileAdapter fileHandler = new FileAdapter((String)null);
     fileHandler.temporaryWrite(list, "tempSEDates");
     Parent parent = (Parent)FXMLLoader.load(this.getClass().getResource(target));
@@ -97,7 +97,7 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
     if (actionEvent.getSource() == this.homeButton) {
       try {
         this.changeScene("home.fxml", actionEvent, this.dates);
-      } catch (NoSuchFieldException | IllegalAccessException | ClassNotFoundException | IOException var9) {
+      } catch (IOException var9) {
         var9.printStackTrace();
         System.exit(1);
       }
@@ -123,7 +123,7 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
         }
         this.changeScene("home.fxml", actionEvent, null);
       }
-      catch (NoSuchFieldException | IllegalAccessException | ClassNotFoundException | IOException var9) {
+      catch (IOException var9) {
         var9.printStackTrace();
         System.exit(1);
       }
@@ -132,7 +132,7 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
     if (actionEvent.getSource().equals(this.roomButton)) {
       try {
         this.changeScene("Rooms.fxml", actionEvent, this.dates);
-      } catch (NoSuchFieldException | IllegalAccessException | ClassNotFoundException | IOException var8) {
+      } catch (IOException var8) {
         var8.printStackTrace();
         System.exit(1);
       }
@@ -141,7 +141,7 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
     if (actionEvent.getSource().equals(this.teacherButton)) {
       try {
         this.changeScene("Teacher.fxml", actionEvent, this.dates);
-      } catch (NoSuchFieldException | IllegalAccessException | ClassNotFoundException | IOException var7) {
+      } catch (IOException var7) {
         var7.printStackTrace();
         System.exit(1);
       }
@@ -150,7 +150,7 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
     if (actionEvent.getSource().equals(this.coExaminerButton)) {
       try {
         this.changeScene("Co-examiner.fxml", actionEvent, this.dates);
-      } catch (NoSuchFieldException | IllegalAccessException | ClassNotFoundException | IOException var6) {
+      } catch (IOException var6) {
         var6.printStackTrace();
         System.exit(1);
       }
@@ -159,7 +159,7 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
     if (actionEvent.getSource().equals(this.courseButton)) {
       try {
         this.changeScene("addUpdateCourse.fxml", actionEvent, this.dates);
-      } catch (NoSuchFieldException | IllegalAccessException | ClassNotFoundException | IOException var5) {
+      } catch (IOException var5) {
         var5.printStackTrace();
         System.exit(1);
       }
@@ -168,7 +168,7 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
     if (actionEvent.getSource().equals(this.scheduleButton)) {
       try {
         this.changeScene("addUpdateSchedule.fxml", actionEvent, this.dates);
-      } catch (NoSuchFieldException | IllegalAccessException | ClassNotFoundException | IOException var4) {
+      } catch (IOException var4) {
         var4.printStackTrace();
         System.exit(1);
       }
@@ -177,7 +177,7 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
     if (actionEvent.getSource().equals(this.settingsButton)) {
       try {
         this.changeScene("Settings.fxml", actionEvent, this.dates);
-      } catch (NoSuchFieldException | IllegalAccessException | ClassNotFoundException | IOException var3) {
+      } catch (IOException var3) {
         var3.printStackTrace();
         System.exit(1);
       }
