@@ -54,7 +54,7 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
     this.endDate = new OurDate(1, 1, 1);
     FileAdapter fileHandler = new FileAdapter((String)null);
     Object[] objs = fileHandler.temporaryRead("tempSEDates");
-    if (objs.length != 0) {
+    if (objs.length != 0 && objs.length != 1) {
       OurDate tsd = (OurDate)objs[0];
       OurDate ted = (OurDate)objs[1];
       if (tsd.getYear() != 1 && ted.getYear() != 1) {
