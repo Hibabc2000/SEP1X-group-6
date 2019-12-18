@@ -50,9 +50,6 @@ public class HomeController implements EventHandler<ActionEvent>
 
   {
 
-
-
-
     ArrayList<OurDate> dates = new ArrayList<>();
     TeacherList teacherList = new TeacherList();
     CourseList courseList = new CourseList();
@@ -118,8 +115,6 @@ public class HomeController implements EventHandler<ActionEvent>
     tableView.getColumns().addAll(Teacher, Date, Course, Room, Type, Week, NumStud, Time);
 
 
-    Exam exam = new Exam();
-    exam.scheduleExam("Oral", new Course("SDJ1", "X", 30, 1), new Teacher("1234", "Allan"), new CoExaminer("222", "Mark", false), new OurDate(1, 1, 1, 1, 1, 1, 1), new Room("A301", 20, (byte)2));
     tableView.getItems().addAll(exams.getAllExams());
 
 

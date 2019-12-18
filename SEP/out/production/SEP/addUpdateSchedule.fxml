@@ -140,7 +140,10 @@
                <GridPane.margin>
                   <Insets bottom="20.0" />
                </GridPane.margin></Button>
-            <TextArea fx:id="alertBox" prefHeight="370.0" prefWidth="246.0" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="3" GridPane.rowSpan="10" />
+            <TextArea fx:id="alertBox" prefHeight="315.0" prefWidth="242.0" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="3" GridPane.rowSpan="10">
+               <GridPane.margin>
+                  <Insets top="7.0" />
+               </GridPane.margin></TextArea>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="34.0" stroke="#8c8c8c" strokeType="INSIDE" width="243.0" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="2" />
             <Label prefHeight="26.0" prefWidth="98.0" text="Alert Box" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <font>
@@ -157,7 +160,7 @@
             <ComboBox fx:id="sMinute" prefWidth="150.0" promptText="Minute" styleClass="dDown" GridPane.columnIndex="2" GridPane.rowIndex="7" />
             <ComboBox fx:id="eHour" prefWidth="150.0" promptText="Hour" styleClass="dDown" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <ComboBox fx:id="eMinute" prefWidth="150.0" promptText="Minute" styleClass="dDown" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="97.0" styleClass="dDown" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="15">
+            <Button fx:id="deleteB" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="97.0" styleClass="dDown" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="15">
                <GridPane.margin>
                   <Insets bottom="20.0" left="5.0" />
                </GridPane.margin>

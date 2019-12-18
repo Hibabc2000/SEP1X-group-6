@@ -41,7 +41,7 @@ public class Exam implements Serializable
 
   public String getRoomNumber() {return room.getRoomNumber();}
 
-  public String getCourseName() {return course.getCourseName();}
+  public String getCourseName() {return course.getCourseName()+course.getGroup();}
 
   public String getExamType()
   {
