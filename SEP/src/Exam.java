@@ -35,7 +35,7 @@ public class Exam implements Serializable
 
   public String getTime() {return date.getStartHour()+":"+date.getsMinute()+"-"+date.getEndHour()+":"+date.geteMinute();}
 
-  public String  getNumStud() {return course.getNrStudents()+"";}
+  public String getNumStud() {return course.getNrStudents()+"";}
 
   public String getWeek() {return date.getWeek()+"";}
 

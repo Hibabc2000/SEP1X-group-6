@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javafx.util.Callback;
+
 import persistence.XmlConverterException;
 
 public class HomeController implements EventHandler<ActionEvent>
@@ -97,7 +97,7 @@ public class HomeController implements EventHandler<ActionEvent>
     // TableView columns settings
     Time = new TableColumn<Exam, String>("Time");
     Time.setCellValueFactory(new PropertyValueFactory<Exam, String>("time"));
-    NumStud = new TableColumn<Exam, String>("Number of Students");
+    NumStud = new TableColumn<Exam, String>("Nr. of Students");
     NumStud.setCellValueFactory(new PropertyValueFactory<Exam, String>("numStud"));
     Room = new TableColumn<Exam, String>("Room");
     Room.setCellValueFactory(new PropertyValueFactory<Exam, String>("roomNumber"));
