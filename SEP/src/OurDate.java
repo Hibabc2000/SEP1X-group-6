@@ -26,15 +26,6 @@ public class OurDate implements Serializable
   private OurDate startT;
   public OurDate(int day, int month, int year, int startHour, int endHour,int startMinute, int endMinute)
   {
-
-
-    /*
-    GregorianCalendar currentDate = new GregorianCalendar();
-    int currentDay = currentDate.get(GregorianCalendar.DATE);
-    int currentMonth = currentDate.get(GregorianCalendar.MONTH)+1;
-    int currentYear = currentDate.get(GregorianCalendar.YEAR);
-    OurDate startDate = new OurDate(currentDay,currentMonth,currentYear);
-     */
     try
     {
       OurDate startDate;
