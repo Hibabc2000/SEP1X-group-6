@@ -1,5 +1,6 @@
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -48,30 +49,7 @@ public class HomeController implements EventHandler<ActionEvent>
 
 
   {
-    Time = new TableColumn<Exam, String>("Time");
-    Time.setCellValueFactory(new PropertyValueFactory<Exam, String>("time"));
-    NumStud = new TableColumn<Exam, String>("Number of Students");
-    NumStud.setCellValueFactory(new PropertyValueFactory<Exam, String>("numStud"));
-    Room = new TableColumn<Exam, String>("Room");
-    Room.setCellValueFactory(new PropertyValueFactory<Exam, String>("roomNumber"));
-    Course = new TableColumn<Exam, String>("Course");
-    Course.setCellValueFactory(new PropertyValueFactory<Exam, String>("courseName"));
-    Date = new TableColumn<Exam, String>("Date");
-    Date.setCellValueFactory(new PropertyValueFactory<Exam, String>("day"));
-    Teacher = new TableColumn<Exam, String>("Teacher");
-    Teacher.setCellValueFactory(new PropertyValueFactory<Exam, String>("teacherName"));
-    Type = new TableColumn<Exam, String>("Type");
-    Type.setCellValueFactory(new PropertyValueFactory<Exam, String>("examType"));
-    Week = new TableColumn<Exam, String>("Week");
-    Week.setCellValueFactory(new PropertyValueFactory<Exam, String>("week"));
 
-
-    tableView.getColumns().addAll(Teacher, Date, Course, Room, Type, Week, NumStud, Time);
-
-    exams = new ExamList();
-    Exam exam = new Exam();
-    exam.scheduleExam("Oral", new Course("SDJ1", "X", 30, 1), new Teacher("1234", "Allan"), new CoExaminer("222", "Mark", false), new OurDate(1, 1, 1, 1, 1, 1, 1), new Room("A301", 20, (byte)2));
-    tableView.getItems().addAll(exams);
 
 
 
@@ -117,6 +95,36 @@ public class HomeController implements EventHandler<ActionEvent>
     {
       fileHandler.temporaryWrite(dates,"tempSEDates");
     }
+
+
+    Time = new TableColumn<Exam, String>("Time");
+    Time.setCellValueFactory(new PropertyValueFactory<Exam, String>("time"));
+    NumStud = new TableColumn<Exam, String>("Number of Students");
+    NumStud.setCellValueFactory(new PropertyValueFactory<Exam, String>("numStud"));
+    Room = new TableColumn<Exam, String>("Room");
+    Room.setCellValueFactory(new PropertyValueFactory<Exam, String>("roomNumber"));
+    Course = new TableColumn<Exam, String>("Course");
+    Course.setCellValueFactory(new PropertyValueFactory<Exam, String>("courseName"));
+    Date = new TableColumn<Exam, String>("Date");
+    Date.setCellValueFactory(new PropertyValueFactory<Exam, String>("day"));
+    Teacher = new TableColumn<Exam, String>("Teacher");
+    Teacher.setCellValueFactory(new PropertyValueFactory<Exam, String>("teacherName"));
+    Type = new TableColumn<Exam, String>("Type");
+    Type.setCellValueFactory(new PropertyValueFactory<Exam, String>("examType"));
+    Week = new TableColumn<Exam, String>("Week");
+    Week.setCellValueFactory(new PropertyValueFactory<Exam, String>("week"));
+
+
+    tableView.getColumns().addAll(Teacher, Date, Course, Room, Type, Week, NumStud, Time);
+
+
+    Exam exam = new Exam();
+    exam.scheduleExam("Oral", new Course("SDJ1", "X", 30, 1), new Teacher("1234", "Allan"), new CoExaminer("222", "Mark", false), new OurDate(1, 1, 1, 1, 1, 1, 1), new Room("A301", 20, (byte)2));
+    tableView.getItems().addAll(exams.getAllExams());
+
+
+
+
   }
 
 
