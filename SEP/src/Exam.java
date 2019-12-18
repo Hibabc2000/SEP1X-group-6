@@ -8,6 +8,7 @@ public class Exam implements Serializable
   private Teacher teacher;
   private CoExaminer coExaminer;
   private OurDate date;
+
   public Exam()
   {
     examType= null;
@@ -26,7 +27,22 @@ public class Exam implements Serializable
     this.coExaminer=coExaminer;
     this.date=date;
     this.room=inRoom;
+
   }
+  public String getTime() {return date.getStartHour()+":"+date.getsMinute()+"-"+date.getEndHour()+":"+date.geteMinute();}
+
+  public String  getNumStud() {return course.getNrStudents()+"";}
+
+  public String getWeek() {return date.getWeek()+"";}
+
+  public String getTeacherName() {return teacher.getName();}
+
+  public String getDay() {return date.getDay()+"/"+date.getMonth()+"/"+date.getYear();}
+
+  public String getRoomNumber() {return room.getRoomNumber();}
+
+  public String getCourseName() {return course.getCourseName();}
+
   public String getExamType()
   {
     return examType;

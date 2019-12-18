@@ -175,7 +175,7 @@
                            </children>
                         </VBox>
                         <Line endX="100.0" startX="-100.0" strokeWidth="1.5" GridPane.columnIndex="3" />
-                        <ComboBox fx:id="courses" prefHeight="26.0" prefWidth="202.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="courses" prefHeight="26.0" prefWidth="202.0" styleClass="dDown" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                         <Label fx:id="updatedNotification" textAlignment="RIGHT" textFill="#039a35" GridPane.rowIndex="6">
                            <GridPane.margin>
                               <Insets left="40.0" />

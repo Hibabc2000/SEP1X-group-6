@@ -70,7 +70,7 @@ public class Course implements Serializable
    */
   @Override public String toString()
   {
-    return courseName + " | " + group
+    return courseName + group
         + " | " +  + nrStudents +" | "+ semester;
   }
 
