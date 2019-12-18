@@ -29,6 +29,9 @@ public class Exam implements Serializable
     this.room=inRoom;
 
   }
+  //***************************
+  // METHODS USED TO GET TableView (HomeController) COLUMNS.
+
   public String getTime() {return date.getStartHour()+":"+date.getsMinute()+"-"+date.getEndHour()+":"+date.geteMinute();}
 
   public String  getNumStud() {return course.getNrStudents()+"";}
@@ -42,6 +45,7 @@ public class Exam implements Serializable
   public String getRoomNumber() {return room.getRoomNumber();}
 
   public String getCourseName() {return course.getCourseName()+course.getGroup();}
+  //***************************
 
   public String getExamType()
   {
