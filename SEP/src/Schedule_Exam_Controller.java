@@ -256,7 +256,8 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
         updateCheck = false;
       }
       exmBox.setItems(FXCollections.observableArrayList(examList.getAllExams()));
-    }
+      exmBox.setItems(FXCollections.observableArrayList(examList.getAllExams()));
+  }
     if (actionEvent.getSource() == editB)
     {
       alertBox.setText("");
