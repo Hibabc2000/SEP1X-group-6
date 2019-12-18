@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings_Controller">
+    <left>
+        <VBox id="mCon" prefHeight="478.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" prefHeight="10.0" prefWidth="198.0" text="Exam planner" textAlignment="CENTER" textFill="#f2f2f2">
+                    <VBox.margin>
+                        <Insets top="30.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="21.0" />
+                    </font></Label>
+                <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="318.0" styleClass="mItem" text="HOME">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+                <Button fx:id="roomButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="340.0" styleClass="mItem" text="Rooms">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+                <Button fx:id="teacherButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="263.0" styleClass="mItem" text="Teachers">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+                <Button fx:id="coExaminerButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="401.0" styleClass="mItem" text="Co-examiner">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+                <Button fx:id="courseButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="321.0" styleClass="mItem" text="Courses">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+                <Button fx:id="scheduleButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="290.0" styleClass="mItem" text="Schedule exam">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="394.0" style="-fx-background-color: #6f5ea8;" styleClass="mItem" text="Settings">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Button>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <GridPane prefHeight="522.0" prefWidth="600.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.20001220703125" minWidth="10.0" prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="312.0" minWidth="10.0" prefWidth="312.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="125.59998168945313" minHeight="7.199987792968756" prefHeight="73.39998779296874" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="254.4" minHeight="10.0" prefHeight="80.60001220703126" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="302.6000274658203" minHeight="10.0" prefHeight="151.79998779296875" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="194.19998779296873" minHeight="10.0" prefHeight="188.60001220703123" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label style="-fx-font-weight: bold;" text="Start Date:">
+                            <GridPane.margin>
+                                <Insets left="20.0" />
+                            </GridPane.margin>
+                        </Label>
+                        <Label style="-fx-font-weight: bold;" text="End Date:" GridPane.rowIndex="1">
+                            <GridPane.margin>
+                                <Insets left="20.0" />
+                            </GridPane.margin>
+                        </Label>
+                        <DatePicker fx:id="stDate" styleClass="dDown" GridPane.columnIndex="1" />
+                        <DatePicker fx:id="enDate" styleClass="dDown" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button fx:id="confirm" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="162.0" styleClass="actnB" text="Confirm" GridPane.rowIndex="2">
+                            <GridPane.margin>
+                                <Insets left="20.0" />
+                            </GridPane.margin>
+                        </Button>
+                  <Button fx:id="reset" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="302.0" styleClass="actnB" text="reset" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Button>
+                    </children>
+                </GridPane>
+            </children></FlowPane>
+    </center>
+    <top>
+        <HBox prefHeight="71.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="76.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../assignment_2_RWD1/images/logo.png" />
+                    </image>
+                </ImageView>
+                <MenuBar prefHeight="76.0" prefWidth="600.0" />
+            </children>
+        </HBox>
+    </top>
+</BorderPane>
