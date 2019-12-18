@@ -195,26 +195,14 @@ public class HomeController implements EventHandler<ActionEvent>
       stage.show();
   }
 
-  private void export(String fileName)
-      throws XmlConverterException, IOException, ClassNotFoundException
+  private void export(String fileName) throws XmlConverterException, IOException, ClassNotFoundException
   {
     FileAdapter fileAdapter = new FileAdapter(null);
     Object[] arr = fileAdapter.temporaryRead("tempExam");
     for(Object obj : arr)
     {
-      System.out.println(obj);
-      if(obj instanceof Exam)
-      {
-        System.out.println("This is an Exam");
-        exams.addExam((Exam) obj);
-      }
-      else if(obj instanceof ExamList)
-      {
-        System.out.println("Examlist");
-        exams = (ExamList) obj;
-      }
+      exams.addExam((Exam) obj);
     }
-    System.out.println(exams.toString());
     fileAdapter.exportToXML(exams, fileName);
   }
 }
