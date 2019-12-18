@@ -157,7 +157,7 @@
             <ComboBox fx:id="sMinute" prefWidth="150.0" promptText="Minute" styleClass="dDown" GridPane.columnIndex="2" GridPane.rowIndex="7" />
             <ComboBox fx:id="eHour" prefWidth="150.0" promptText="Hour" styleClass="dDown" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <ComboBox fx:id="eMinute" prefWidth="150.0" promptText="Minute" styleClass="dDown" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-            <Button fx:id="deleteB" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="97.0" styleClass="dDown" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="15">
+            <Button fx:id="deleteB" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="97.0" styleClass="dDown" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="15">
                <GridPane.margin>
                   <Insets bottom="20.0" left="5.0" />
                </GridPane.margin>

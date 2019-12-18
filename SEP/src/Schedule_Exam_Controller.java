@@ -269,6 +269,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
     {
       alertBox.setText("");
       examList.deleteExam(exmBox.getSelectionModel().getSelectedIndex());
+      exmBox.setItems(FXCollections.observableList(examList.getAllExams()));
     }
 
     if (actionEvent.getSource() == homeButton)
