@@ -50,11 +50,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
   private OurDate endDate;
   private boolean bbbb;
 
-  public void initialize()
-      //**************
-      throws IOException, ClassNotFoundException, NoSuchFieldException,
-      IllegalAccessException
-      //**************
+  public void initialize() throws IOException, ClassNotFoundException, NoSuchFieldException, IllegalAccessException
   {
     exmtyp.getItems().addAll("Oral", "Written");
     for (int x0 = 0; x0 < 59; x0++)
@@ -67,7 +63,6 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
       sMinute.getItems().add(x0);
       eMinute.getItems().add(x0);
     }
-    //*******************
     teacherList = new TeacherList();
     coExaminerList = new CoExaminerList();
     roomList = new RoomList();
@@ -79,7 +74,6 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
     {
       teacherList.addTeacher((Teacher) obj);
     }
-    //tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
     objs = fileHandler.temporaryRead("tempCoExaminer");
     for (Object obj:objs)
     {
@@ -101,12 +95,6 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
     {
       courseList.addCourse((Course) obj);
     }
-
-   // objs = fileHandler.temporaryRead("tempRoom");
-    //for (Object obj:objs)
-    //{
-     // roomList.addRoom((Room) obj);
-    //}
     objs = fileHandler.temporaryRead("tempExam");
     for (Object obj:objs)
     {
@@ -129,48 +117,6 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
     transferMessage(coExaminerList, "coExaminerList", "cexmnr");
     transferMessage(teacherList, "teacherList", "tchr");
     transferMessage(examList, "examList", "examBox");
-
-    //*******************
-  }
-
-  public Schedule_Exam_Controller()
-      throws IOException, ClassNotFoundException, NoSuchFieldException,
-      IllegalAccessException
-  {
-/*
-    teacherList = new TeacherList();
-    coExaminerList = new CoExaminerList();
-    roomList = new RoomList();
-    courseList = new CourseList();
-    examList = new ExamList();
-    FileAdapter fileHandler = new FileAdapter(null);
-
-    Object[] objs = fileHandler.temporaryRead("tempTeacher");
-    for (Object obj : objs)
-    {
-      teacherList.addTeacher((Teacher) obj);
-    }
-    for (Object t : teacherList.getAllTeachers())
-    {
-      System.out.println(t);
-    }
-    objs = fileHandler.temporaryRead("tempCoExaminer");
-    for (Object obj : objs)
-    {
-      if (obj instanceof Co_examiner)
-      {
-        coExaminerList.addCoExaminer(obj);
-      }
-    }
-    objs = fileHandler.temporaryRead("tempRoom");
-    for (Object obj : objs)
-    {
-      if (obj instanceof Room)
-      {
-        roomList.addRoom((Room) obj);
-      }
-    }
- */
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -180,7 +126,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
     {
 
       String str = "";
-      alertBox.setText("");
+      //alertBox.setText("");
       if(!updateCheck)
       {
         boolean isThereAnyConflict = false;
@@ -221,8 +167,10 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
         }
           else
           {
+
             alertBox.setText("exam is not in the exam period");
             System.out.println("exam is not in the exam period");
+            System.out.println(alertBox.getText());
           }
         }
         if(exmtyp.getValue() == null)
@@ -323,6 +271,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
     {
       alertBox.setText("");
       examList.deleteExam(exmBox.getSelectionModel().getSelectedIndex());
+      exmBox.setItems(FXCollections.observableList(examList.getAllExams()));
     }
 
     if (actionEvent.getSource() == homeButton)
@@ -331,7 +280,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
       {
         changeScene("home.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -344,7 +293,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
       {
         changeScene("Rooms.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -356,7 +305,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
       {
         changeScene("Teacher.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -368,7 +317,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
       {
         changeScene("Co-examiner.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -380,7 +329,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
       {
         changeScene("addUpdateCourse.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -392,7 +341,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
       {
         changeScene("addUpdateSchedule.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -404,7 +353,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
       {
         changeScene("Settings.fxml", actionEvent, examList);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -412,30 +361,14 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
     }
   }
 
-  private void changeScene(String target, ActionEvent event, ExamList examList)
-      throws IOException, NoSuchFieldException, IllegalAccessException
+  private void changeScene(String target, ActionEvent event, ExamList examList) throws IOException
   {
-    /*
-    if (target.equals("addUpdateSchedule.fxml"))
-    {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
-      Parent parent = loader.load();
-      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      AddUpdateController control = loader.getController();
-      control.transferMessage(list, "teacherList", "tchr");
-      stage.getScene().setRoot(parent);
-      stage.show();
-    }
-    else
-    {
-      */
       FileAdapter fileHandler = new FileAdapter(null);
       fileHandler.temporaryWrite(examList, "tempExam");
       Parent parent = FXMLLoader.load(getClass().getResource(target));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.getScene().setRoot(parent);
       stage.show();
-    //}
   }
 
   /**
@@ -447,42 +380,25 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
    * @throws NoSuchFieldException   - method throws this exception if the target field does not exist.
    * @throws IllegalAccessException - method throws this exception if it does not have access to the target variable
    */
-  public void transferMessage(Object message, String name, String target)
-      throws NoSuchFieldException, IllegalAccessException
+  public void transferMessage(Object message, String name, String target) throws NoSuchFieldException, IllegalAccessException
   {
     getClass().getDeclaredField(name).set(this, message);
     System.out.println(message);
     if (target.equals("tchr"))
     {
-      if (tchr != null)
-      {
         tchr.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
-      }
-      else
-        System.out.println("TCHR is null");
     }
     if (target.equals("cexmnr"))
     {
       cexmnr.setItems(FXCollections.observableArrayList(coExaminerList.getAllCoExaminers()));
     }
-
     if (target.equals("crs"))
     {
-      if (crs != null)
-      {
         crs.setItems(FXCollections.observableArrayList(courseList.getAllCourses()));
-      }
-      else
-        System.out.println("CRS is null");
     }
     if (target.equals("roomC"))
     {
-      if (roomC != null)
-      {
         roomC.setItems(FXCollections.observableArrayList(roomList.getAllRooms()));
-      }
-      else
-        System.out.println("room is null");
     }
     if (target.equals("examBox"))
     {

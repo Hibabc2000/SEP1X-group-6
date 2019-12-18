@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 /**
@@ -17,19 +18,13 @@ import java.io.IOException;
 
 public class General_Controller implements EventHandler<ActionEvent>
 {
-    @FXML private Button homeButton;
-    @FXML private Button roomButton;
-    @FXML private Button teacherButton;
-    @FXML private Button coExaminerButton;
-    @FXML private Button courseButton;
-    @FXML private Button scheduleButton;
-    @FXML private Button settingsButton;
-    private Scene scene;
-    private Stage stage;
-
-    public General_Controller()
-    {
-    }
+  @FXML private Button homeButton;
+  @FXML private Button roomButton;
+  @FXML private Button teacherButton;
+  @FXML private Button coExaminerButton;
+  @FXML private Button courseButton;
+  @FXML private Button scheduleButton;
+  @FXML private Button settingsButton;
 
   @Override public void handle(ActionEvent actionEvent)
   {
@@ -39,7 +34,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         changeScene("home.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -52,7 +47,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         changeScene("Rooms.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -64,7 +59,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         changeScene("Teacher.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -76,7 +71,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         changeScene("Co-examiner.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -88,7 +83,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         changeScene("addUpdateCourse.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -100,7 +95,7 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         changeScene("addUpdateSchedule.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
         e.printStackTrace();
         System.exit(1);
@@ -112,9 +107,8 @@ public class General_Controller implements EventHandler<ActionEvent>
       {
         changeScene("Settings.fxml", actionEvent, null);
       }
-      catch (IOException | NoSuchFieldException | IllegalAccessException e)
+      catch (IOException e)
       {
-        e.printStackTrace();
         e.printStackTrace();
         System.exit(1);
       }
@@ -122,26 +116,11 @@ public class General_Controller implements EventHandler<ActionEvent>
   }
 
   private void changeScene(String target, ActionEvent event, Object list)
-      throws IOException, NoSuchFieldException, IllegalAccessException
+      throws IOException
   {
-    if(target.equals("addUpdateSchedule.fxml"))
-    {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource(target));
-      Parent parent = loader.load();
-      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      Schedule_Exam_Controller control = loader.getController();
-      control.transferMessage(list, "teacherList", "tchr");
-      stage.getScene().setRoot(parent);
-      stage.show();
-    }
-    else
-    {
-      //save data to file
-      Parent parent = FXMLLoader.load(getClass().getResource(target));
-      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      stage.getScene().setRoot(parent);
-      stage.show();
-    }
+    Parent parent = FXMLLoader.load(getClass().getResource(target));
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.getScene().setRoot(parent);
+    stage.show();
   }
-
 }

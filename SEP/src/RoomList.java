@@ -64,7 +64,6 @@ public class RoomList implements Serializable
     }
     return tmp;
   }
-  // use the following methods with.....  just don't use them, ok?
   /**
    * @param obj a roomlist object
    * @return a boolean with the value of the two roomlist object equality
@@ -108,7 +107,6 @@ public class RoomList implements Serializable
    * @param room
    * add a new room object to the roomList
    */
-  //this is a dark territory, enter with caution
   public void addRoom(Room room)
   {
     rooms.add(room);

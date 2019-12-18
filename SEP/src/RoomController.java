@@ -61,6 +61,7 @@ public class RoomController implements EventHandler<ActionEvent>
     catch (NullPointerException ignored)
     {
 
+
     }
   }
 
