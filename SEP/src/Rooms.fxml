@@ -76,8 +76,8 @@
                   <Insets right="190.0" />
                </FlowPane.margin>
             </Label>
-            <Line endX="100.0" startX="-100.0" stroke="SILVER" />
-            <Line endX="100.0" startX="-100.0" stroke="SILVER">
+            <Line endX="100.0" startX="-100.0" strokeWidth="1.5" />
+            <Line endX="100.0" startX="-100.0" strokeWidth="1.5">
                <FlowPane.margin>
                   <Insets left="25.0" right="160.0" />
                </FlowPane.margin>
@@ -155,9 +155,9 @@
    <top>
       <HBox prefHeight="72.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="79.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="79.0" fitWidth="200.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../assignment_2_RWD1/images/logo.png" />
+                  <Image url="@logo.png" />
                </image>
             </ImageView>
             <MenuBar prefHeight="88.0" prefWidth="600.0" />

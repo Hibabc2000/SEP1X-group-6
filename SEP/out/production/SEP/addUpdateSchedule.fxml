@@ -64,9 +64,9 @@
     <top>
         <HBox prefHeight="74.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="76.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="76.0" fitWidth="202.0" pickOnBounds="true">
                     <image>
-                        <Image url="@../../../assignment_2_RWD1/images/logo.png" />
+                        <Image url="@logo.png" />
                     </image>
                 </ImageView>
                 <MenuBar prefHeight="78.0" prefWidth="599.0" />

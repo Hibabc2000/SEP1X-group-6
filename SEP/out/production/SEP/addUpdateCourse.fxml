@@ -194,7 +194,7 @@
          <children>
             <ImageView fitHeight="79.0" fitWidth="200.0" pickOnBounds="true">
                <image>
-                  <Image url="@../fxml/logo.png" />
+                  <Image url="@logo.png" />
                </image>
             </ImageView>
             <MenuBar prefHeight="79.0" prefWidth="642.0" />
