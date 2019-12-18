@@ -153,15 +153,14 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
               cexmnr.getSelectionModel().getSelectedItem(), tmpDate,
               (Room) roomC.getSelectionModel().getSelectedItem());
           int xz = 0;
-          if (examList.getAllExams().size() != 0)
+
+          for(Exam e : examList.getAllExams())
           {
-            for (int x0 = 0; x0 < examList.getAllExams().size(); x0++)
+            isThereAnyConflict = e.detectConflict(newExam);
+            if (isThereAnyConflict)
             {
-              isThereAnyConflict = examList.getAllExams().get(x0).detectConflict(newExam);
-              if(isThereAnyConflict)
-              {
-                xz = x0;
-              }
+              xz = examList.getAllExams().indexOf(e);
+              break;
             }
           }
           if (!isThereAnyConflict)
@@ -232,21 +231,26 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
                 (int) sMinute.getValue(), (int) eMinute.getValue());
           }
           tempExam.scheduleExam((String) exmtyp.getValue(),(Course) crs.getSelectionModel().getSelectedItem(),(Teacher)tchr.getSelectionModel().getSelectedItem(),cexmnr.getSelectionModel().getSelectedItem(),tmpDate,(Room)roomC.getSelectionModel().getSelectedItem());
-
+          int xz = 0;
           if (examList.getAllExams().size() != 0)
           {
             for (int x0 = 0; x0 < examList.getAllExams().size(); x0++)
             {
               isThereAnyConflict = examList.getAllExams().get(x0).detectConflict(tempExam);
-              str = "the exam conflicts with " + examList.getAllExams().get(x0);
+              if(isThereAnyConflict)
+              {
+                xz = x0;
+              }
             }
           }
           if(!isThereAnyConflict)
           {
             examList.addExamAtIndex(exmBox.getSelectionModel().getSelectedIndex(),tempExam);
           }
-
-
+          else
+          {
+            alertBox.setText("the exam conflicts with " + examList.getAllExams().get(xz));
+          }
         }
         updateCheck = false;
       }

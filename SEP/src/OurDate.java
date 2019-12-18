@@ -123,14 +123,11 @@ public class OurDate implements Serializable
   }
   public boolean compare(OurDate date)
   {
-    System.out.println(etMinute + "/" +  stMinute + "//" + date.getEtMinute() + "/" + date.getStMinute());
     if(year == date.getYear())
     {
-      System.out.println(etMinute + "/" +  stMinute + "//" + date.getEtMinute() + "/" + date.getStMinute() + "a");
 
       if (month == date.getMonth())
       {
-        System.out.println(etMinute + "/" +  stMinute + "//" + date.getEtMinute() + "/" + date.getStMinute() + "b");
         if (day == date.getDay())
         {
           if ((date.getStMinute() >= etMinute)||(stMinute >= date.etMinute))
@@ -142,13 +139,13 @@ public class OurDate implements Serializable
             return true;
           }
         }
-        else {System.out.println(etMinute + "/" +  stMinute + "//" + date.getEtMinute() + "/" + date.getStMinute() + "n");
+        else {
           return false; }
       }
-      else { System.out.println(etMinute + "/" +  stMinute + "//" + date.getEtMinute() + "/" + date.getStMinute() + "l");
+      else {
       return false; }
     }
-    else{System.out.println(etMinute + "/" +  stMinute + "//" + date.getEtMinute() + "/" + date.getStMinute() + "k");
+    else{
     return false;}
   }
 

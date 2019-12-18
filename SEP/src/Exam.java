@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.SimpleTimeZone;
 
 public class Exam implements Serializable
 {
@@ -113,7 +114,10 @@ public class Exam implements Serializable
       {
         return true;
       }
-      if(teacher.equals(exam.getTeacher())){return true;}
+      if(teacher.equals(exam.getTeacher()))
+      {
+        return true;
+      }
       if(coExaminer.equals(exam.getCoExaminer())){return true;}
     }
     return false;
