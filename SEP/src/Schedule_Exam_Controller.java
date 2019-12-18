@@ -133,6 +133,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
         if (!bbbb)
         {
           alertBox.setText("please set the starting and ending date of the exam period in the settings tab");
+          str += "please set the starting and ending date of the exam period in the settings tab";
           System.out.println("please set the starting and ending date of the exam period in the settings tab");
         }
         else if((exmtyp.getValue() != null)&&(crs.getValue() != null)&&(tchr.getValue() != null)&&(cexmnr.getValue() != null)&&(sMinute.getValue() != null)&&(sHour.getValue() != null)&&(eMinute.getValue() !=null)&&(eHour.getValue() != null)&&(roomC.getValue() != null))
@@ -171,7 +172,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
         }
           else
           {
-
+            str += "exam is not in the exam period";
             alertBox.setText("exam is not in the exam period");
             System.out.println("exam is not in the exam period");
             System.out.println(alertBox.getText());
