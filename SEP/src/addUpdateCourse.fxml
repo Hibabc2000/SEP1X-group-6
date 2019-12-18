@@ -5,8 +5,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -21,7 +19,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Course_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Course_Controller">
    <left>
       <VBox id="mCon" prefHeight="478.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -183,17 +181,7 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <TableView layoutX="14.0" layoutY="3.0" prefHeight="195.0" prefWidth="248.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="Name" />
-                            <TableColumn prefWidth="96.79998779296875" text="NO Students" />
-                              <TableColumn prefWidth="75.0" text="Semester" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
                </children>
             </VBox>
          </children>
