@@ -30,8 +30,8 @@ public class OurDate implements Serializable
     {
       OurDate startDate;
       FileAdapter fileHandler = new FileAdapter(null);
-      Object[] objs = fileHandler.temporaryRead("tempTeacher");
-      objs = fileHandler.temporaryRead("tempSEDates");
+      Object[] objs = fileHandler.temporaryRead("tempSEDates");
+      //objs = fileHandler.temporaryRead("tempSEDates");
       if (objs.length != 0)
       {
         startDate = (OurDate) objs[0];
@@ -123,34 +123,33 @@ public class OurDate implements Serializable
   }
   public boolean compare(OurDate date)
   {
+    System.out.println(etMinute + "/" +  stMinute + "//" + date.getEtMinute() + "/" + date.getStMinute());
     if(year == date.getYear())
     {
+      System.out.println(etMinute + "/" +  stMinute + "//" + date.getEtMinute() + "/" + date.getStMinute() + "a");
+
       if (month == date.getMonth())
       {
+        System.out.println(etMinute + "/" +  stMinute + "//" + date.getEtMinute() + "/" + date.getStMinute() + "b");
         if (day == date.getDay())
         {
-          if(((etMinute <= date.getEtMinute())&&(stMinute <= date.getStMinute()))||((stMinute >= date.getStMinute())))
+          if ((date.getStMinute() >= etMinute)||(stMinute >= date.etMinute))
+          {
+            return false;
+          }
+          else
           {
             return true;
           }
-          else if (((etMinute >= date.getStMinute())&&(stMinute >= date.getStMinute()))||((etMinute >= date.getEtMinute())&&(stMinute >= date.getStMinute())))
-          {
-            return true;
-          }
-          else {return false;}
-
         }
-        else
-        {
-          return false;
-        }
+        else {System.out.println(etMinute + "/" +  stMinute + "//" + date.getEtMinute() + "/" + date.getStMinute() + "n");
+          return false; }
       }
-      else
-      {
-        return false;
-      }
+      else { System.out.println(etMinute + "/" +  stMinute + "//" + date.getEtMinute() + "/" + date.getStMinute() + "l");
+      return false; }
     }
-    else{return false;}
+    else{System.out.println(etMinute + "/" +  stMinute + "//" + date.getEtMinute() + "/" + date.getStMinute() + "k");
+    return false;}
   }
 
   public void setDay(int day)

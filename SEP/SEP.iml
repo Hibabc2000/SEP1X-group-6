@@ -7,8 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="JavaFX" level="application" />
-    <orderEntry type="library" exported="" name="MyXmlConverter-1.2" level="project" />
     <orderEntry type="library" exported="" name="lib" level="project" />
+    <orderEntry type="library" exported="" name="MyXmlConverter-1.2" level="project" />
   </component>
 </module>

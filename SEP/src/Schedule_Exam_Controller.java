@@ -53,12 +53,12 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
   public void initialize() throws IOException, ClassNotFoundException, NoSuchFieldException, IllegalAccessException
   {
     exmtyp.getItems().addAll("Oral", "Written");
-    for (int x0 = 0; x0 < 59; x0++)
+    for (int x0 = 0; x0 < 24; x0++)
     {
       sHour.getItems().add(x0);
       eHour.getItems().add(x0);
     }
-    for (int x0 = 0; x0 < 23; x0++)
+    for (int x0 = 0; x0 < 60; x0++)
     {
       sMinute.getItems().add(x0);
       eMinute.getItems().add(x0);
@@ -152,18 +152,23 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
               (Teacher) tchr.getSelectionModel().getSelectedItem(),
               cexmnr.getSelectionModel().getSelectedItem(), tmpDate,
               (Room) roomC.getSelectionModel().getSelectedItem());
+          int xz = 0;
           if (examList.getAllExams().size() != 0)
           {
             for (int x0 = 0; x0 < examList.getAllExams().size(); x0++)
             {
               isThereAnyConflict = examList.getAllExams().get(x0).detectConflict(newExam);
-              str = "the exam conflicts with " + examList.getAllExams().get(x0);
+              if(isThereAnyConflict)
+              {
+                xz = x0;
+              }
             }
           }
           if (!isThereAnyConflict)
           {
             examList.addExam(newExam);
           }
+          else {str = "the exam conflicts with " + examList.getAllExams().get(xz);}
         }
           else
           {
