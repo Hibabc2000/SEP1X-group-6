@@ -93,7 +93,8 @@ public class HomeController implements EventHandler<ActionEvent>
       fileHandler.temporaryWrite(dates,"tempSEDates");
     }
 
-
+    //***************************
+    // TableView columns settings
     Time = new TableColumn<Exam, String>("Time");
     Time.setCellValueFactory(new PropertyValueFactory<Exam, String>("time"));
     NumStud = new TableColumn<Exam, String>("Number of Students");
@@ -110,16 +111,9 @@ public class HomeController implements EventHandler<ActionEvent>
     Type.setCellValueFactory(new PropertyValueFactory<Exam, String>("examType"));
     Week = new TableColumn<Exam, String>("Week");
     Week.setCellValueFactory(new PropertyValueFactory<Exam, String>("week"));
-
-
     tableView.getColumns().addAll(Teacher, Date, Course, Room, Type, Week, NumStud, Time);
-
-
     tableView.getItems().addAll(exams.getAllExams());
-
-
-
-
+    //***************************
   }
 
 
