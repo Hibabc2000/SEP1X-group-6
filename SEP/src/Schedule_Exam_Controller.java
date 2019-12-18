@@ -126,7 +126,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
     {
 
       String str = "";
-      alertBox.setText("");
+      //alertBox.setText("");
       if(!updateCheck)
       {
         boolean isThereAnyConflict = false;
@@ -167,8 +167,10 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
         }
           else
           {
+
             alertBox.setText("exam is not in the exam period");
             System.out.println("exam is not in the exam period");
+            System.out.println(alertBox.getText());
           }
         }
         if(exmtyp.getValue() == null)

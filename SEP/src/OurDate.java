@@ -309,5 +309,9 @@ public class OurDate implements Serializable
   {
     return startHour;
   }
+  public String toString()
+  {
+    return year + "/" + month + "/" + day;
+  }
 }
 
