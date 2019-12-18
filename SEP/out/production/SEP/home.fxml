@@ -27,7 +27,7 @@
                <font>
                   <Font size="21.0" />
                </font></Label>
-            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="318.0" styleClass="mItem" text="HOME">
+            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="318.0" style="-fx-background-color: #6f5ea8;" styleClass="mItem" text="HOME">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Button>

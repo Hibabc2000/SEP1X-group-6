@@ -15,9 +15,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../../Desktop/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Teacher_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Teacher_Controller">
     <left>
         <VBox id="mCon" prefHeight="478.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
@@ -62,25 +63,33 @@
    <center>
       <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label styleClass="tText" text="Add/update teacher">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <FlowPane.margin>
-                  <Insets bottom="10.0" />
-               </FlowPane.margin>
-            </Label>
-            <Label styleClass="tText" text="Edit/delete">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <FlowPane.margin>
-                  <Insets bottom="10.0" left="65.0" right="250.0" />
-               </FlowPane.margin>
-            </Label>
+            <HBox>
+               <children>
+                  <VBox>
+                     <children>
+                        <Label styleClass="tText" text="Add/update teacher">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Line endX="100.0" startX="-100.0" strokeWidth="1.5" />
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label styleClass="tText" text="Edit/delete">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Line endX="100.0" startX="-100.0" strokeWidth="1.5" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="21.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
             <VBox>
                <children>
                   <GridPane prefHeight="187.0" prefWidth="390.0">
@@ -111,14 +120,14 @@
                            <children>
                               <ComboBox fx:id="teachersBox" prefHeight="26.0" prefWidth="158.0" promptText="Teachers" styleClass="dDown">
                                  <VBox.margin>
-                                    <Insets left="10.0" />
+                                    <Insets left="20.0" />
                                  </VBox.margin>
                               </ComboBox>
                               <HBox>
                                  <children>
                                     <Button fx:id="editButton" mnemonicParsing="false" onAction="#edit" styleClass="actnB" text="Edit">
                                        <HBox.margin>
-                                          <Insets left="10.0" top="10.0" />
+                                          <Insets left="20.0" top="10.0" />
                                        </HBox.margin>
                                     </Button>
                                     <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#delete" styleClass="actnB" text="Delete">
@@ -143,6 +152,9 @@
                         </VBox>
                         <Button fx:id="updateButton" mnemonicParsing="false" onAction="#update" styleClass="impB" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
                   </GridPane>
                </children>
             </VBox>
