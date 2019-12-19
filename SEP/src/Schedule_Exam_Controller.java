@@ -257,6 +257,23 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
       }
       exmBox.setItems(FXCollections.observableArrayList(examList.getAllExams()));
       exmBox.setItems(FXCollections.observableArrayList(examList.getAllExams()));
+
+
+
+
+      exmtyp.getSelectionModel().clearSelection();
+      tchr.getSelectionModel().clearSelection();
+      cexmnr.getSelectionModel().clearSelection();
+      roomC.getSelectionModel().clearSelection();
+      crs.getSelectionModel().clearSelection();
+      sHour.getSelectionModel().clearSelection();
+      eHour.getSelectionModel().clearSelection();
+      sMinute.getSelectionModel().clearSelection();
+      eMinute.getSelectionModel().clearSelection();
+      dateBox.setValue(null);
+
+
+
   }
     if (actionEvent.getSource() == editB)
     {
