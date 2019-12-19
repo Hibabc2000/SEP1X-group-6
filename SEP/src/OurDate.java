@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.GregorianCalendar;
 public class OurDate implements Serializable
 {
@@ -55,46 +56,28 @@ public class OurDate implements Serializable
     this.startHour = startHour;
     this.endHour = endHour;
 
+      LocalDate localDate = LocalDate.of(year,month,day);
+      LocalDate localDate2 = LocalDate.of(startDate.getYear(),startDate.getMonth(),startDate.getDay());
+
     startT = startDate;
     if (year == startDate.getYear())
     {
-      if(month == startDate.getMonth())
-      {
-        int tmp = startDate.getDay() - day;
-        week = tmp/7;
-      }
-      else
-      {
-        int tmp = (startDate.dayInMonth())-startDate.getDay();
-        int x = month;
-        while (startDate.getMonth() < x)
-        {
-          int y0 = 0;
-          if(startDate.getMonth() == x-1)
-          {
-            int x0 = tmp + day + y0;
-            week = tmp/7;
-          }
-          if(startDate.getMonth() < x-1)
-          {
-            y0 += dayInMonth(x-1);
-          }
-          x --;
-        }
-      }
+      int x9 = localDate2.getDayOfYear()-localDate.getDayOfYear();
+      week = x9/7;
     }
     else if(year>startDate.getYear())
     {
-      int x1 = dayInMonth(12) - startDate.getDay();
-      if(month == 1)
+      int x2;
+      if(startDate.isLeapYear())
       {
-        week = (x1+day)/7;
+        x2 = 366;
       }
-      if(month == 2)
+      else
       {
-        week = (x1+day+dayInMonth(2))/7;
+        x2 = 365;
       }
-
+      int x5 = (x2 - localDate2.getDayOfYear()) + localDate.getDayOfYear();
+      week = x5/7;
     }
     }
     catch (IOException e)
