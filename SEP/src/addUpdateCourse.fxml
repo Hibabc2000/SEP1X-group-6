@@ -169,7 +169,7 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
                            <children>
-                              <Label prefHeight="26.0" prefWidth="102.0" styleClass="fText" text="Group:" />
+                              <Label prefHeight="26.0" prefWidth="102.0" styleClass="fText" text="Class:" />
                            </children>
                         </VBox>
                         <Line endX="100.0" startX="-100.0" strokeWidth="1.5" GridPane.columnIndex="3" />
