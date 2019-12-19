@@ -51,7 +51,8 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     {
       teacherList.addTeacher((Teacher) obj);
     }
-    teachersBox.setItems(FXCollections.observableArrayList(teacherList.getAllTeachers()));
+    teachersBox.setItems(
+        FXCollections.observableArrayList(teacherList.getAllTeachers()));
   }
 
   @Override public void handle(ActionEvent actionEvent)
@@ -142,6 +143,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       }
     }
   }
+
   public void update(ActionEvent e)
   {
     if (e.getSource() == updateButton)
@@ -153,7 +155,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       else
       {
         errorName.setText("");
-        name=nameField.getText();
+        name = nameField.getText();
       }
 
       if (idField.getText().length() == 0)
@@ -163,7 +165,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       else
       {
         errorID.setText("");
-        id=idField.getText();
+        id = idField.getText();
       }
 
       if (errorName.getText().length() == 0 && errorID.getText().length() == 0)
@@ -184,7 +186,8 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       if (!teachersBox.getItems().contains(t))
       {
         teachersBox.getItems().add(t);
-        teachersBox.getSelectionModel().select(teachersBox.getItems().size()-1);
+        teachersBox.getSelectionModel()
+            .select(teachersBox.getItems().size() - 1);
       }
 
       nameField.setText("");
@@ -193,6 +196,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     }
 
   }
+
   public void edit(ActionEvent e)
   {
     if (e.getSource() == editButton)
@@ -206,6 +210,7 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
       }
     }
   }
+
   public void delete(ActionEvent e)
   {
     if (e.getSource() == deleteButton)
@@ -218,7 +223,8 @@ public class Teacher_Controller implements EventHandler<ActionEvent>
     }
   }
 
-  private void changeScene(String target, ActionEvent event, Object list) throws IOException
+  private void changeScene(String target, ActionEvent event, Object list)
+      throws IOException
   {
     FileAdapter fileHandler = new FileAdapter(null);
     fileHandler.temporaryWrite(teacherList, "tempTeacher");

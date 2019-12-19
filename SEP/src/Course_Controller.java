@@ -14,6 +14,11 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * @author Marin Bilba, 293141
+ * @version 2.0
+ * This class is a controller for addUpdateCourse FXML
+ */
 public class Course_Controller implements EventHandler<ActionEvent>
 {
   @FXML private Button homeButton;
@@ -27,7 +32,7 @@ public class Course_Controller implements EventHandler<ActionEvent>
 
   /**
    * @param actionEvent action
-   * this method handles the scene switch
+   *                    this method handles the scene switch when the according button is pressed
    */
   @Override public void handle(ActionEvent actionEvent)
   {
@@ -118,15 +123,22 @@ public class Course_Controller implements EventHandler<ActionEvent>
     }
   }
 
+  /**
+   * @param target fxml targer
+   * @param event  action event
+   * @param list   list of class object
+   * @throws IOException throws this exception on error while reading file
+   *                     This method handle changing the scene
+   */
   private void changeScene(String target, ActionEvent event, Object list)
       throws IOException
   {
-      FileAdapter fileHandler = new FileAdapter(null);
-      fileHandler.temporaryWrite(courseList, "tempCourse");
-      Parent parent = FXMLLoader.load(getClass().getResource(target));
-      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      stage.getScene().setRoot(parent);
-      stage.show();
+    FileAdapter fileHandler = new FileAdapter(null);
+    fileHandler.temporaryWrite(courseList, "tempCourse");
+    Parent parent = FXMLLoader.load(getClass().getResource(target));
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.getScene().setRoot(parent);
+    stage.show();
   }
 
   // Controller settings
@@ -144,7 +156,6 @@ public class Course_Controller implements EventHandler<ActionEvent>
   @FXML private Label groupError;
   @FXML private Label nrStudentsError;
   @FXML private Label semesterError;
-  @FXML private Label updatedNotification;
 
   private boolean updateCheck = false;
   private Course buffer;
@@ -155,14 +166,12 @@ public class Course_Controller implements EventHandler<ActionEvent>
   private int semesterNumber = 0;
 
   /**
-   *
-   * @throws IOException - throws this exception on error while reading file
+   * @throws IOException            - throws this exception on error while reading file
    * @throws ClassNotFoundException - throws this exception if no such class exists
-   * method initialize the courseList object, creates an instance of file Adapter
-   * that is reading from the files and add all objects to the combobox
+   *                                method initialize the courseList object, creates an instance of file Adapter
+   *                                that is reading from the files and add all objects to the combobox
    */
-  public void initialize()
-      throws IOException, ClassNotFoundException
+  public void initialize() throws IOException, ClassNotFoundException
   {
     courseList = new CourseList();
 
@@ -173,15 +182,14 @@ public class Course_Controller implements EventHandler<ActionEvent>
       System.out.println("a");
       courseList.addCourse((Course) obj);
     }
-    courses.setItems(FXCollections.observableArrayList(courseList.getAllCourses()));
-
+    courses.setItems(
+        FXCollections.observableArrayList(courseList.getAllCourses()));
 
   }
 
   /**
-   *
    * @param e action event parameter
-   * method handles the "Update" button in the GUI
+   *          method handles the "Update" button in the GUI
    */
   public void update(ActionEvent e)
   {
@@ -265,11 +273,7 @@ public class Course_Controller implements EventHandler<ActionEvent>
         //      Adding the object to course list
         courseList.addCourse(buffer);
 
-        //updatedNotification.setText("Updated");
       }
-      //updatedNotification.setText("");
-
-
 
       //      Add items to combobox
       //     Duplicate checker
@@ -285,10 +289,10 @@ public class Course_Controller implements EventHandler<ActionEvent>
       if (!courses.getItems().contains(buffer))
       {
         courses.getItems().add(buffer);
-        courses.getSelectionModel().select(courses.getItems().size()-1);
+        courses.getSelectionModel().select(courses.getItems().size() - 1);
       }
-//      Set up empty text fields
-name.setText("");
+      //      Set up empty text fields
+      name.setText("");
       group.setText("");
       nrStudents.setText("");
       semester.setText("");
@@ -296,9 +300,8 @@ name.setText("");
   }
 
   /**
-   *
    * @param e action event parameter
-   * method handles the "Edit" button in the GUI
+   *          method handles the "Edit" button in the GUI
    */
   public void edit(ActionEvent e)
   {
@@ -317,9 +320,8 @@ name.setText("");
   }
 
   /**
-   *
    * @param e action event parameter
-   * method handles the "Delete" button in the GUI
+   *          method handles the "Delete" button in the GUI
    */
   public void delete(ActionEvent e)
   {

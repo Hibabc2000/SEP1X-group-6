@@ -1,8 +1,8 @@
 import java.io.Serializable;
 
 /**
- *@author Marin Bilba, 293141
- *@version 1.2
+ * @author Marin Bilba, 293141
+ * @version 1.2
  */
 public class Course implements Serializable
 {
@@ -12,10 +12,10 @@ public class Course implements Serializable
   private int semester;
 
   /**
-   *  @param courseName name of the course
-   * @param group group name
+   * @param courseName name of the course
+   * @param group      group name
    * @param nrStudents total number of students
-   * @param semester course semester
+   * @param semester   course semester
    */
   public Course(String courseName, String group, int nrStudents, int semester)
   {
@@ -34,7 +34,6 @@ public class Course implements Serializable
     return courseName;
   }
 
-
   /**
    * @return group name
    * return the group name
@@ -45,7 +44,6 @@ public class Course implements Serializable
   }
 
   /**
-   *
    * @return total number of students
    */
   public int getNrStudents()
@@ -53,9 +51,7 @@ public class Course implements Serializable
     return nrStudents;
   }
 
-
   /**
-   *
    * @return semester number
    */
   public int getSemester()
@@ -63,29 +59,27 @@ public class Course implements Serializable
     return semester;
   }
 
-
   /**
-   *
    * @return course name, group, number of students and semester number
    */
   @Override public String toString()
   {
-    return courseName + group
-        + " | " +  + nrStudents +" | "+ semester;
+    return courseName + group + " | " + +nrStudents + " | " + semester;
   }
 
   /**
-   *
    * @param obj
    * @return a boolean true if objects are equal or false if they are not
    * Methods returns whether the objects are equal or not
    */
-  public boolean equals(Object obj){
-  if(!(obj instanceof Course))
-    return false;
-  Course other=(Course)obj;
-  return courseName.equals(other.courseName)&&group.equals(other.group)&&nrStudents==other.nrStudents&&semester==other.semester;
-}
+  public boolean equals(Object obj)
+  {
+    if (!(obj instanceof Course))
+      return false;
+    Course other = (Course) obj;
+    return courseName.equals(other.courseName) && group.equals(other.group)
+        && nrStudents == other.nrStudents && semester == other.semester;
+  }
 
 }
 
