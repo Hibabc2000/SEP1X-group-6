@@ -211,6 +211,7 @@ public class HomeController implements EventHandler<ActionEvent>
       try
       {
         export("dotation.xml");
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Schedule successfully exported!");
       }
       catch (XmlConverterException | IOException | ClassNotFoundException e)
       {
