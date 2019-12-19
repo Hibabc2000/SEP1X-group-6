@@ -37,8 +37,6 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
   @FXML private ComboBox sMinute;
   @FXML private ComboBox eHour;
   @FXML private ComboBox eMinute;
-  private Scene scene;
-  private Stage stage;
   private TeacherList teacherList;
   private CoExaminerList coExaminerList;
   private RoomList roomList;
@@ -50,6 +48,13 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
   private OurDate endDate;
   private boolean bbbb;
 
+  /**
+   * This method initializes the Schedule Exam tab's internal workings, after the GUI has been constructed.
+   * @throws IOException - throws this if there is an exception with the file handling
+   * @throws ClassNotFoundException - throws this if there is an error with the file reading to objects, if a class is not found.
+   * @throws NoSuchFieldException - throws this if there is an error with the transferMessage method (see that for details).
+   * @throws IllegalAccessException - throws this if there is an access attempt to a non-accessible but existing field.
+   */
   public void initialize() throws IOException, ClassNotFoundException, NoSuchFieldException, IllegalAccessException
   {
     exmtyp.getItems().addAll("Oral", "Written");
@@ -119,14 +124,15 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
     transferMessage(examList, "examList", "examBox");
   }
 
+  /**
+   * This method handles all GUI events internally in the Schedule Exam tab.
+   * @param actionEvent the ActionEvent caused by the triggering of the GUI.
+   */
   @Override public void handle(ActionEvent actionEvent)
   {
-
     if (actionEvent.getSource() == updateB)
     {
-
       String str = "";
-      //alertBox.setText("");
       if(!updateCheck)
       {
         boolean isThereAnyConflict = false;
@@ -258,9 +264,6 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
       exmBox.setItems(FXCollections.observableArrayList(examList.getAllExams()));
       exmBox.setItems(FXCollections.observableArrayList(examList.getAllExams()));
 
-
-
-
       exmtyp.getSelectionModel().clearSelection();
       tchr.getSelectionModel().clearSelection();
       cexmnr.getSelectionModel().clearSelection();
@@ -271,9 +274,6 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
       sMinute.getSelectionModel().clearSelection();
       eMinute.getSelectionModel().clearSelection();
       dateBox.setValue(null);
-
-
-
   }
     if (actionEvent.getSource() == editB)
     {
@@ -388,6 +388,7 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
       }
     }
   }
+
 
   private void changeScene(String target, ActionEvent event, ExamList examList) throws IOException
   {
