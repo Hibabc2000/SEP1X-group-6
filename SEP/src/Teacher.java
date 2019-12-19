@@ -21,10 +21,11 @@ public class Teacher extends Person implements Serializable
     return "Name: " + this.getName() + ", ID: " + this.getID();
   }
 
-  public boolean equals(Object obj){
-    if(!(obj instanceof Teacher))
+  public boolean equals(Object obj)
+  {
+    if (!(obj instanceof Teacher))
       return false;
-    Teacher other=(Teacher)obj;
+    Teacher other = (Teacher) obj;
     return super.equals(other);
   }
 

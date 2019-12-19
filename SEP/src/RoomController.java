@@ -3,18 +3,21 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
 import java.util.ArrayList;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 /**
  * @author Oliver Isaac, 293131
  * @version 1.5.6.1
- * this class is just a conTROLLer class for my Room UI.
+ * this class is just a controller class for my Room UI.
  */
 public class RoomController implements EventHandler<ActionEvent>
 {
@@ -61,10 +64,8 @@ public class RoomController implements EventHandler<ActionEvent>
     catch (NullPointerException ignored)
     {
 
-
     }
   }
-
 
   public void initialize() throws IOException, ClassNotFoundException
   {
@@ -90,6 +91,11 @@ public class RoomController implements EventHandler<ActionEvent>
 
     }
   }
+
+  /**
+   * @param actionEvent action
+   *                    this method handles the scene switch when the according button is pressed
+   */
   @Override public void handle(ActionEvent actionEvent)
   {
     if (actionEvent.getSource() == homeButton)
@@ -179,7 +185,15 @@ public class RoomController implements EventHandler<ActionEvent>
     }
   }
 
-  private void changeScene(String target, ActionEvent event, Object list) throws IOException
+  /**
+   * @param target fxml targer
+   * @param event  action event
+   * @param list   list of class object
+   * @throws IOException throws this exception on error while reading file
+   *                     This method handle changing the scene
+   */
+  private void changeScene(String target, ActionEvent event, Object list)
+      throws IOException
   {
     FileAdapter fileHandler = new FileAdapter(null);
     fileHandler.temporaryWrite(rlist, "tempRoom");
@@ -189,6 +203,10 @@ public class RoomController implements EventHandler<ActionEvent>
     stage.show();
   }
 
+  /**
+   * @param e action event parameter
+   *          method handles the "Update" button in the GUI
+   */
   public void update(ActionEvent e)
   {
     if (e.getSource() == update)
@@ -290,6 +308,10 @@ public class RoomController implements EventHandler<ActionEvent>
 
   }
 
+  /**
+   * @param e action event parameter
+   *          method handles the "Delete" button in the GUI
+   */
   public void delete(ActionEvent e)
   {
     if (e.getSource() == delete)
@@ -303,6 +325,10 @@ public class RoomController implements EventHandler<ActionEvent>
     }
   }
 
+  /**
+   * @param e action event parameter
+   *          method handles the "Edit" button in the GUI
+   */
   public void edit(ActionEvent e) throws InterruptedException
   {
     if (e.getSource() == edit)

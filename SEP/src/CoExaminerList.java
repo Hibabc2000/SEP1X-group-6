@@ -1,4 +1,3 @@
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -20,9 +19,7 @@ public class CoExaminerList implements Serializable
   }
 
   /**
-   *
-   * @param object
-   * adding co-examiner object to the list
+   * @param object adding co-examiner object to the list
    */
   public void addCoExaminer(Object object)
   {
@@ -33,23 +30,6 @@ public class CoExaminerList implements Serializable
   }
 
   /**
-   * @param c co-examiner object
-   * deleting co-examiner object from the list
-   */
-  public void deleteCoExaminer(CoExaminer c)
-  {
-    for (CoExaminer coExaminer : coExaminers)
-    {
-      if(c.equals(coExaminer))
-      {
-        coExaminers.remove(coExaminer);
-        break;
-      }
-    }
-  }
-
-  /**
-   *
    * @return an ArrayList of Co-Examiner
    */
   public ArrayList<CoExaminer> getAllCoExaminers()

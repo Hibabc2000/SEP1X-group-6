@@ -7,8 +7,8 @@ public class MyFileIO
     *
     * @param fileName file name
     * @param obj specific object that should be written
-    * @throws FileNotFoundException
-    * @throws IOException
+    * @throws FileNotFoundException throws this exception if no such file exists
+    * @throws IOException throws this exception on error while reading file
     * Writes the given object to a file with the given file name
     */
    public void writeToFile(String fileName, Object obj) throws FileNotFoundException, IOException
@@ -41,8 +41,8 @@ public class MyFileIO
     *
     * @param fileName file name
     * @param objs Array of objects that should be written
-    * @throws FileNotFoundException
-    * @throws IOException
+    * @throws FileNotFoundException throws this exception if no such file exists
+    * @throws IOException throws this exception on error while reading file
     * Writes the objects in the given array to a file with the given file name
     */
    public void writeToFile(String fileName, Object[] objs) throws FileNotFoundException, IOException
@@ -82,9 +82,9 @@ public class MyFileIO
     * @param fileName file name
     * @return Reads the first object from the file with the given file name and returns it.
     * Whoever calls the method will need to cast it from type Object to its real type
-    * @throws FileNotFoundException
-    * @throws IOException
-    * @throws ClassNotFoundException
+    * @throws FileNotFoundException throws this exception if no such file exists
+    * @throws IOException throws this exception on error while reading file
+    * @throws ClassNotFoundException throws this exception if no such class exists
     */
    public Object readObjectFromFile(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException
    {
@@ -126,9 +126,9 @@ public class MyFileIO
     * @param fileName file name
     * @return Reads all objects from the file with the given file name and returns it as an Object[].
     * Whoever calls the method will need to cast the Objects to their real type
-    * @throws FileNotFoundException
-    * @throws IOException
-    * @throws ClassNotFoundException
+    * @throws FileNotFoundException throws this exception if no such file exists
+    * @throws IOException throws this exception on error while reading file
+    * @throws ClassNotFoundException throws this exception if no such class exists
     */
    public Object[] readArrayFromFile(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException
    {

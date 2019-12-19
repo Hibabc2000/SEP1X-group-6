@@ -19,7 +19,7 @@ public class FileAdapter
    *
    * @param obj
    * @param tempFileName file name
-   * @throws IOException
+   * @throws IOException throws this exception on error while reading file
    * Use the MyFileIO class to save all lists object in their files
    */
   public void temporaryWrite(Object obj, String tempFileName) throws IOException
@@ -53,8 +53,8 @@ public class FileAdapter
    *
    * @param tempFileName file name
    * @return the objects that read from the file
-   * @throws IOException
-   * @throws ClassNotFoundException
+   * @throws IOException throws this exception on error while reading file
+   * @throws ClassNotFoundException throws this exception if no such class exists
    */
   public Object[] temporaryRead(String tempFileName)
       throws IOException, ClassNotFoundException

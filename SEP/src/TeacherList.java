@@ -35,14 +35,14 @@ public class TeacherList implements Serializable
     {
       return false;
     }
-    TeacherList tmp =(TeacherList)obj;
-    if(teachers.size() != getAllTeachers().size())
+    TeacherList tmp = (TeacherList) obj;
+    if (teachers.size() != getAllTeachers().size())
     {
       return false;
     }
-    for (int x0 = 0; x0 < teachers.size(); x0 ++)
+    for (int x0 = 0; x0 < teachers.size(); x0++)
     {
-      if(!teachers.get(x0).equals(getAllTeachers().get(x0)))
+      if (!teachers.get(x0).equals(getAllTeachers().get(x0)))
       {
         return false;
       }
@@ -51,9 +51,8 @@ public class TeacherList implements Serializable
   }
 
   /**
-   *
    * @param t teacher object
-   * add a new teacher to the Teacher list
+   *          add a new teacher to the Teacher list
    */
   public void addTeacher(Teacher t)
   {
@@ -61,16 +60,15 @@ public class TeacherList implements Serializable
   }
 
   /**
-   *
    * @param t teacher object
-   * delete the teacher object from the Teacher list
+   *          delete the teacher object from the Teacher list
    */
   public void deleteTeacher(Teacher t)
   {
     int index = 0;
     for (Teacher teacher : teachers)
     {
-      if(t.equals(teacher))
+      if (t.equals(teacher))
       {
         teachers.remove(teacher);
         break;
