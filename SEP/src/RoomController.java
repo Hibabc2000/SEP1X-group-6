@@ -333,7 +333,8 @@ public class RoomController implements EventHandler<ActionEvent>
 
   /**
    * @param e action event parameter
-   *          method handles the "Edit" button in the GUI
+   * @throws InterruptedException - throws this if the thread is interrupted
+   * This method handles the "Edit" button in the GUI
    */
   public void edit(ActionEvent e) throws InterruptedException
   {

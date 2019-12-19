@@ -11,6 +11,8 @@ public abstract class Person implements Serializable
   private String name;
   /**
    * This method is a three-argument constructor for all persons.
+   * @param name The name of the person.
+   * @param ID The ID of the person.
    */
   public Person(String ID, String name)
   {

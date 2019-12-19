@@ -10,7 +10,10 @@ public class CoExaminer extends Person implements Serializable
   private boolean external;
 
   /**
-   * This method is a four-argument constructor for co-examiners.
+   * This method is a three-argument constructor for co-examiners.
+   * @param external Boolean that is true if the CoExaminer is external.
+   * @param ID The ID of the co-examiner
+   * @param name The name of the co-examiner
    */
   public CoExaminer(String ID, String name, boolean external)
   {
