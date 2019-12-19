@@ -67,6 +67,12 @@ public class RoomController implements EventHandler<ActionEvent>
     }
   }
 
+  /**
+   * @throws IOException            throws this exception on error while reading file
+   * @throws ClassNotFoundException throws this exception if no such class exists
+   *                                Method initialize the projector combobox(HDMI,VGA,HDMI and VGA or none)
+   *                                Creates an instance of file Adapter that is reading from the files and add all objects to the combobox
+   */
   public void initialize() throws IOException, ClassNotFoundException
   {
     ArrayList arr = new ArrayList();

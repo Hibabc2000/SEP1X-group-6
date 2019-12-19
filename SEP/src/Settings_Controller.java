@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -17,6 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 
+/**
+ * @author  Ali Bahrani, 294418
+ * @version 1.0
+ */
 public class Settings_Controller implements EventHandler<ActionEvent> {
   @FXML
   private Button homeButton;
@@ -44,10 +43,20 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
   private ArrayList<OurDate> dates;
   private boolean aaaa;
 
+  /**
+   * No-arg constructor
+   */
   public Settings_Controller()
   {
   }
 
+  /**
+   *
+   * @throws IOException throws this exception on error while reading file
+   * @throws ClassNotFoundException throws this exception if no such class exists
+   * Method initialize two "OurDate" objects
+   * Creates an instance of file Adapter that is reading from the files
+   */
   public void initialize() throws IOException, ClassNotFoundException {
     this.dates = new ArrayList();
     this.startDate = new OurDate(1, 1, 1);
@@ -71,7 +80,13 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
     }
 
   }
-
+  /**
+   * @param target fxml targer
+   * @param event  action event
+   * @param list   list of class object
+   * @throws IOException throws this exception on error while reading file
+   *                     This method handle changing the scene
+   */
   private void changeScene(String target, ActionEvent event, Object list) throws IOException {
     FileAdapter fileHandler = new FileAdapter((String)null);
     fileHandler.temporaryWrite(list, "tempSEDates");
@@ -80,7 +95,12 @@ public class Settings_Controller implements EventHandler<ActionEvent> {
     stage.getScene().setRoot(parent);
     stage.show();
   }
-
+  /**
+   * @param actionEvent action
+   *                    This method handles the scene switch when the according button is pressed
+   *                    Creates two "OurDate" objects that filled with the date passed from the entered fields by the user
+   *                    Objects are written to the file
+   */
   public void handle(ActionEvent actionEvent) {
     if (actionEvent.getSource() == this.confirm && this.enDate.getValue() != null && this.stDate.getValue() != null) {
       this.startDate = new OurDate(((LocalDate)this.stDate.getValue()).getDayOfMonth(), ((LocalDate)this.stDate.getValue()).getMonthValue(), ((LocalDate)this.stDate.getValue()).getYear());
