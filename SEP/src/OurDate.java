@@ -13,18 +13,28 @@ public class OurDate implements Serializable
   private int eMinute;
   private int stMinute;
   private int etMinute;
+  private int week;
+  private OurDate startT;
+
+  /**
+   * Gets the week number of this object
+   * @return the number of the week
+   */
   public int getWeek()
   {
     return week;
   }
 
-  public void setWeek(int week)
-  {
-    this.week = week;
-  }
-
-  private int week;
-  private OurDate startT;
+  /**
+   * This method creates a new date with the given parameters.
+   * @param day - the day of the new date
+   * @param month - the month of the new date
+   * @param year - the year of the new date
+   * @param startHour - the starting hour of the new date
+   * @param endHour - the ending hour of the new date
+   * @param startMinute - the starting minute of the new date
+   * @param endMinute - the ending minute of the new date
+   */
   public OurDate(int day, int month, int year, int startHour, int endHour,int startMinute, int endMinute)
   {
     try
@@ -32,7 +42,6 @@ public class OurDate implements Serializable
       OurDate startDate;
       FileAdapter fileHandler = new FileAdapter(null);
       Object[] objs = fileHandler.temporaryRead("tempSEDates");
-      //objs = fileHandler.temporaryRead("tempSEDates");
       if (objs.length != 0)
       {
         startDate = (OurDate) objs[0];
@@ -89,9 +98,15 @@ public class OurDate implements Serializable
       System.exit(3);
     }
   }
+
+  /**
+   * This method creates a new date with the given parameters.
+   * @param day - the day of the new date
+   * @param month - the month of the new date
+   * @param year - the year of the new date
+   */
   public OurDate(int day, int month, int year)
   {
-
     this.day = day;
     this.month = month;
     this.year = year;
@@ -102,8 +117,13 @@ public class OurDate implements Serializable
     etMinute = 0;
     sMinute = 0;
     eMinute = 0;
-
   }
+
+  /**
+   * This method is part of the conflict detection, with checking for overlapping times and dates.
+   * @param date - the date to compare
+   * @return - whether there is overlap in the two dates
+   */
   public boolean compare(OurDate date)
   {
     if(year == date.getYear())
@@ -132,32 +152,28 @@ public class OurDate implements Serializable
     return false;}
   }
 
-  public void setDay(int day)
-  {
-
-  }
-
-
-  public void setMonth(int month)
-  {
-    this.month = month;
-  }
-
+  /**
+   * Returns this date's year.
+   * @return The year of this date.
+   */
   public int getYear()
   {
     return year;
   }
 
+  /**
+   * Returns this date's month.
+   * @return The month of this date.
+   */
   public int getMonth()
   {
     return month;
   }
 
-  public void setYear(int year)
-  {
-    year = year;
-  }
-
+  /**
+   * Returns whether this year is a leap year.
+   * @return true if the date's year is a leap year
+   */
   public boolean isLeapYear()
   {
     boolean p;
@@ -172,38 +188,12 @@ public class OurDate implements Serializable
     else {p = false;}
     return p;
   }
-  public int dayInMonth()
-  {
-    if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 )
-    {
-      return 31;
-    }
-    else if ( month == 2 && !isLeapYear())
-    {
-      return 28;
-    }
-    else if ( month == 2 && isLeapYear() )
-    {
-      return 29;
-    }
-    else {return 30;}
-  }
-  public int dayInMonth(int cmonth)
-  {
-    if (cmonth == 1 || cmonth == 3 || cmonth == 5 || cmonth == 7 || cmonth == 8 || cmonth == 10 || cmonth == 12 )
-    {
-      return 31;
-    }
-    else if ( cmonth == 2 && !isLeapYear())
-    {
-      return 28;
-    }
-    else if ( cmonth == 2 && isLeapYear() )
-    {
-      return 29;
-    }
-    else {return 30;}
-  }
+
+  /**
+   * Returns whether this date is before another date
+   * @param date3 - the date to compare to
+   * @return true if this date is before date3
+   */
   public boolean isBefore(OurDate date3)
   {
     if (year < date3.getYear()){return true;}
@@ -219,76 +209,64 @@ public class OurDate implements Serializable
     }
   }
 
-  public void setStartHour(int startHour)
-  {
-    this.startHour = startHour;
-  }
-
-  public void setEndHour(int endHour)
-  {
-    this.endHour = endHour;
-  }
-
+  /**
+   * Returns this date's ending minute.
+   * @return The ending minute of this date.
+   */
   public int geteMinute()
   {
     return eMinute;
   }
 
-  public int getEtMinute()
-  {
-    return etMinute;
-  }
-
+  /**
+   * Returns this date's starting minute.
+   * @return The starting minute of this date.
+   */
   public int getsMinute()
   {
     return sMinute;
   }
 
+  /**
+   * Returns this date's starting time in minutes.
+   * @return The starting time in minutes of this date.
+   */
   public int getStMinute()
   {
     return stMinute;
   }
 
-  public void seteMinute(int eMinute)
-  {
-    this.eMinute = eMinute;
-  }
-
-  public void setEtMinute(int etMinute)
-  {
-    this.etMinute = etMinute;
-  }
-
-  public void setsMinute(int sMinute)
-  {
-    this.sMinute = sMinute;
-  }
-
-  public void setStartT(OurDate startT)
-  {
-    this.startT = startT;
-  }
-
-  public void setStMinute(int stMinute)
-  {
-    this.stMinute = stMinute;
-  }
-
+  /**
+   * Returns this date's day.
+   * @return The day of this date.
+   */
   public int getDay()
   {
     return day;
   }
 
+  /**
+   * Returns this date's ending hour.
+   * @return The ending hour of this date.
+   */
   public int getEndHour()
   {
     return endHour;
   }
 
+  /**
+   * Returns this date's starting hour.
+   * @return The starting hour of this date.
+   */
   public int getStartHour()
   {
     return startHour;
   }
 
+  /**
+   * Returns a String representation of this object.
+   * @return A String representation of this object.
+   */
   public String toString()
   {
     return year + "/" + month + "/" + day;

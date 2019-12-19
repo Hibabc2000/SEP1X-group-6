@@ -12,16 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.io.Serializable;
-import java.util.SimpleTimeZone;
-/**
- *   @author  Ali Bahrani, 294418
- *   @author Silvestru Mindrila, 293135
- *   @author Kristóf Lénárd, 293110
- *   @author Oliver Isaac, 293131
- *   @author Marin Bilba, 293141
- *   @version 3.5
- */
+
 public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
 {
   @FXML private Button homeButton;
@@ -46,6 +37,8 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
   @FXML private ComboBox sMinute;
   @FXML private ComboBox eHour;
   @FXML private ComboBox eMinute;
+  private Scene scene;
+  private Stage stage;
   private TeacherList teacherList;
   private CoExaminerList coExaminerList;
   private RoomList roomList;
@@ -57,13 +50,6 @@ public class Schedule_Exam_Controller implements EventHandler<ActionEvent>
   private OurDate endDate;
   private boolean bbbb;
 
-  /**
-   *
-   * @throws IOException throws this exception on error while reading file
-   * @throws ClassNotFoundException throws this exception if no such class exists
-   * @throws NoSuchFieldException
-   * @throws IllegalAccessException
-   */
   public void initialize() throws IOException, ClassNotFoundException, NoSuchFieldException, IllegalAccessException
   {
     exmtyp.getItems().addAll("Oral", "Written");
