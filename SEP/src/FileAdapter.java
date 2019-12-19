@@ -17,7 +17,7 @@ public class FileAdapter
 
   /**
    *
-   * @param obj
+   * @param obj - object to write to file
    * @param tempFileName file name
    * @throws IOException throws this exception on error while reading file
    * Use the MyFileIO class to save all lists object in their files
@@ -64,7 +64,6 @@ public class FileAdapter
 
   public void exportToXML(ExamList object, String filename) throws XmlConverterException
   {
-
     MyXmlConverter xmlConverter = new MyXmlConverter(filename);
     xmlConverter.toXml(object, filename);
   }

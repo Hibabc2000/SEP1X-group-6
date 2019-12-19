@@ -68,7 +68,7 @@ public class Course implements Serializable
   }
 
   /**
-   * @param obj
+   * @param obj - course to evaluate whether this is equal to
    * @return a boolean true if objects are equal or false if they are not
    * Methods returns whether the objects are equal or not
    */

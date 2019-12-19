@@ -8,11 +8,13 @@ public class Teacher extends Person implements Serializable
    * This is a class for teachers.
    */
 
+  /**
+   * @param ID - The ID of the teacher.
+   * @param name - The name of the teacher.
+   * This method is a three-argument constructor for teachers.
+   */
   public Teacher(String ID, String name)
   {
-    /**
-     * This method is a three-argument constructor for teachers.
-     */
     super(ID, name);
   }
 
